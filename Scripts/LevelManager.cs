@@ -1,0 +1,123 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// 关卡状态
+/// </summary>
+public enum LevelState
+{
+    // 摄像机前移
+    MoveForward,
+    // 选卡
+    Selecting,
+    // 摄像机回归
+    MoveBack,
+    // 开始
+    Start,
+    // 游戏中
+    InGame,
+    // 结束
+    Over,
+    // 总结
+    Conclusion
+}
+public class LevelManager : MonoBehaviour
+{
+
+    public static LevelManager Instance;
+
+    // 数据
+    public Stats Stats = new Stats();
+
+    public double Time;
+    // 关卡编号
+    private int _levelNum;
+    // 波数
+    public int MaxWaveNum;
+    private int _waveNum;
+    public int WaveNum
+    {
+        get => _waveNum;
+        set
+        {
+            _waveNum = value;
+            UIManager.Instance.UpdateWaveNum(_waveNum);
+        }
+    }
+    // 关卡状态
+    private LevelState _levelState;
+    public LevelState LevelState
+    {
+        get => _levelState;
+        set
+        {
+            _levelState = value;
+            switch (_levelState)
+            {
+                case LevelState.MoveForward:
+                    // 显示来犯敌机
+                    EnemyManager.Instance.UpdateEnemyShow();
+                    // 移动摄像机
+                    CameraController.Instance.Move(3.1f, 0.05f, LevelState.Selecting);
+                    break;
+                case LevelState.Selecting:
+                    // 摄像机不动
+                    CameraController.Instance.transform.position = new Vector3(0, 3.1f, -10);
+                    // 飞出卡片仓库
+                    UIManager.Instance.MoveSeedStorage(15f);
+                    break;
+                case LevelState.MoveBack:
+                    // 飞走卡片仓库
+                    UIManager.Instance.MoveSeedStorage(-787);
+                    // 摄像机回归
+                    CameraController.Instance.Move(-0.9f, 0.05f, LevelState.Start);
+                    break;
+                case LevelState.Start:
+                    // 清除展示敌机
+                    EnemyManager.Instance.ClearEnemy();
+                    // 开始字幕
+                    UIManager.Instance.ShowLevelStartText();
+                    // 初始化卡片
+                    UIManager.Instance.OnStartCardInit();
+                    break;
+                case LevelState.InGame:
+                    Stats.StartTiming();
+                    break;
+                case LevelState.Over:
+                    // 掐表计算游戏时间
+                    Time = Stats.GetTime();
+                    // 停止生产能量
+                    FallingEnergyManager.Instance.StopCreate();
+                    // 计算数据
+                    UIManager.Instance.LoadGameOverPanel();
+                    break;
+                case LevelState.Conclusion:
+                    UIManager.Instance.ShowGameOverPanel();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+    }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    public void StartLevel(int lv)
+    {
+        _levelNum = lv;
+        UIManager.Instance.UpdateLevelNum(lv);
+        WaveNum = 0;
+        Stats.InitStats();
+        LevelState = LevelState.MoveForward;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    }
+}
