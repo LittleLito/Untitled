@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class EnergyReactor : EquipBase
 {
     public override int Cost => 500;
-    public override float CD => 0f;
+    public override float CD => 7.5f;
     public override EquipType Type => EquipType.EnergyReactor;
     public override EquipFamily Family => EquipFamily.Enlighten;
 

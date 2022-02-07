@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     private SettingsPanel _settingsPanel;
     // 结束面板
     private GameOverPanel _gameOverPanel;
-        // 卡槽
+    // 卡槽
     public int MaxChosenNum;
     private GameObject _group;
     private Text _energyPoints;
@@ -52,7 +52,12 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
 
+    // Start is called before the first frame update
+    public void Init()
+    {
+        // 获取组件
         _levelNumText = transform.Find("LevelInfoPanel/LevelNum").GetComponent<Text>();
         _waveNumText = transform.Find("LevelInfoPanel/WaveNum").GetComponent<Text>();
         _settingsPanel = transform.Find("SettingsPanel").GetComponent<SettingsPanel>();
@@ -67,11 +72,7 @@ public class UIManager : MonoBehaviour
         _levelStartText = transform.Find("LevelStartText").GetComponent<Text>();
         
         _gameOverPanel.Init();
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
+        
         // 更新仓库卡片
         var index = 0;
         foreach (var type in Enum.GetValues(typeof(EquipType)))

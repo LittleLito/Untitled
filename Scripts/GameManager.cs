@@ -19,11 +19,16 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         GameConfig = Resources.Load<GameConfig>("GameConfig"); 
+        
+    }
 
+    private void Start()
+    {
+        StartLevel();
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void StartLevel()
     {
         LevelManager.Instance.StartLevel(LevelNum);
     }

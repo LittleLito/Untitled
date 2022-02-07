@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SGatling : EquipBase
 {
     public override int Cost => 1000;
-    public override float CD => 0f;
+    public override float CD => 7.5f;
     public sealed override int RunCost => 1;
     public override EquipType Type => EquipType.SGatling;
     public override EquipFamily Family => EquipFamily.Common;

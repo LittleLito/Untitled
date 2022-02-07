@@ -34,6 +34,15 @@ public class LevelManager : MonoBehaviour
     public double Time;
     // 关卡编号
     private int _levelNum;
+    public int LevelNum
+    {
+        get => _levelNum;
+        set
+        {
+            _levelNum = value;
+            UIManager.Instance.UpdateLevelNum(value);
+        }
+    }
     // 波数
     public int MaxWaveNum;
     private int _waveNum;
@@ -94,6 +103,7 @@ public class LevelManager : MonoBehaviour
                     UIManager.Instance.LoadGameOverPanel();
                     break;
                 case LevelState.Conclusion:
+                    PoolManager.Instance.ClearGameObj();
                     UIManager.Instance.ShowGameOverPanel();
                     break;
                 default:
@@ -109,8 +119,8 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel(int lv)
     {
-        _levelNum = lv;
-        UIManager.Instance.UpdateLevelNum(lv);
+        UIManager.Instance.Init();
+        LevelNum = lv;
         WaveNum = 0;
         Stats.InitStats();
         LevelState = LevelState.MoveForward;

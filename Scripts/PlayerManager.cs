@@ -57,6 +57,11 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    // Start is called before the first frame update
+    private void Init()
+    {
         // 装备位置管家对象
         LocationManager = Instantiate(GameManager.Instance.GameConfig.LocationManager, transform, false);
         LocationManager.transform.position = LocationManager.transform.parent.position;
@@ -66,13 +71,6 @@ public class PlayerManager : MonoBehaviour
         EnergyPoints = InitEnergyPoints;
         // 生命
         Health = InitMaxHealth;
-        
-        
-    }
-
-    // Start is called before the first frame update
-    private void Init()
-    {
         // 查找组件
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();

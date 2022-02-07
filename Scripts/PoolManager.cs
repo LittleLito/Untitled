@@ -27,7 +27,7 @@ public class PoolManager
     // 数据字典
     // key->   预制体
     // value-> 具体obj
-    private Dictionary<GameObject, List<GameObject>> _poolDataDic = new Dictionary<GameObject, List<GameObject>>();
+    private readonly Dictionary<GameObject, List<GameObject>> _poolDataDic = new Dictionary<GameObject, List<GameObject>>();
 
     /// <summary>
     /// 通过预制体获取字典中的资源
@@ -90,4 +90,13 @@ public class PoolManager
         // 设置父物体
         obj.transform.SetParent(_poolObj.transform.Find(prefab.name));
     }
+
+    /// <summary>
+    /// 清除数据
+    /// </summary>
+    public void ClearGameObj()
+    {
+        _poolDataDic.Clear();
+    }
+
 }

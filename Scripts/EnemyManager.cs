@@ -70,7 +70,7 @@ public class EnemyManager : MonoBehaviour
         }
         else
         {
-            //LevelManager.Instance.LevelState = LevelState.Over;
+            LevelManager.Instance.LevelState = LevelState.Over;
         }
     }
 
