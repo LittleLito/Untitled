@@ -128,7 +128,7 @@ public class PlayerManager : MonoBehaviour
                 ),  // 水平移动
                 Mathf.Clamp(
                     position.y + Input.GetAxis("Vertical") * Speed * Time.deltaTime,
-                    -6.58f, 5.34967f
+                    -6.7f, 5.34967f
                 ),  // 垂直移动
                 position.z
             );

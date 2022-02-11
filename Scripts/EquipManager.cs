@@ -35,6 +35,7 @@ public class EquipManager : MonoBehaviour
         {
             EquipType.SGatling => GameManager.Instance.GameConfig.SGatling,
             EquipType.EnergyReactor => GameManager.Instance.GameConfig.EnergyReactor,
+            EquipType.CherryMissile => GameManager.Instance.GameConfig.CherryMissile,
             _ => null
         };
     }
@@ -50,6 +51,7 @@ public class EquipManager : MonoBehaviour
         {
             EquipFamily.Common => GameManager.Instance.GameConfig.CardCommon,
             EquipFamily.Enlighten => GameManager.Instance.GameConfig.CardEnlighten,
+            EquipFamily.Doom => GameManager.Instance.GameConfig.CardDoom,
             _ => null
         };
     }
@@ -58,11 +60,20 @@ public class EquipManager : MonoBehaviour
 public enum EquipType
 {
     SGatling = 1,
-    EnergyReactor = 2
+    EnergyReactor = 2,
+    CherryMissile = 3
 }
 
 public enum EquipFamily
 {
     Common,
-    Enlighten
+    Enlighten,
+    Doom
+}
+
+public interface IOneTimeUseEquip
+{
+    Color GetColor();
+
+    void Launch(Vector3 target);
 }

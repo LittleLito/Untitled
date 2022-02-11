@@ -32,14 +32,14 @@ public abstract class EquipBase : MonoBehaviour
     public virtual Sprite EquipImg => GetComponent<SpriteRenderer>().sprite;
 
     // 渲染器
-    protected SpriteRenderer SpriteRenderer;
+    protected SpriteRenderer _spriteRenderer;
 
     /// <summary>
     /// 查找相关组件
     /// </summary>
-    protected void FindComponent()
+    protected virtual void FindComponent()
     {
-        SpriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     /// <summary>
@@ -54,16 +54,16 @@ public abstract class EquipBase : MonoBehaviour
         if (inGrid) // 如果是网格透明指示器
         {
             // 排序图层为-1
-            SpriteRenderer.sortingOrder = -1;
+            _spriteRenderer.sortingOrder = -1;
 
-            SpriteRenderer.color = new Color(1, 1, 1, 0.6f);
+            _spriteRenderer.color = new Color(1, 1, 1, 0.6f);
         }
         else
         {
             // 排序图层为0
-            SpriteRenderer.sortingOrder = 0;
+            _spriteRenderer.sortingOrder = 0;
 
-            SpriteRenderer.color = new Color(1, 1, 1, 1);
+            _spriteRenderer.color = new Color(1, 1, 1, 1);
 
         }
     }

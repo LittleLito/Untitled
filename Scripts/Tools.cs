@@ -38,4 +38,31 @@ public class Tools
 
         return null;
     }
+
+    /// <summary>
+    /// 用某个轴去朝向物体
+    /// </summary>
+    /// <param name="trSelf">朝向的本体</param>
+    /// <param name="lookPos">朝向的目标</param>
+    public static float AxisLookAt(Transform trSelf, Vector3 lookPos)
+    {
+        /*var dui = lookPos.y - trSelf.position.y;
+        var lin = -(lookPos.x - trSelf.position.x);
+        
+        Debug.Log(dui);
+        Debug.Log(lin);
+
+        var ang = Mathf.Atan(dui / lin) * Mathf.Rad2Deg;
+        var a = -(ang + 90);
+        
+        Debug.Log(a);
+        
+        trSelf.rotation = Quaternion.Euler(0, 0, a);*/
+
+        Vector2 dir = lookPos - trSelf.position;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        trSelf.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+
+        return dir.y / dir.x;
+    }
 }

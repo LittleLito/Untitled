@@ -259,6 +259,9 @@ public class UIManager : MonoBehaviour
         _gameOverPanel.Load();
     }
 
+    /// <summary>
+    /// 显示结束数据
+    /// </summary>
     public void ShowGameOverPanel()
     {
         _gameOverPanel.gameObject.SetActive(true);

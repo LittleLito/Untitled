@@ -12,7 +12,7 @@ public class ConeEnemy : EnemyBase
     protected override Sprite DamagedImgNo1 => GameManager.Instance.GameConfig.ConeEnemy1;
     protected override Sprite DamagedImgNo2 => GameManager.Instance.GameConfig.ConeEnemy2;
     protected override Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.ConeEnemy3;
-    protected override float ExplodeScale => 1.4f;
+    protected override float _explosionScale => 1.4f;
 
     private GameObject _gasAnim1;
     private GameObject _gasAnim2;

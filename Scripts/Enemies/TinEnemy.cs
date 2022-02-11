@@ -12,7 +12,7 @@ public class TinEnemy : EnemyBase
     protected override Sprite DamagedImgNo1 => GameManager.Instance.GameConfig.TinEnemy1;
     protected override Sprite DamagedImgNo2 => GameManager.Instance.GameConfig.TinEnemy2;
     protected override Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.TinEnemy3;
-    protected override float ExplodeScale => 2.3f;
+    protected override float _explosionScale => 2.3f;
 
     private GameObject _gasAnim1;
     private GameObject _gasAnim2;

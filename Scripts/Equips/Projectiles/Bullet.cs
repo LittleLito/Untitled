@@ -13,14 +13,12 @@ public class Bullet : MonoBehaviour
     private bool _alive;
 
     // 组件
-    private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
     
     // Start is called before the first frame update
     public void Init(Vector3 pos)
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         

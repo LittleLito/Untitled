@@ -13,6 +13,7 @@ public class GameConfig : ScriptableObject
     [Tooltip("卡片")] public GameObject Card;
     [Tooltip("普通卡片")] public Sprite CardCommon;
     [Tooltip("能量生产卡片")] public Sprite CardEnlighten;
+    [Tooltip("爆炸类卡片")] public Sprite CardDoom;
 
     [Header("其他资源")] 
     [Tooltip("AGENCYB")] public Font AGENCYB;
@@ -21,10 +22,13 @@ public class GameConfig : ScriptableObject
     [Tooltip("能量")] public GameObject Energy;
     [Tooltip("爆炸效果")] public RuntimeAnimatorController Explosion;
     [Tooltip("喷射尾气")] public RuntimeAnimatorController Gas;
+    [Tooltip("准星")] public GameObject Aim;
+    [Tooltip("烟雾")] public GameObject Smoke;
 
     [Header("装备")]
     [Tooltip("S型轻型机枪")] public GameObject SGatling;
     [Tooltip("能源反应堆")] public GameObject EnergyReactor;
+    [Tooltip("支援弹道导弹")] public GameObject CherryMissile;
 
     [Header("敌机")] 
     [Tooltip("普通敌机")] 

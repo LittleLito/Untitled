@@ -24,6 +24,7 @@ public class EnemyManager : MonoBehaviour
 
     // 所有敌机
     private readonly List<EnemyBase> _enemies = new List<EnemyBase>();
+    public List<EnemyBase> Enemies => _enemies;
 
     // 总生命值
     private float _maxHealthSum;

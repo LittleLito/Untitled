@@ -52,7 +52,7 @@ public abstract class EnemyBase : MonoBehaviour
     // 破损2图片
     protected abstract Sprite DamagedImgNo3 { get; }
     // 爆炸大小
-    protected abstract float ExplodeScale { get; }
+    protected abstract float _explosionScale { get; }
 
     /// <summary>
     /// 初始化位置等
@@ -79,13 +79,6 @@ public abstract class EnemyBase : MonoBehaviour
         // 添加监听
         _enemyHealthUpdateAction += EnemyManager.Instance.UpdateCurrentHealthSum;
     }
-    
-    // Start is called before the first frame update
-    protected virtual void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     protected virtual void Update()
     {
@@ -150,7 +143,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (Health > MaxHealth * 2/3)
         {
-            return DamagedImgNo1;
+            return EnemyManager.Instance.GetEnemyByType(Type).GetComponent<SpriteRenderer>().sprite;
         }
         if (Health > MaxHealth * 1/3)
         {
@@ -167,6 +160,7 @@ public abstract class EnemyBase : MonoBehaviour
     /// 受击
     /// </summary>
     /// <param name="damage"></param>
+    /// <param name="fromPlayer"></param>
     public void Hit(float damage, bool fromPlayer)
     {
         Health -= damage;
@@ -182,7 +176,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         Invoke(nameof(Recycle), 0.88f);
         _animator.runtimeAnimatorController = GameManager.Instance.GameConfig.Explosion;
-        transform.localScale = new Vector3(ExplodeScale, ExplodeScale, 0);
+        transform.localScale = new Vector3(_explosionScale, _explosionScale, 0);
         gameObject.tag = "Nothing";
         gameObject.layer = 11;
         

@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+// ReSharper disable HeuristicUnreachableCode
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
+#pragma warning disable 184
+
 
 /// <summary>
 /// 卡片四种状态
@@ -26,7 +30,7 @@ public enum GameCardState
 public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {   
     public EquipType Type;
-    public override EquipType EquipType { get => Type; }
+    public override EquipType EquipType => Type; 
 
     // 现在的CD值，用于计算
     private float _currentCd;
@@ -93,22 +97,39 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
         set
         {
             _hasEquip = value;
-            if (_hasEquip) // 持有装备
+            switch (_hasEquip)
             {
-                // 跟随装备
-                _equip = PoolManager.Instance.GetGameObj(_prefab, EquipManager.Instance.transform);
-                _equip.GetComponent<EquipBase>().Create(false, Vector3.one);
+                // 持有装备
+                // 正常装备
+                case true when !(_equipScript is IOneTimeUseEquip):
+                    // 跟随装备
+                    _equip = PoolManager.Instance.GetGameObj(_prefab, EquipManager.Instance.transform);
+                    _equip.GetComponent<EquipBase>().Create(false, Vector3.one);
 
-                // 点击效果
-                _maskImg.color = new Color(0.2f, 0.2f, 0.2f, 0.8f);
+                    // 点击效果
+                    _maskImg.color = new Color(0.2f, 0.2f, 0.2f, 0.8f);
 
-                //  置空上一个卡片状态
-                UIManager.Instance.CurrentGameCard = this;
-            }
-            else // 不持有
-            {
-                _maskImg.color = new Color(1, 1, 1, 0);
-                _equip = null;
+                    //  置空上一个卡片状态
+                    UIManager.Instance.CurrentGameCard = this;
+                    break;
+                // 一次性装备
+                case true when _equipScript is IOneTimeUseEquip equip:
+                    // 跟随准星
+                    _equip = PoolManager.Instance.GetGameObj(GameManager.Instance.GameConfig.Aim,
+                        EquipManager.Instance.transform);
+                    _equip.GetComponent<Aim>().Color = equip.GetColor();
+                
+                    // 点击效果
+                    _maskImg.color = new Color(0.2f, 0.2f, 0.2f, 0.8f);
+                
+                    // 置空上一个卡片状态
+                    UIManager.Instance.CurrentGameCard = this;
+                    break;
+                // 不持有
+                default:
+                    _maskImg.color = new Color(1, 1, 1, 0);
+                    _equip = null;
+                    break;
             }
         }
     }
@@ -134,21 +155,24 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
     private void Update()
     {
         // 如果正在持有装备准备放置
-        if (HasEquip && _equip != null)
-        {
-            // 鼠标坐标
-            var mousePos = Camera.main!.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0;
+        if (!HasEquip || _equip == null) return;
+        
+        // 鼠标坐标
+        var mousePos = Camera.main!.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+            
+        // 一般装备，架设在飞机上
+        if (!(_equipScript is IOneTimeUseEquip)) {
             // 玩家网格
             var locationManager = PlayerManager.Instance.LocationManager.GetComponent<LocationManager>();
             // 鼠标所在目标位置
             var targetLocation = locationManager.GetLocationByWorldPos(mousePos);
-
             // 跟随鼠标
             _equip.transform.position = mousePos;
 
             // 如果距离网格比较近，需要出现透明指示器
-            if (targetLocation.EquipBase == null && Vector2.Distance(mousePos, targetLocation.GetWorldPosition()) < 0.3f)
+            if (targetLocation.EquipBase == null &&
+                Vector2.Distance(mousePos, targetLocation.GetWorldPosition()) < 0.3f)
             {
                 if (_equipIndicator == null)
                 {
@@ -167,7 +191,7 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
                 {
                     _equipIndicator.GetComponent<EquipBase>().Recycle();
                     _equipIndicator = null;
-                    
+
                     // 放置装备，绑定位置
                     _equip.transform.parent = locationManager.transform;
                     _equip.transform.position = targetLocation.GetWorldPosition();
@@ -188,12 +212,33 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
                     _equipIndicator = null;
                 }
             }
+        }
+        // 一次性装备，由飞机发射
+        else
+        {
+            // 跟随鼠标
+            _equip.transform.position = new Vector3(Mathf.Clamp(mousePos.x, -7.72f, 9f), Mathf.Clamp(mousePos.y, -6.7f, 5.34967f), 0);
 
-            // 如果点击右键，取消持有状态
-            if (Input.GetMouseButtonDown(1))
+            // 发射
+            if (Input.GetMouseButtonDown(0))
             {
-                CancelPlace();
+                // 发射装备
+                PoolManager.Instance
+                    .GetGameObj(EquipManager.Instance.GetEquipByType(EquipType), EquipManager.Instance.transform)
+                    .GetComponent<IOneTimeUseEquip>()
+                    .Launch(_equip.transform.position);
+                
+                _equip.GetComponent<Aim>().Recycle();
+                _inCD = true;
+                _hasEquip = false;
+                _equip = null;
             }
+        }
+
+        // 如果点击右键，取消持有状态
+        if (Input.GetMouseButtonDown(1))
+        {
+            CancelPlace();
         }
     }
 
@@ -202,7 +247,8 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
     /// </summary>
     private void CancelPlace()
     {
-        _equip?.GetComponent<EquipBase>().Recycle();
+        _equip?.GetComponent<EquipBase>()?.Recycle();
+        _equip?.GetComponent<Aim>()?.Recycle();
         HasEquip = false;
         if (_equipIndicator == null) return;
         _equipIndicator.GetComponent<EquipBase>().Recycle();
@@ -217,6 +263,8 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
     {
         if (GameCardState != GameCardState.CanPlace) return;
         if (HasEquip) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        
         _maskImg.color = new Color(1f, 1f, 1f, 0.3f);
     }
 
@@ -228,6 +276,8 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
     {
         if (GameCardState != GameCardState.CanPlace) return;
         if (HasEquip) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+
         _maskImg.color = new Color(1, 1, 1, 0);
     }
 
@@ -238,6 +288,8 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
     {
         if (GameCardState != GameCardState.CanPlace) return;
         if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+
         if (!HasEquip)
         {
             HasEquip = true; //  持有装备

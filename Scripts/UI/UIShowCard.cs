@@ -26,6 +26,8 @@ public class UIShowCard : UICard, IPointerClickHandler
     /// <param name="eventData"></param>
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (LevelManager.Instance.LevelState != LevelState.Selecting) return;
+        
         if (!IsChosen)
         {
             IsChosen = true;

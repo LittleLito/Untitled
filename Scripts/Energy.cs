@@ -19,16 +19,16 @@ public class Energy : MonoBehaviour
         Speed = Random.Range(0.8f, 1.2f);
         collected = false;
 
-        gameObject.AddComponent<PolygonCollider2D>();
+        gameObject.GetComponent<PolygonCollider2D>().enabled = true;
     }
 
     public void InitForReactor(Vector2 pos)
     {
         transform.position = pos;
         FallingStopY = 10000f;
-        collected = true;       
-        
-        Destroy(gameObject.GetComponent<PolygonCollider2D>());
+        collected = true;
+
+        gameObject.GetComponent<PolygonCollider2D>().enabled = false;
 
     }
 
@@ -50,7 +50,7 @@ public class Energy : MonoBehaviour
             return;
         }
 
-        transform.Translate(Vector3.down * Time.deltaTime * Speed);
+        transform.Translate(Vector3.down * (Time.deltaTime * Speed));
     }
 
     /// <summary>
