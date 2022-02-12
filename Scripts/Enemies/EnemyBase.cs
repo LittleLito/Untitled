@@ -45,8 +45,6 @@ public abstract class EnemyBase : MonoBehaviour
     public abstract int LEVEL { get; }
     // 种类
     public abstract EnemyType Type { get; }
-    // 完整图片
-    protected abstract Sprite DamagedImgNo1 { get; }
     // 破损1图片
     protected abstract Sprite DamagedImgNo2 { get; }
     // 破损2图片
@@ -118,7 +116,7 @@ public abstract class EnemyBase : MonoBehaviour
     /// <summary>
     /// 移动
     /// </summary>
-    private void Move()
+    protected virtual void Move()
     {
         if (LevelManager.Instance.LevelState == LevelState.InGame)
         {

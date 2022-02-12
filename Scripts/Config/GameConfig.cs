@@ -33,19 +33,20 @@ public class GameConfig : ScriptableObject
     [Header("敌机")] 
     [Tooltip("普通敌机")] 
     public GameObject NormalEnemy;
-    public Sprite NormalEnemy1;
     public Sprite NormalEnemy2;
     public Sprite NormalEnemy3;
     [Tooltip("中型敌机")] 
     public GameObject ConeEnemy;
-    public Sprite ConeEnemy1;
     public Sprite ConeEnemy2;
     public Sprite ConeEnemy3;
     [Tooltip("铁皮敌机")]
     public GameObject TinEnemy;
-    public Sprite TinEnemy1;
     public Sprite TinEnemy2;
     public Sprite TinEnemy3;
+    [Tooltip("闪电敌机")] 
+    public GameObject FlashEnemy;
+    public Sprite FlashEnemy2;
+    public Sprite FlashEnemy3;
 
     [Header("子弹")] 
     [Tooltip("子弹")] public GameObject Bullet;

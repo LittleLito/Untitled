@@ -16,7 +16,8 @@ public class EnemyManager : MonoBehaviour
     {
         EnemyType.NormalEnemy,
         EnemyType.ConeEnemy,
-        EnemyType.TinEnemy
+        EnemyType.TinEnemy,
+        EnemyType.FlashEnemy
     };
 
     // 所有可用敌机（根据所有敌机种类）
@@ -201,6 +202,7 @@ public class EnemyManager : MonoBehaviour
             EnemyType.NormalEnemy => GameManager.Instance.GameConfig.NormalEnemy,
             EnemyType.ConeEnemy => GameManager.Instance.GameConfig.ConeEnemy,
             EnemyType.TinEnemy => GameManager.Instance.GameConfig.TinEnemy,
+            EnemyType.FlashEnemy => GameManager.Instance.GameConfig.FlashEnemy,
             _ => null
         };
     }
@@ -210,5 +212,6 @@ public enum EnemyType
 {
     NormalEnemy,
     ConeEnemy,
-    TinEnemy
+    TinEnemy,
+    FlashEnemy
 }
