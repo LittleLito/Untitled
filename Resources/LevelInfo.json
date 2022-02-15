@@ -1,0 +1,18 @@
+{
+  "Levels": [
+    {
+      "Num": 1,
+      "Enemies": [
+        1
+      ],
+      "MaxWaveNum": 10
+    },
+    {
+      "Num": 2,
+      "Enemies": [
+        1
+      ],
+      "MaxWaveNum": 30
+    }
+  ]
+}

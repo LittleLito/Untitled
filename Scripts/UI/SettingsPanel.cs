@@ -21,16 +21,19 @@ public class SettingsPanel : MonoBehaviour
     /// <summary>
     /// 返回首页
     /// </summary>
-    public void BackToFrontPage()
+    public void BackToStart()
     {
+        GameData.TargetChapterNum = 0;
+        GameData.TargetLevelNum = 0;
         SceneManager.LoadScene("Scenes/Start");
     }
 
     /// <summary>
-    /// 退出游戏
+    /// 返回选关
     /// </summary>
-    public void Quit()
+    public void BackToLevels()
     {
-        Application.Quit();
+        GameData.TargetLevelNum = 0;
+        SceneManager.LoadScene("Scenes/Levels");
     }
 }

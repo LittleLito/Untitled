@@ -30,7 +30,7 @@ public class GameOverPanel : MonoBehaviour
 
     public void Load()
     {
-        _process.text = LevelManager.Instance.WaveNum + "/" + LevelManager.Instance.MaxWaveNum;
+        _process.text = LevelManager.Instance.WaveNum + "/" + LevelManager.Instance.LevelInfo.MaxWaveNum;
         
         var time = LevelManager.Instance.Time;
         var killed = LevelManager.Instance.Stats.GetStatWithType(StatType.Killed).Value;

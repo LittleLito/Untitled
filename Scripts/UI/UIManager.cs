@@ -218,10 +218,9 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// 更新关卡信息
     /// </summary>
-    /// <param name="num"></param>
-    public void UpdateLevelNum(int num)
+    public void UpdateLevelNum(int chap, int lv)
     {
-        _levelNumText.text = "关卡" + (num / 10 + 1) + "-" + num % 10;
+        _levelNumText.text = "关卡" + chap + "-" + lv;
     }
 
     /// <summary>

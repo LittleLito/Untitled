@@ -16,7 +16,6 @@ public class Tools
 
         return list;
     }
-
     public static EnemyBase RandomEnemyWithWeight(List<EnemyBase> enemies)
     {
         if (enemies.Count == 0)

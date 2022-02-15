@@ -43,12 +43,9 @@ public class EnergyReactor : EquipBase
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (_canCreate)
-        {
-            CreateEnergy();
-        }
+        CreateEnergy();
     }
 
     /// <summary>
@@ -56,6 +53,8 @@ public class EnergyReactor : EquipBase
     /// </summary>
     private void CreateEnergy()
     {
+        if (!_canCreate || LevelManager.Instance.LevelState != LevelState.InGame) return;
+        
         _canCreate = false;
         // 生成能量
         var energy = PoolManager.Instance.GetGameObj(GameManager.Instance.GameConfig.Energy, null).GetComponent<Energy>();

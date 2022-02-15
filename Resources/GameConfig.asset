@@ -28,17 +28,17 @@ MonoBehaviour:
   EnergyReactor: {fileID: 4935588046253142807, guid: 1feb06d66e173a74e94f2069cc49735b, type: 3}
   CherryMissile: {fileID: 332881305122771431, guid: c9ca4dc96fd0f1a479bf1a29f77230b6, type: 3}
   NormalEnemy: {fileID: 5360277968070027299, guid: b1d2cbd3359b8854b8fdac14acc7c95f, type: 3}
-  NormalEnemy1: {fileID: 21300000, guid: dfd0f86ce09ea634e81f6bc91ba006d3, type: 3}
   NormalEnemy2: {fileID: 21300000, guid: 1a4a82c2a8cb28a41a1139a5503c1671, type: 3}
   NormalEnemy3: {fileID: 21300000, guid: ea0d39dadd301c6419c897d8934b9deb, type: 3}
   ConeEnemy: {fileID: 2467087507290475934, guid: 54f48afaa676c8c4b902178fdfcebba0, type: 3}
-  ConeEnemy1: {fileID: 21300000, guid: df6a426b5eaf73d409df9684eef99763, type: 3}
   ConeEnemy2: {fileID: 21300000, guid: 3774f22873301774288dbab5e2c99087, type: 3}
   ConeEnemy3: {fileID: 21300000, guid: a3af59d865039db4496d440c929d514e, type: 3}
   TinEnemy: {fileID: 2969797656959026635, guid: fa08ee0f38954474d980334cc4731965, type: 3}
-  TinEnemy1: {fileID: 21300000, guid: d370072a9071a9647afcf7493b7d2782, type: 3}
   TinEnemy2: {fileID: 21300000, guid: d6ae42db5ef48f242b858100485fe1f8, type: 3}
   TinEnemy3: {fileID: 21300000, guid: 6fac328d5c0579b498613024d5b9d4b1, type: 3}
+  FlashEnemy: {fileID: 1167066940765907903, guid: 51494f14c6fd6504a86392ca3880cadd, type: 3}
+  FlashEnemy2: {fileID: 21300000, guid: 597d61b8d400ee7438edf6ad29a4287f, type: 3}
+  FlashEnemy3: {fileID: 21300000, guid: f981e3c38ac45e545ad5444c0e8d449c, type: 3}
   Bullet: {fileID: 3939253472373881371, guid: d4069c364319e6646997075c254dc567, type: 3}
   BulletImg: {fileID: 21300000, guid: e6e736310c75adc4e9ed88b3fb45af97, type: 3}
   Gunfire: {fileID: 21300000, guid: fd7e013b08012c748b92363fad42c916, type: 3}

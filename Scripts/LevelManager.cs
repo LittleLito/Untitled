@@ -28,23 +28,25 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager Instance;
 
-    // 数据
-    public Stats Stats = new Stats();
-
+    // 关卡配置
+    public LevelInfo LevelInfo;
+    
+    // 统计数据
+    public readonly Stats Stats = new Stats();
     public double Time;
     // 关卡编号
-    private int _levelNum;
-    public int LevelNum
+    private int[] _levelNum;
+    public int[] LevelNum
     {
         get => _levelNum;
         set
         {
             _levelNum = value;
-            UIManager.Instance.UpdateLevelNum(value);
+            UIManager.Instance.UpdateLevelNum(value[0], value[1]);
         }
     }
     // 波数
-    public int MaxWaveNum;
+    //public int MaxWaveNum { get; private set; }
     private int _waveNum;
     public int WaveNum
     {
@@ -117,10 +119,12 @@ public class LevelManager : MonoBehaviour
         Instance = this;
     }
 
-    public void StartLevel(int lv)
+    public void StartLevel(LevelInfo levelInfo)
     {
+        LevelInfo = levelInfo;
         UIManager.Instance.Init();
-        LevelNum = lv;
+        EnemyManager.Instance.InitLevelInfo();
+        LevelNum = new[] { GameData.TargetChapterNum, GameData.TargetLevelNum };
         WaveNum = 0;
         Stats.InitStats();
         LevelState = LevelState.MoveForward;

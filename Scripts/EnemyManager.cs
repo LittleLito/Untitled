@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,20 +13,12 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager Instance;
 
     // 所有敌机种类 
-    private readonly List<EnemyType> LevelEnemyTypes = new List<EnemyType>
-    {
-        EnemyType.NormalEnemy,
-        EnemyType.ConeEnemy,
-        EnemyType.TinEnemy,
-        EnemyType.FlashEnemy
-    };
-
+    public List<EnemyType> LevelEnemyTypes;
     // 所有可用敌机（根据所有敌机种类）
     private readonly List<EnemyBase> _levelEnemiesAvailable = new List<EnemyBase>();
 
     // 所有敌机
-    private readonly List<EnemyBase> _enemies = new List<EnemyBase>();
-    public List<EnemyBase> Enemies => _enemies;
+    public List<EnemyBase> Enemies { get; } = new List<EnemyBase>();
 
     // 总生命值
     private float _maxHealthSum;
@@ -44,7 +37,12 @@ public class EnemyManager : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
+    public void InitLevelInfo()
+    {
+        // 通过关卡配置信息决定到访敌机
+        LevelEnemyTypes = LevelManager.Instance.LevelInfo.Enemies.AsQueryable().Cast<EnemyType>().ToList();
+    }
+
     public void Init()
     {
         foreach (var type in LevelEnemyTypes)
@@ -61,18 +59,23 @@ public class EnemyManager : MonoBehaviour
         if (LevelManager.Instance.LevelState != LevelState.InGame) return;
 
         // 没到达最大波数时
-        if (LevelManager.Instance.WaveNum < LevelManager.Instance.MaxWaveNum)
+        if (LevelManager.Instance.WaveNum < LevelManager.Instance.LevelInfo.MaxWaveNum - 1)
         {
             AutoSpawnWave(1);
         }
-        // 最大一波
-        else if (LevelManager.Instance.WaveNum == LevelManager.Instance.MaxWaveNum)
+        // 即将最大一波
+        else if (LevelManager.Instance.WaveNum == LevelManager.Instance.LevelInfo.MaxWaveNum - 1)
         {
             AutoSpawnWave(10);
         }
-        else
+        // 最大一波已过，敌机被全部击杀
+        else if (Enemies.Count == 0)
         {
             LevelManager.Instance.LevelState = LevelState.Over;
+            
+            Invoke(nameof(LevelPassMovePlayer), 3);
+            Invoke(nameof(LevelPassMoveCamera), 3.5f);
+            Invoke(nameof(LevelConclusion), 5);
         }
     }
 
@@ -83,7 +86,7 @@ public class EnemyManager : MonoBehaviour
     {
         _currentHealthSum = 0;
 
-        foreach (var enemy in _enemies)
+        foreach (var enemy in Enemies)
         {
             _currentHealthSum += enemy.Health;
         }
@@ -127,7 +130,7 @@ public class EnemyManager : MonoBehaviour
 
         // 更新最大生命值
         _maxHealthSum = 0;
-        foreach (var enemy in _enemies)
+        foreach (var enemy in Enemies)
         {
             _maxHealthSum += enemy.MaxHealth;
         }
@@ -167,7 +170,7 @@ public class EnemyManager : MonoBehaviour
     /// <param name="enemyBase"></param>
     public void AddEnemy(EnemyBase enemyBase)
     {
-        _enemies.Add(enemyBase);
+        Enemies.Add(enemyBase);
     }
 
     /// <summary>
@@ -176,7 +179,7 @@ public class EnemyManager : MonoBehaviour
     /// <param name="enemyBase"></param>
     public void RemoveEnemy(EnemyBase enemyBase)
     {
-        _enemies.Remove(enemyBase);
+        Enemies.Remove(enemyBase);
     }
 
     /// <summary>
@@ -184,10 +187,24 @@ public class EnemyManager : MonoBehaviour
     /// </summary>
     public void ClearEnemy()
     {
-        while (_enemies.Count > 0)
+        while (Enemies.Count > 0)
         {
-            _enemies[0].Recycle();
+            Enemies[0].Recycle();
         }
+    }
+    
+    // 以下三个方法用于通关后的效果
+    private void LevelPassMovePlayer()
+    {
+        PlayerManager.Instance.MovePlayerAuto(10);
+    }
+    private void LevelPassMoveCamera()
+    {
+        CameraController.Instance.Move(3.1f, 0.08f, null);
+    }
+    private void LevelConclusion()
+    {
+        LevelManager.Instance.LevelState = LevelState.Conclusion;
     }
 
     /// <summary>
@@ -210,8 +227,8 @@ public class EnemyManager : MonoBehaviour
 
 public enum EnemyType
 {
-    NormalEnemy,
-    ConeEnemy,
-    TinEnemy,
-    FlashEnemy
+    NormalEnemy = 1,
+    ConeEnemy = 2,
+    TinEnemy = 3,
+    FlashEnemy = 4
 }
