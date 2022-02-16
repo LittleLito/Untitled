@@ -48,6 +48,9 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
     /// <param name="target"></param>
     public void Launch(Vector3 target)
     {
+        // 花费能量
+        PlayerManager.Instance.EnergyPoints -= Cost;
+        
         target.z = 0;
         _target = target;
         

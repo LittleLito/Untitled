@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -90,8 +91,6 @@ public class UIManager : MonoBehaviour
             index++;
         }
 
-        // 设置开始按钮
-        _startButton.onClick.AddListener(OnStartButtonClicked);
         // 设置开始倒计时文本
         _levelStartText.gameObject.SetActive(false);
     }
@@ -107,26 +106,11 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// 移动卡片仓库
     /// </summary>
-    public void MoveSeedStorage(float destY)
+    public void MoveSeedStorage(float destY, float duration)
     {
-        StartCoroutine(DoSeedStorageMove(destY));
+        _seedStorage.transform.DOMoveY(destY, duration);
     }
-
-    private IEnumerator DoSeedStorageMove(float destY)
-    {
-        // 目标位置和方向
-        var position = _seedStorage.transform.position;
-        var dest = new Vector3(position.x, destY, 0);
-        var direction = (dest - position).normalized;
-
-        // 移动
-        while (Vector3.Distance(dest, _seedStorage.transform.position) > 10f)
-        {
-            yield return new WaitForSeconds(0.01f);
-            _seedStorage.transform.Translate(direction * 20f); // 飞
-        }
-    }
-
+    
     /// <summary>
     /// 添加选择卡片
     /// </summary>
@@ -152,7 +136,7 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// 点击开始按钮
     /// </summary>
-    private void OnStartButtonClicked()
+    public void OnStartButtonClicked()
     {
         LevelManager.Instance.LevelState = LevelState.MoveBack;
     }
@@ -202,7 +186,7 @@ public class UIManager : MonoBehaviour
         Invoke(nameof(SetLevelStartTextInactive), 0.5f);
         
         // 关卡开始前的初始化
-        PlayerManager.Instance.MovePlayerAuto(-3);
+        PlayerManager.Instance.transform.DOMoveY(-3, 1).OnComplete(PlayerManager.Instance.Init);
         FallingEnergyManager.Instance.StartCreate();
         LevelManager.Instance.LevelState = LevelState.InGame;
         EnemyManager.Instance.Init();

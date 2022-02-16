@@ -36,7 +36,8 @@ public class GameOverPanel : MonoBehaviour
         var killed = LevelManager.Instance.Stats.GetStatWithType(StatType.Killed).Value;
         var damage = LevelManager.Instance.Stats.GetStatWithType(StatType.Damage).Value;
         var absorbed = LevelManager.Instance.Stats.GetStatWithType(StatType.Absorbed).Value;
-        var score = (damage - time) * PlayerManager.Instance.Health / PlayerManager.Instance.InitMaxHealth;
+        var score = (LevelManager.Instance.LevelInfo.PassScore + damage - time) * PlayerManager.Instance.Health /
+                    PlayerManager.Instance.InitMaxHealth;
         
         _time.text = Math.Round(time, 2).ToString(CultureInfo.InvariantCulture);
         _killed.text = killed.ToString(CultureInfo.InvariantCulture);

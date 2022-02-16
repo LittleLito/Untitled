@@ -5,7 +5,7 @@ using UnityEngine;
 public class ConeEnemy : EnemyBase
 {
     public override float MaxHealth => 120;
-    public override float Speed => Random.Range(2.8f, 3.2f);
+    public override float Speed => Random.Range(2.4f, 2.8f);  
     public override int WEIGHT => 40;
     public override int LEVEL => 2;
     public override EnemyType Type => EnemyType.ConeEnemy;

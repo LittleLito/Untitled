@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -104,7 +105,7 @@ public class EnemyManager : MonoBehaviour
         // 场上敌机生命小于总生命值0.4~0.55且距离上次刷新大于6s  或  距离上次刷新超过24s~26s
         // 刷新
         var sumLv = 0; // 实时等级总和
-        var maxLv = (LevelManager.Instance.WaveNum * 0.8 / 2 + 1) * difficulty; // 最高等级和
+        var maxLv = ((LevelManager.Instance.WaveNum + 1) * 0.8 / 2 + 1) * difficulty; // 最高等级和
         // 符合等级要求（能出的怪）
         var enemiesAvailableNow = _levelEnemiesAvailable.Where(enemy => enemy.LEVEL <= maxLv).ToList();
 
@@ -114,6 +115,11 @@ public class EnemyManager : MonoBehaviour
             if (sumLv <= maxLv)
             {
                 var enemyBase = Tools.RandomEnemyWithWeight(enemiesAvailableNow);
+                if (enemyBase is null)
+                {
+                    print("Null Enemy!");
+                    break;
+                }
                 CreateEnemy(enemyBase.Type);
 
                 sumLv += enemyBase.LEVEL;
@@ -196,11 +202,11 @@ public class EnemyManager : MonoBehaviour
     // 以下三个方法用于通关后的效果
     private void LevelPassMovePlayer()
     {
-        PlayerManager.Instance.MovePlayerAuto(10);
+        PlayerManager.Instance.transform.DOMoveY(10, 4);
     }
     private void LevelPassMoveCamera()
     {
-        CameraController.Instance.Move(3.1f, 0.08f, null);
+        Camera.main.transform.DOMoveY(3.1f, 2);
     }
     private void LevelConclusion()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlashEnemy : EnemyBase
 {
     public override float MaxHealth => 100;
-    public override float Speed => Random.Range(6.5f, 7.2f);
+    public override float Speed => Random.Range(6f, 6.5f);
     public override int WEIGHT => 20;
     public override int LEVEL => 2;
     public override EnemyType Type => EnemyType.FlashEnemy;

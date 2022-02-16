@@ -33,18 +33,11 @@ public class EnergyReactor : EquipBase
         Invoke(nameof(CreateEnergy), Random.Range(6f, 10f));
     }
 
-    private void Awake()
-    {
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     private void Update()
     {
+        if (!_canCreate || LevelManager.Instance.LevelState != LevelState.InGame) return;
         CreateEnergy();
     }
 
@@ -53,8 +46,6 @@ public class EnergyReactor : EquipBase
     /// </summary>
     private void CreateEnergy()
     {
-        if (!_canCreate || LevelManager.Instance.LevelState != LevelState.InGame) return;
-        
         _canCreate = false;
         // 生成能量
         var energy = PoolManager.Instance.GetGameObj(GameManager.Instance.GameConfig.Energy, null).GetComponent<Energy>();

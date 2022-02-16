@@ -96,6 +96,11 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
         get => _hasEquip;
         set
         {
+            if (_hasEquip == value)
+            {
+                return;
+            }
+
             _hasEquip = value;
             switch (_hasEquip)
             {

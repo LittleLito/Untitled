@@ -60,7 +60,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    private void Init()
+    public void Init()
     {
         // 装备位置管家对象
         LocationManager = Instantiate(GameManager.Instance.GameConfig.LocationManager, transform, false);
@@ -77,7 +77,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (gameObject.CompareTag("Player") && EnergyPoints >= 1 && LevelManager.Instance.LevelState == LevelState.InGame)
         {
@@ -85,6 +85,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    /*
     /// <summary>
     /// 平滑移动玩家飞机（关卡开始和结束时）
     /// </summary>
@@ -108,6 +109,7 @@ public class PlayerManager : MonoBehaviour
         
         Init();
     }
+    */
     
     /// <summary>
     /// 移动

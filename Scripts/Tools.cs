@@ -20,7 +20,7 @@ public class Tools
     {
         if (enemies.Count == 0)
         {
-            throw new Exception();
+            return null;
         }
 
         var totalWeight = enemies.Aggregate(0, (all, next) => all + next.WEIGHT);

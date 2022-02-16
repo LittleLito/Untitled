@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 /// <summary>
@@ -71,19 +72,20 @@ public class LevelManager : MonoBehaviour
                     // 显示来犯敌机
                     EnemyManager.Instance.UpdateEnemyShow();
                     // 移动摄像机
-                    CameraController.Instance.Move(3.1f, 0.05f, LevelState.Selecting);
+                    Camera.main.transform.position = new Vector3(0, -0.9f, -10);
+                    Camera.main.transform.DOMoveY(3.1f, 3.5f).OnComplete(() => LevelState = LevelState.Selecting);
                     break;
                 case LevelState.Selecting:
                     // 摄像机不动
                     CameraController.Instance.transform.position = new Vector3(0, 3.1f, -10);
                     // 飞出卡片仓库
-                    UIManager.Instance.MoveSeedStorage(15f);
+                    UIManager.Instance.MoveSeedStorage(15f, 1f);
                     break;
                 case LevelState.MoveBack:
                     // 飞走卡片仓库
-                    UIManager.Instance.MoveSeedStorage(-787);
+                    UIManager.Instance.MoveSeedStorage(-787, 1f);
                     // 摄像机回归
-                    CameraController.Instance.Move(-0.9f, 0.05f, LevelState.Start);
+                    Camera.main.transform.DOMoveY(-0.9f, 3.5f).OnComplete(() => LevelState = LevelState.Start);
                     break;
                 case LevelState.Start:
                     // 清除展示敌机

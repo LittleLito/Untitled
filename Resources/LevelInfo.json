@@ -5,14 +5,41 @@
       "Enemies": [
         1
       ],
-      "MaxWaveNum": 10
+      "MaxWaveNum": 10,
+      "PassScore": 100
     },
     {
       "Num": 2,
       "Enemies": [
         1
       ],
-      "MaxWaveNum": 30
+      "MaxWaveNum": 30,
+      "PassScore": 100
+    },
+    {
+      "Num": 3,
+      "Enemies": [
+        1,2
+      ],
+      "MaxWaveNum": 30,
+      "PassScore": 100
+    },
+    {
+      "Num": 4,
+      "Enemies": [
+        2
+      ],
+      "MaxWaveNum": 20,
+      "PassScore": 200
+    },
+    {
+      "Num": 5,
+      "Enemies": [
+        1,2,3
+      ],
+      "MaxWaveNum": 15,
+      "PassScore": 200
     }
+
   ]
 }

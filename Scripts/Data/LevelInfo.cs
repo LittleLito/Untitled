@@ -8,6 +8,7 @@ public class LevelInfo
     public int Num;
     public List<int> Enemies;
     public int MaxWaveNum;
+    public int PassScore;
 }
 
 [Serializable]
