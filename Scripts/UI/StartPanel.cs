@@ -6,11 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class StartPanel : MonoBehaviour
 {
-    private void Start()
-    {
-        GameData.InitLevelInfos();
-    }
-
     public void Start2Adventure()
     {
         SceneManager.LoadScene("Scenes/Chapters");

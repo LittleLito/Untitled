@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     
     // 配置资源
     public GameConfig GameConfig { get; private set; }
-    public LevelInfo LevelInfo { get; private set; }
+    //public LevelInfo LevelInfo { get; private set; }
 
 
     private void Awake()
@@ -18,10 +18,10 @@ public class GameManager : MonoBehaviour
         Instance = this;
         GameConfig = Resources.Load<GameConfig>("GameConfig");
 
-        var jsonStr = Resources.Load<TextAsset>("LevelInfo");
-        var allLevelsInfo = JsonUtility.FromJson<AllLevelsInfo>(jsonStr.text);
-        LevelInfo = allLevelsInfo.Levels.Find(info =>
-            info.Num == (GameData.TargetChapterNum - 1) * 10 + GameData.TargetLevelNum);
+        // var jsonStr = Resources.Load<TextAsset>("LevelInfo");
+        // var allLevelsInfo = JsonUtility.FromJson<AllLevelsInfo>(jsonStr.text);
+        // LevelInfo = allLevelsInfo.Levels.Find(info =>
+        //     info.Num == (GameData.TargetChapterNum - 1) * 10 + GameData.TargetLevelNum);
     }
 
     private void Start()

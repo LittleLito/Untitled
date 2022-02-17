@@ -10,6 +10,6 @@ public class CherryMissile : MissileBase, IOneTimeUseEquip
     public override EquipType Type => EquipType.CherryMissile;
     public override float Speed => 7f;
     public override float Damage => 500;
-    protected override float _explosionScale => 5.5f;
-    protected override float _explosionRadius => 2f;
+    protected override float _explosionScale => 7.5f;
+    protected override float _explosionRadius => 2.5f;
 }

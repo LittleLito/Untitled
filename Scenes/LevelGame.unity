@@ -1452,6 +1452,7 @@ MonoBehaviour:
     Num: 0
     Enemies: 
     MaxWaveNum: 0
+    PassScore: 0
   Time: 0
 --- !u!1 &458428287
 GameObject:

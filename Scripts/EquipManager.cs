@@ -36,6 +36,7 @@ public class EquipManager : MonoBehaviour
             EquipType.SGatling => GameManager.Instance.GameConfig.SGatling,
             EquipType.EnergyReactor => GameManager.Instance.GameConfig.EnergyReactor,
             EquipType.CherryMissile => GameManager.Instance.GameConfig.CherryMissile,
+            EquipType.DelayBomb => GameManager.Instance.GameConfig.DelayBomb,
             _ => null
         };
     }
@@ -61,7 +62,8 @@ public enum EquipType
 {
     SGatling = 1,
     EnergyReactor = 2,
-    CherryMissile = 3
+    CherryMissile = 3,
+    DelayBomb = 4
 }
 
 public enum EquipFamily

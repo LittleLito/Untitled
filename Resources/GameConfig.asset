@@ -24,9 +24,11 @@ MonoBehaviour:
   Gas: {fileID: 9100000, guid: ec152065339525b48969672eb3ed57d1, type: 2}
   Aim: {fileID: 2383435717655090328, guid: 20ccf9c09cacf1d4aa4df514d128241d, type: 3}
   Smoke: {fileID: 3554456821852363479, guid: 77f2384cb0271d942a3a7ca1bbe0ffd7, type: 3}
+  DelayBombAnim: {fileID: 9100000, guid: 6c815b6a66f7e704a8e7dbcd82439c24, type: 2}
   SGatling: {fileID: 7495228819611931131, guid: 893c26c1445537842969738f1f1092df, type: 3}
   EnergyReactor: {fileID: 4935588046253142807, guid: 1feb06d66e173a74e94f2069cc49735b, type: 3}
   CherryMissile: {fileID: 332881305122771431, guid: c9ca4dc96fd0f1a479bf1a29f77230b6, type: 3}
+  DelayBomb: {fileID: 3998937118801561016, guid: 5919b6a30fae7fd4b95d4d9b60cd5602, type: 3}
   NormalEnemy: {fileID: 5360277968070027299, guid: b1d2cbd3359b8854b8fdac14acc7c95f, type: 3}
   NormalEnemy2: {fileID: 21300000, guid: 1a4a82c2a8cb28a41a1139a5503c1671, type: 3}
   NormalEnemy3: {fileID: 21300000, guid: ea0d39dadd301c6419c897d8934b9deb, type: 3}

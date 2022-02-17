@@ -9,10 +9,6 @@ using UnityEngine;
 /// </summary>
 public abstract class MissileBase : EquipBase, IOneTimeUseEquip
 {
-    public override int Cost { get; }
-    public override float CD { get; }
-    public override EquipFamily Family { get; }
-    public override EquipType Type { get; }
     public abstract float Speed { get; }
     public abstract float Damage { get; }
     // 爆炸规模，用于显示爆炸动画
@@ -22,9 +18,9 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
     // 准星颜色
     public virtual Color GetColor() => Color.red;
 
-    private bool _flying;
-    private Vector3 _target;
-    private Animator _animator;
+    protected bool _flying;
+    protected Vector3 _target;
+    protected Animator _animator;
     protected virtual void Update()
     {
         if (LevelManager.Instance.LevelState != LevelState.InGame) return;
@@ -46,7 +42,7 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
     /// 发射导弹，其实是初始化
     /// </summary>
     /// <param name="target"></param>
-    public void Launch(Vector3 target)
+    public virtual void Launch(Vector3 target)
     {
         // 花费能量
         PlayerManager.Instance.EnergyPoints -= Cost;
@@ -74,7 +70,7 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
     /// 多边形碰撞器触发器，飞行途中检测有没有碰撞敌机，如有则就地爆炸
     /// </summary>
     /// <param name="other"></param>
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Enemy")) return;
         if (_flying)

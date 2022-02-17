@@ -24,11 +24,13 @@ public class GameConfig : ScriptableObject
     [Tooltip("喷射尾气")] public RuntimeAnimatorController Gas;
     [Tooltip("准星")] public GameObject Aim;
     [Tooltip("烟雾")] public GameObject Smoke;
+    [Tooltip("延时炸弹动画")] public RuntimeAnimatorController DelayBombAnim;
 
     [Header("装备")]
     [Tooltip("S型轻型机枪")] public GameObject SGatling;
     [Tooltip("能源反应堆")] public GameObject EnergyReactor;
     [Tooltip("支援弹道导弹")] public GameObject CherryMissile;
+    [Tooltip("延时炸弹")] public GameObject DelayBomb;
 
     [Header("敌机")] 
     [Tooltip("普通敌机")] 
