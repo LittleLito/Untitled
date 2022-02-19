@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.Serialization;
 
 [Serializable]
-public class LevelInfo
+public struct LevelInfo
 {
     public int Num;
     public List<int> Enemies;
@@ -12,7 +11,7 @@ public class LevelInfo
 }
 
 [Serializable]
-public class AllLevelsInfo
+public struct AllLevelsInfo
 {
     public List<LevelInfo> Levels;
 }

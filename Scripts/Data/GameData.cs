@@ -26,12 +26,10 @@ public static class GameData
         return LevelInfos.Find(info =>
             info.Num == (TargetChapterNum - 1) * 10 + TargetLevelNum);
     }
-
     public static LevelInfo GetLevelInfo(int levelNum)
     {
         return LevelInfos.Find(info => info.Num == levelNum);
     }
-
     public static LevelInfo GetLevelInfo(int chapterNum, int levelNum)
     {
         return LevelInfos.Find(info =>
