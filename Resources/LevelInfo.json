@@ -6,7 +6,7 @@
         1
       ],
       "MaxWaveNum": 2,
-      "PassScore": 100
+      "PassScore": 1000
     },
     {
       "Num": 2,
@@ -14,7 +14,7 @@
         1
       ],
       "MaxWaveNum": 30,
-      "PassScore": 100
+      "PassScore": 1000
     },
     {
       "Num": 3,
@@ -22,7 +22,7 @@
         1,2
       ],
       "MaxWaveNum": 30,
-      "PassScore": 100
+      "PassScore": 1000
     },
     {
       "Num": 4,
@@ -30,7 +30,7 @@
         2
       ],
       "MaxWaveNum": 20,
-      "PassScore": 200
+      "PassScore": 2000
     },
     {
       "Num": 5,
@@ -38,8 +38,52 @@
         1,2,3
       ],
       "MaxWaveNum": 15,
-      "PassScore": 200
+      "PassScore": 2000
+    },
+    {
+      "Num": 6,
+      "Enemies": [
+        1,2,3,4
+      ],
+      "MaxWaveNum": 20,
+      "PassScore": 3000
+    },
+    {
+      "Num": 7,
+      "Enemies": [
+        3,4
+      ],
+      "MaxWaveNum": 25,
+      "PassScore": 3500
+    },
+    {
+      "Num": 8,
+      "Enemies": [
+        1,2,3,4,5
+      ],
+      "MaxWaveNum": 40,
+      "PassScore": 5000
+    },
+    {
+      "Num": 9,
+      "Enemies": [
+        5
+      ],
+      "MaxWaveNum": 30,
+      "PassScore": 3000
+    },
+    {
+      "Num": 10,
+      "Enemies": [
+        3,4,5
+      ],
+      "MaxWaveNum": 35,
+      "PassScore": 4500
     }
+
+
+
+
 
   ]
 }

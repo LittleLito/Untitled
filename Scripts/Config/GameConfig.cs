@@ -49,10 +49,15 @@ public class GameConfig : ScriptableObject
     public GameObject FlashEnemy;
     public Sprite FlashEnemy2;
     public Sprite FlashEnemy3;
+    [Tooltip("武装中型敌机")] public GameObject ArmedConeEnemy;
 
     [Header("子弹")] 
     [Tooltip("子弹")] public GameObject Bullet;
     [Tooltip("子弹图片")] public Sprite BulletImg;
     [Tooltip("枪口火焰")] public Sprite Gunfire;
     [Tooltip("子弹爆炸")] public RuntimeAnimatorController BulletBoom;
+
+    [Tooltip("敌机子弹")] public GameObject EnemyBullet;
+    [Tooltip("敌机子弹图片")] public Sprite EnemyBulletImg;
+    [Tooltip("敌机子弹爆炸")] public RuntimeAnimatorController EnemyBulletBoom;
 }

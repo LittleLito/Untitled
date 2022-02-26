@@ -41,7 +41,11 @@ MonoBehaviour:
   FlashEnemy: {fileID: 1167066940765907903, guid: 51494f14c6fd6504a86392ca3880cadd, type: 3}
   FlashEnemy2: {fileID: 21300000, guid: 597d61b8d400ee7438edf6ad29a4287f, type: 3}
   FlashEnemy3: {fileID: 21300000, guid: f981e3c38ac45e545ad5444c0e8d449c, type: 3}
+  ArmedConeEnemy: {fileID: 5689437636867375244, guid: 7145ec6a13126834a9265d323f4416d0, type: 3}
   Bullet: {fileID: 3939253472373881371, guid: d4069c364319e6646997075c254dc567, type: 3}
   BulletImg: {fileID: 21300000, guid: e6e736310c75adc4e9ed88b3fb45af97, type: 3}
   Gunfire: {fileID: 21300000, guid: fd7e013b08012c748b92363fad42c916, type: 3}
   BulletBoom: {fileID: 9100000, guid: 288e890b26cb52b46a749f5716dca68b, type: 2}
+  EnemyBullet: {fileID: 7603218227385014580, guid: 4b08a64ce14e96e4899eb1243d63d9cd, type: 3}
+  EnemyBulletImg: {fileID: 21300000, guid: a5cf53b4348a100498b383537890f641, type: 3}
+  EnemyBulletBoom: {fileID: 9100000, guid: 261585921cb052d40aa9ffa7901f4328, type: 2}
