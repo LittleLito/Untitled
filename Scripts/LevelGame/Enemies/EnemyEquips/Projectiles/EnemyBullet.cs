@@ -15,7 +15,6 @@ public class EnemyBullet : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
 
-    // Start is called before the first frame update
     public void Init(Vector3 pos)
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -24,6 +23,7 @@ public class EnemyBullet : MonoBehaviour
         _animator.runtimeAnimatorController = null;
         _spriteRenderer.sprite = GameManager.Instance.GameConfig.EnemyBulletImg;
         transform.position = pos;
+        tag = "EnemyBullet";
         _alive = true;
     }
 
@@ -50,9 +50,8 @@ public class EnemyBullet : MonoBehaviour
         // 击中爆炸图片
         _animator.runtimeAnimatorController = GameManager.Instance.GameConfig.EnemyBulletBoom;
 
-        // 击中玩家扣血 
-        PlayerManager.Instance.Health -= Damage;
-
+        tag = "Nothing";
+        
         // 不再可用
         _alive = false;
         Invoke(nameof(Recycle), 0.5f);

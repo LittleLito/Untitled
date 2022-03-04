@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySGatling : MonoBehaviour
 {
-    private readonly float _attackCD = 0.5f;
+    private readonly float _attackCD = 0.7f;
 
     // 可以攻击与否
     private bool _canAttack;

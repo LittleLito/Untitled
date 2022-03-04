@@ -14,6 +14,7 @@ public class GameConfig : ScriptableObject
     [Tooltip("普通卡片")] public Sprite CardCommon;
     [Tooltip("能量生产卡片")] public Sprite CardEnlighten;
     [Tooltip("爆炸类卡片")] public Sprite CardDoom;
+    [Tooltip("防御卡片")] public Sprite CardDefence;
 
     [Header("其他资源")] 
     [Tooltip("AGENCYB")] public Font AGENCYB;
@@ -25,12 +26,14 @@ public class GameConfig : ScriptableObject
     [Tooltip("准星")] public GameObject Aim;
     [Tooltip("烟雾")] public GameObject Smoke;
     [Tooltip("延时炸弹动画")] public RuntimeAnimatorController DelayBombAnim;
-
+    [Tooltip("防弹盾牌展开动画")] public RuntimeAnimatorController ShieldOpen;
+    
     [Header("装备")]
     [Tooltip("S型轻型机枪")] public GameObject SGatling;
     [Tooltip("能源反应堆")] public GameObject EnergyReactor;
     [Tooltip("支援弹道导弹")] public GameObject CherryMissile;
     [Tooltip("延时炸弹")] public GameObject DelayBomb;
+    [Tooltip("防弹盾牌")] public GameObject Shield;
 
     [Header("敌机")] 
     [Tooltip("普通敌机")] 
@@ -50,6 +53,7 @@ public class GameConfig : ScriptableObject
     public Sprite FlashEnemy2;
     public Sprite FlashEnemy3;
     [Tooltip("武装中型敌机")] public GameObject ArmedConeEnemy;
+    [Tooltip("武装铁皮敌机")] public GameObject ArmedTinEnemy;
 
     [Header("子弹")] 
     [Tooltip("子弹")] public GameObject Bullet;

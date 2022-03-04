@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 7
-  Damage: 5
+  Damage: 6
 --- !u!95 &-3389111327545045698
 Animator:
   serializedVersion: 3

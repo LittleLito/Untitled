@@ -79,7 +79,34 @@
       ],
       "MaxWaveNum": 35,
       "PassScore": 4500
+    },
+    {
+      "Num": 11,
+      "Enemies": [
+        6
+      ],
+      "MaxWaveNum": 20,
+      "PassScore": 4500
+    },
+
+    {
+      "Num": 12,
+      "Enemies": [
+        3,4,5,6
+      ],
+      "MaxWaveNum": 25,
+      "PassScore": 4500
+    },
+
+    {
+      "Num": 13,
+      "Enemies": [
+        1,2,3,4,5,6
+      ],
+      "MaxWaveNum": 50,
+      "PassScore": 7000
     }
+
 
 
 
