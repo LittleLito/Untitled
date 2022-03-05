@@ -3,13 +3,15 @@ using UnityEngine;
 public class Shield : MissileBase
 {
     public override int Cost => 750;
-    public override float CD => 30;
-    public override int MaxHealth => 250;
-    public override int Health
+    public override float CD => 25;
+    public override float MaxHealth => 350;
+    public override float Health
     {
         get => _health;
         set
         {
+            CheckDamagedImg(_health, value);
+            
             _health = value > 0 ? value : 0;
 
             if (_health <= 0)
@@ -22,6 +24,10 @@ public class Shield : MissileBase
     public override EquipType Type => EquipType.Shield;
     public override float Speed => 6f;
     public override float Damage => 0;
+    // 破损1图片
+    protected virtual Sprite DamagedImgNo2 => GameManager.Instance.GameConfig.Shield1;
+    // 破损2图片
+    protected virtual Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.Shield2;
     protected override float _explosionScale => 0;
     protected override float _explosionRadius => 0;
 
@@ -60,7 +66,6 @@ public class Shield : MissileBase
     /// <param name="other"></param>
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        print(Health);
         switch (other.tag)
         {
             // 撞到敌机子弹
@@ -68,9 +73,8 @@ public class Shield : MissileBase
                 other.GetComponent<EnemyBullet>().Explode();
                 Health -= other.GetComponent<EnemyBullet>().Damage;
 
-                print(Health);
                 LevelManager.Instance.Stats.IncreaseStat(StatType.Absorbed, 6);
-
+                
                 break;
 
         }
@@ -85,10 +89,35 @@ public class Shield : MissileBase
         
         // 盾牌展开动画
         _animator.runtimeAnimatorController = GameManager.Instance.GameConfig.ShieldOpen;
-        
+        Invoke(nameof(SetAnimatorControllerNull), 0.34f);
+
+    }
+
+    private void SetAnimatorControllerNull()
+    {
+        _animator.runtimeAnimatorController = null;
+        _spriteRenderer.sprite = GameManager.Instance.GameConfig.ShieldOpenImg;
         // 生命初始化
         Health = MaxHealth;
         // 碰撞体启用
         GetComponent<BoxCollider2D>().enabled = true;
+
     }
+
+    /// <summary>
+    /// 根据现有血量决定显示图片
+    /// </summary>
+    /// <returns></returns>
+    protected virtual void CheckDamagedImg(float before, float after)
+    {
+        if (before >= MaxHealth * 2 / 3 && after <= MaxHealth * 2 / 3)
+        {            
+            _spriteRenderer.sprite = DamagedImgNo2;
+        }
+        else if (before >= MaxHealth * 1 / 3 && after <= MaxHealth * 1 / 3)
+        {
+            _spriteRenderer.sprite = DamagedImgNo3;
+        }
+    }
+    
 }

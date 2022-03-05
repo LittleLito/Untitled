@@ -16,7 +16,7 @@ MonoBehaviour:
   CardCommon: {fileID: 21300000, guid: 168006ee78aa15d4a831e0c6a9bba379, type: 3}
   CardEnlighten: {fileID: 21300000, guid: 352a704ad6da59a44acf7898240d6ce0, type: 3}
   CardDoom: {fileID: 21300000, guid: b0e407123c9db274f808832541f098cb, type: 3}
-  CardDefence: {fileID: 0}
+  CardDefence: {fileID: 21300000, guid: eb997d2b8a9e5d646ab848b38e44bb3a, type: 3}
   AGENCYB: {fileID: 12800000, guid: 0bb4e974335994142968c6ebecf9483e, type: 3}
   LXGWWENKAI_BOLD: {fileID: 12800000, guid: aeb7f6d58b35c2b4dbcab5ed2caabe37, type: 3}
   LocationManager: {fileID: 8273128634736012876, guid: 44b62071943022f448c705080c80b879, type: 3}

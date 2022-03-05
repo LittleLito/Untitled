@@ -27,7 +27,10 @@ public class GameConfig : ScriptableObject
     [Tooltip("烟雾")] public GameObject Smoke;
     [Tooltip("延时炸弹动画")] public RuntimeAnimatorController DelayBombAnim;
     [Tooltip("防弹盾牌展开动画")] public RuntimeAnimatorController ShieldOpen;
-    
+    public Sprite ShieldOpenImg;
+    public Sprite Shield1;
+    public Sprite Shield2;
+
     [Header("装备")]
     [Tooltip("S型轻型机枪")] public GameObject SGatling;
     [Tooltip("能源反应堆")] public GameObject EnergyReactor;
