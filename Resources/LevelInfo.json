@@ -5,8 +5,8 @@
       "Enemies": [
         1
       ],
-      "MaxWaveNum": 2,
-      "PassScore": 1000
+      "MaxWaveNum": 10,
+      "PassScore": 500
     },
     {
       "Num": 2,
@@ -14,7 +14,7 @@
         1
       ],
       "MaxWaveNum": 30,
-      "PassScore": 1000
+      "PassScore": 500
     },
     {
       "Num": 3,
@@ -22,7 +22,7 @@
         1,2
       ],
       "MaxWaveNum": 30,
-      "PassScore": 1000
+      "PassScore": 500
     },
     {
       "Num": 4,
@@ -30,7 +30,7 @@
         2
       ],
       "MaxWaveNum": 20,
-      "PassScore": 2000
+      "PassScore": 1000
     },
     {
       "Num": 5,
@@ -38,7 +38,7 @@
         1,2,3
       ],
       "MaxWaveNum": 15,
-      "PassScore": 2000
+      "PassScore": 1000
     },
     {
       "Num": 6,
@@ -46,7 +46,7 @@
         1,2,3,4
       ],
       "MaxWaveNum": 20,
-      "PassScore": 3000
+      "PassScore": 2000
     },
     {
       "Num": 7,
@@ -54,7 +54,7 @@
         3,4
       ],
       "MaxWaveNum": 25,
-      "PassScore": 3500
+      "PassScore": 2500
     },
     {
       "Num": 8,
@@ -62,7 +62,7 @@
         1,2,3,4,5
       ],
       "MaxWaveNum": 40,
-      "PassScore": 5000
+      "PassScore": 4000
     },
     {
       "Num": 9,
@@ -70,7 +70,7 @@
         5
       ],
       "MaxWaveNum": 30,
-      "PassScore": 3000
+      "PassScore": 2000
     },
     {
       "Num": 10,
@@ -78,7 +78,7 @@
         3,4,5
       ],
       "MaxWaveNum": 35,
-      "PassScore": 4500
+      "PassScore": 3500
     },
     {
       "Num": 11,
@@ -86,7 +86,7 @@
         6
       ],
       "MaxWaveNum": 20,
-      "PassScore": 4500
+      "PassScore": 3500
     },
 
     {
@@ -95,16 +95,24 @@
         3,4,5,6
       ],
       "MaxWaveNum": 25,
-      "PassScore": 4500
+      "PassScore": 3500
     },
 
     {
       "Num": 13,
       "Enemies": [
+        5,6
+      ],
+      "MaxWaveNum": 30,
+      "PassScore": 4000
+    },
+    {
+      "Num": 14,
+      "Enemies": [
         1,2,3,4,5,6
       ],
       "MaxWaveNum": 50,
-      "PassScore": 7000
+      "PassScore": 6000
     }
 
 

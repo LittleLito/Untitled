@@ -15,6 +15,7 @@ public class GameConfig : ScriptableObject
     [Tooltip("能量生产卡片")] public Sprite CardEnlighten;
     [Tooltip("爆炸类卡片")] public Sprite CardDoom;
     [Tooltip("防御卡片")] public Sprite CardDefence;
+    [Tooltip("冰冻卡片")] public Sprite CardFrozen;
 
     [Header("其他资源")] 
     [Tooltip("AGENCYB")] public Font AGENCYB;
@@ -30,6 +31,7 @@ public class GameConfig : ScriptableObject
     public Sprite ShieldOpenImg;
     public Sprite Shield1;
     public Sprite Shield2;
+    [Tooltip("GM火箭炮枪口火焰1")] public Sprite GMRocketGunfire1;
 
     [Header("装备")]
     [Tooltip("S型轻型机枪")] public GameObject SGatling;
@@ -37,6 +39,8 @@ public class GameConfig : ScriptableObject
     [Tooltip("支援弹道导弹")] public GameObject CherryMissile;
     [Tooltip("延时炸弹")] public GameObject DelayBomb;
     [Tooltip("防弹盾牌")] public GameObject Shield;
+    [Tooltip("S型冰霜机枪")] public GameObject FrozenSGatling;
+    [Tooltip("GM重型火箭炮")] public GameObject GMHeavyRocket;
 
     [Header("敌机")] 
     [Tooltip("普通敌机")] 
@@ -60,10 +64,11 @@ public class GameConfig : ScriptableObject
 
     [Header("子弹")] 
     [Tooltip("子弹")] public GameObject Bullet;
-    [Tooltip("子弹图片")] public Sprite BulletImg;
     [Tooltip("枪口火焰")] public Sprite Gunfire;
     [Tooltip("子弹爆炸")] public RuntimeAnimatorController BulletBoom;
-
+    [Tooltip("冰霜子弹")] public GameObject FrozenBullet;
+    [Tooltip("冰霜子弹爆炸")] public RuntimeAnimatorController FrozenBulletBoom;
+    [Tooltip("GM重型火箭炮子弹")] public GameObject GMHeavyRocketBullet;
     [Tooltip("敌机子弹")] public GameObject EnemyBullet;
     [Tooltip("敌机子弹图片")] public Sprite EnemyBulletImg;
     [Tooltip("敌机子弹爆炸")] public RuntimeAnimatorController EnemyBulletBoom;

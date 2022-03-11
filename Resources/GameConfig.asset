@@ -17,6 +17,7 @@ MonoBehaviour:
   CardEnlighten: {fileID: 21300000, guid: 352a704ad6da59a44acf7898240d6ce0, type: 3}
   CardDoom: {fileID: 21300000, guid: b0e407123c9db274f808832541f098cb, type: 3}
   CardDefence: {fileID: 21300000, guid: eb997d2b8a9e5d646ab848b38e44bb3a, type: 3}
+  CardFrozen: {fileID: 21300000, guid: f6db8f46dcb320a45ac3951853249264, type: 3}
   AGENCYB: {fileID: 12800000, guid: 0bb4e974335994142968c6ebecf9483e, type: 3}
   LXGWWENKAI_BOLD: {fileID: 12800000, guid: aeb7f6d58b35c2b4dbcab5ed2caabe37, type: 3}
   LocationManager: {fileID: 8273128634736012876, guid: 44b62071943022f448c705080c80b879, type: 3}
@@ -27,11 +28,17 @@ MonoBehaviour:
   Smoke: {fileID: 3554456821852363479, guid: 77f2384cb0271d942a3a7ca1bbe0ffd7, type: 3}
   DelayBombAnim: {fileID: 9100000, guid: 6c815b6a66f7e704a8e7dbcd82439c24, type: 2}
   ShieldOpen: {fileID: 9100000, guid: ffa0e90c629fa6845a39c69d6511bbcc, type: 2}
+  ShieldOpenImg: {fileID: 21300000, guid: cfabfb5000f6d734ab0a383b425597b7, type: 3}
+  Shield1: {fileID: 21300000, guid: 18c29ece63efe534a874754c9f3504ef, type: 3}
+  Shield2: {fileID: 21300000, guid: 0d273f8b3975f5f4cbcfcb60690b5897, type: 3}
+  GMRocketGunfire1: {fileID: 21300000, guid: 2fc1422728a5a9341ab559000e485740, type: 3}
   SGatling: {fileID: 7495228819611931131, guid: 893c26c1445537842969738f1f1092df, type: 3}
   EnergyReactor: {fileID: 4935588046253142807, guid: 1feb06d66e173a74e94f2069cc49735b, type: 3}
   CherryMissile: {fileID: 332881305122771431, guid: c9ca4dc96fd0f1a479bf1a29f77230b6, type: 3}
   DelayBomb: {fileID: 3998937118801561016, guid: 5919b6a30fae7fd4b95d4d9b60cd5602, type: 3}
   Shield: {fileID: 4529083435913747051, guid: 22cf0a15943d00e4791a963deb5ceb74, type: 3}
+  FrozenSGatling: {fileID: 39522638481557046, guid: 5dbc4c28ec6e98249a50c3961270154e, type: 3}
+  GMHeavyRocket: {fileID: 387574567676309041, guid: 1292730902d5d1c46894790cb0eb3637, type: 3}
   NormalEnemy: {fileID: 5360277968070027299, guid: b1d2cbd3359b8854b8fdac14acc7c95f, type: 3}
   NormalEnemy2: {fileID: 21300000, guid: 1a4a82c2a8cb28a41a1139a5503c1671, type: 3}
   NormalEnemy3: {fileID: 21300000, guid: ea0d39dadd301c6419c897d8934b9deb, type: 3}
@@ -47,9 +54,11 @@ MonoBehaviour:
   ArmedConeEnemy: {fileID: 5689437636867375244, guid: 7145ec6a13126834a9265d323f4416d0, type: 3}
   ArmedTinEnemy: {fileID: 1505037994622960470, guid: 5b8e583bb3f3006479bb93156024c91b, type: 3}
   Bullet: {fileID: 3939253472373881371, guid: d4069c364319e6646997075c254dc567, type: 3}
-  BulletImg: {fileID: 21300000, guid: e6e736310c75adc4e9ed88b3fb45af97, type: 3}
   Gunfire: {fileID: 21300000, guid: fd7e013b08012c748b92363fad42c916, type: 3}
   BulletBoom: {fileID: 9100000, guid: 288e890b26cb52b46a749f5716dca68b, type: 2}
+  FrozenBullet: {fileID: 206043961529009094, guid: 89292cc4d82c4e54f955d62cd3de3f27, type: 3}
+  FrozenBulletBoom: {fileID: 9100000, guid: 20d7b274013d51649a66706995eb96c1, type: 2}
+  GMHeavyRocketBullet: {fileID: 7015073686822163568, guid: 8d83d6f2435bcd54e8e9c86d63f8bc0d, type: 3}
   EnemyBullet: {fileID: 7603218227385014580, guid: 4b08a64ce14e96e4899eb1243d63d9cd, type: 3}
   EnemyBulletImg: {fileID: 21300000, guid: a5cf53b4348a100498b383537890f641, type: 3}
   EnemyBulletBoom: {fileID: 9100000, guid: 261585921cb052d40aa9ffa7901f4328, type: 2}

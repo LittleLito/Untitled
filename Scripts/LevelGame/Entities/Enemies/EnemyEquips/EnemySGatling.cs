@@ -38,13 +38,6 @@ public class EnemySGatling : MonoBehaviour
     {
         if (!_canAttack) return;
         if (LevelManager.Instance.LevelState != LevelState.InGame) return;
-
-        // // 检测射击范围内是否存在敌机
-        // var hit = Physics2D.Raycast((Vector2) transform.position + _muzzleOffset, transform.up,
-        //     5.5f - transform.position.y,
-        //     LayerMask.GetMask("Enemy"));
-        // if (hit.collider == null) return;
-
         // 发射
         var bullet = PoolManager.Instance.GetGameObj(GameManager.Instance.GameConfig.EnemyBullet, null)
             .GetComponent<EnemyBullet>();
