@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Timers;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public enum StatusEffectType
@@ -51,7 +52,7 @@ public class StatusEffect
         _timer.Dispose();
 
         _controller.StatusEffects.Remove(this);
-        _controller.UpdateStates();
+        _controller.UpdateStatusEffects();
     }
     
 }
@@ -69,26 +70,26 @@ public class StatusEffectController
     /// 添加新状态效果
     /// </summary>
     /// <param name="stateType"></param>
-    /// <param name="percentage"></param>
+    /// <param name="value"></param>
     /// <param name="duration"></param>
-    public void AddStatusEffect(StatusEffectType stateType, float percentage, float duration)
+    public void AddStatusEffect(StatusEffectType stateType, float value, float duration)
     {
         // 如果状态效果已经存在，则叠加
         if (StatusEffects.Exists(effect => effect.StatusEffectType == stateType))
         {
             var statusEffect = StatusEffects.Find(effect => effect.StatusEffectType == stateType);
-            statusEffect.Value *= percentage;
-            statusEffect.Duration += duration;
+            statusEffect.Value *= value;
+            statusEffect.Duration = Math.Max(statusEffect.Duration, duration);
         }
         // 如果还未拥有，则添加
         else
         {
-            var statusEffect = new StatusEffect(stateType, percentage, duration, this);
+            var statusEffect = new StatusEffect(stateType, value, duration, this);
             StatusEffects.Add(statusEffect);
             statusEffect.StartTimer();
         }
         
-        UpdateStates();
+        UpdateStatusEffects();
         
     }
 
@@ -100,26 +101,45 @@ public class StatusEffectController
         while (StatusEffects.Count > 0)
         {
             StatusEffects[0].Clear();
-            StatusEffects.RemoveAt(0);
         }
+        
+        UpdateStatusEffects();
     }
 
     /// <summary>
     /// 更新目标及其子部件状态
     /// </summary>
-    public void UpdateStates()
+    public void UpdateStatusEffects()
     {
-        foreach (var effect in StatusEffects)
+        // 如果有效果，则更新
+        if (StatusEffects.Count > 0)
         {
-            ((IStatusEffectHandler) _statusEffectTarget).HandleStatusEffect(effect);
+            foreach (var effect in StatusEffects)
+            {
+                ((IStatusEffectHandler) _statusEffectTarget).HandleStatusEffect(effect);
+                for (var i = 0; i < _statusEffectTarget.transform.childCount; i++)
+                {
+                    var c = _statusEffectTarget.transform.GetChild(i).GetComponent<MonoBehaviour>();
+                    if (c is IStatusEffectHandler handler)
+                    {
+                        handler.HandleStatusEffect(effect);
+                    }
+                }
+            }
+        }
+        // 无效果，则清除
+        else
+        {
+            ((IStatusEffectHandler) _statusEffectTarget).HandleStatusEffect(null);
             for (var i = 0; i < _statusEffectTarget.transform.childCount; i++)
             {
                 var c = _statusEffectTarget.transform.GetChild(i).GetComponent<MonoBehaviour>();
                 if (c is IStatusEffectHandler handler)
                 {
-                    handler.HandleStatusEffect(effect);
+                    handler.HandleStatusEffect(null);
                 }
             }
+
         }
     }
     
@@ -127,5 +147,5 @@ public class StatusEffectController
 
 public interface IStatusEffectHandler
 {
-    void HandleStatusEffect(StatusEffect effect);
+    void HandleStatusEffect([CanBeNull] StatusEffect effect);
 }

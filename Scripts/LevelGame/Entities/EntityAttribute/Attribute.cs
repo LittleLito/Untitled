@@ -24,34 +24,34 @@ public class AttributeModifier
 
 public class AttributeModifierManager
 {
-    public readonly List<AttributeModifier> AttributeModifiers = new List<AttributeModifier>();
+    private readonly List<AttributeModifier> _attributeModifiers = new List<AttributeModifier>();
 
     public AttributeModifierManager()
     {
         foreach (AttributeType type in Enum.GetValues(typeof(AttributeType)))
         {
-            AttributeModifiers.Add(new AttributeModifier(type, 1f));
+            _attributeModifiers.Add(new AttributeModifier(type, 1f));
         }
     }
 
     public void AddModifier(AttributeType type, float value)
     {
-        AttributeModifiers.Find(modifier => modifier.AttributeType == type).Value *= value;
+        _attributeModifiers.Find(modifier => modifier.AttributeType == type).Value *= value;
     }
 
     public AttributeModifier GetModifier(AttributeType type)
     {
-        return AttributeModifiers.Find(modifier => modifier.AttributeType == type);
+        return _attributeModifiers.Find(modifier => modifier.AttributeType == type);
     }
 
     public void RemoveAttributeModification(AttributeType type)
     {
-        AttributeModifiers.Find(modifier => modifier.AttributeType == type).Value = 1;
+        _attributeModifiers.Find(modifier => modifier.AttributeType == type).Value = 1;
     }
 
     public void Clear()
     {
-        foreach (var modifier in AttributeModifiers)
+        foreach (var modifier in _attributeModifiers)
         {
             modifier.Value = 1;
         }

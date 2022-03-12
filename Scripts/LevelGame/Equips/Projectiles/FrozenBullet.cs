@@ -9,6 +9,6 @@ public class FrozenBullet : BulletBase
 
     protected override void BoomEffect(EnemyBase e)
     {
-        e.StatusEffectController.AddStatusEffect(StatusEffectType.Frozen, 0.7f, 3);
+        e.StatusEffectController.AddStatusEffect(StatusEffectType.Frozen, 1.25f, 3);
     }
 }

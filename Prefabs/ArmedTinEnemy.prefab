@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4649673396930225675}
   - component: {fileID: 6876258337941377075}
   - component: {fileID: 6308017296433143498}
-  - component: {fileID: 61086182849496176}
+  - component: {fileID: 2829804920590303943}
   m_Layer: 10
   m_Name: ArmedTinEnemy
   m_TagString: Enemy
@@ -246,7 +246,7 @@ PolygonCollider2D:
       - {x: 0.2765751, y: -0.39404905}
       - {x: 0.28864336, y: -0.5854372}
       - {x: 0.4187853, y: -0.5903972}
---- !u!114 &61086182849496176
+--- !u!114 &2829804920590303943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,9 +255,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1505037994622960470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2692bff632c4ef48b8c1973671fee01, type: 3}
+  m_Script: {fileID: 11500000, guid: cb596345c06f4fb4906e96daa128b0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
 --- !u!1 &2965036909944016214
 GameObject:
   m_ObjectHideFlags: 0

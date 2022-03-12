@@ -14,6 +14,7 @@ public class ArmedConeEnemy : ConeEnemy
 
         _sGatling = transform.Find("SGatling").gameObject;
         _sGatling.SetActive(true);
+        _sGatling.GetComponent<EnemySGatling>().Init();
     }
 
     protected override void Explode()

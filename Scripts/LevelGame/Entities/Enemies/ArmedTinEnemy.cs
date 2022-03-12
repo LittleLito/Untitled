@@ -13,8 +13,10 @@ public class ArmedTinEnemy : TinEnemy
 
         _sGatling1 = transform.Find("SGatling1").gameObject;
         _sGatling1.SetActive(true);
+        _sGatling1.GetComponent<EnemySGatling>().Init();
         _sGatling2 = transform.Find("SGatling2").gameObject;
         _sGatling2.SetActive(true);
+        _sGatling2.GetComponent<EnemySGatling>().Init();
 
     }
 

@@ -57,11 +57,11 @@ public abstract class BulletBase : MonoBehaviour
             // 击中爆炸图片
             _animator.runtimeAnimatorController = _bulletBoom;
             
-            // 击中敌机扣血 
             var e = col.gameObject.GetComponent<EnemyBase>();
-            e.Hit(Damage, false);
             // 子弹其他效果
             BoomEffect(e);
+            // 击中敌机扣血 
+            e.Hit(Damage, false);
             
             // 不再可用
             _alive = false;
