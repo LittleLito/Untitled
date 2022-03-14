@@ -22,6 +22,8 @@ public class GameConfig : ScriptableObject
     [Tooltip("LXGWWENKAI-BOLD")] public Font LXGWWENKAI_BOLD;
     [Tooltip("装备位置管理")] public GameObject LocationManager;
     [Tooltip("能量")] public GameObject Energy;
+    [Tooltip("回复果")] public GameObject RecoverFruit;
+    [Tooltip("回复果摇摆动画")] public RuntimeAnimatorController RecoverFruitShake;
     [Tooltip("爆炸效果")] public RuntimeAnimatorController Explosion;
     [Tooltip("喷射尾气")] public RuntimeAnimatorController Gas;
     [Tooltip("准星")] public GameObject Aim;

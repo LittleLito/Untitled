@@ -22,6 +22,8 @@ MonoBehaviour:
   LXGWWENKAI_BOLD: {fileID: 12800000, guid: aeb7f6d58b35c2b4dbcab5ed2caabe37, type: 3}
   LocationManager: {fileID: 8273128634736012876, guid: 44b62071943022f448c705080c80b879, type: 3}
   Energy: {fileID: 4148194973917839511, guid: 4f57c7f3451eff54597eaa2a32c28f5c, type: 3}
+  RecoverFruit: {fileID: 6794380054669698739, guid: 6d99330ae0706324da4c9144af74ade5, type: 3}
+  RecoverFruitShake: {fileID: 9100000, guid: a7c8916d179337449a410b3b3f180a4e, type: 2}
   Explosion: {fileID: 9100000, guid: 415194f64b2e312409f1381bdabf4702, type: 2}
   Gas: {fileID: 9100000, guid: ec152065339525b48969672eb3ed57d1, type: 2}
   Aim: {fileID: 2383435717655090328, guid: 20ccf9c09cacf1d4aa4df514d128241d, type: 3}
