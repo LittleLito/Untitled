@@ -170,7 +170,7 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
     /// 根据现有血量决定显示图片
     /// </summary>
     /// <returns></returns>
-    protected virtual void CheckDamagedImg(float before, float after)
+    protected void CheckDamagedImg(float before, float after)
     {
         if (before > MaxHealth * 2 / 3 && after <= MaxHealth * 2 / 3)
         {            

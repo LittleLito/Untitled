@@ -17,7 +17,6 @@ public abstract class BulletBase : MonoBehaviour
     protected SpriteRenderer _spriteRenderer;
     protected Animator _animator;
     
-    // Start is called before the first frame update
     public virtual void Init(Vector3 pos)
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();

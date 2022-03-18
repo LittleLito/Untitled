@@ -41,6 +41,7 @@ public class GameOverPanel : MonoBehaviour
         var healed = LevelManager.Instance.Stats.GetStatWithType(StatType.Healed).Value;
         var score = (LevelManager.Instance.LevelInfo.PassScore + damage - time) * PlayerManager.Instance.Health /
                     PlayerManager.Instance.InitMaxHealth;
+        score = EnemyManager.Instance.Enemies.Count > 0 ? 0 : score;
         var reward = Math.Max((int) score / 10, 0);
         
         _time.text = Math.Round(time, 2).ToString(CultureInfo.InvariantCulture);

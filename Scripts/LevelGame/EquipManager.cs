@@ -27,6 +27,7 @@ public class EquipManager : MonoBehaviour
             EquipType.DelayBomb => GameManager.Instance.GameConfig.DelayBomb,
             EquipType.Shield => GameManager.Instance.GameConfig.Shield,
             EquipType.FrozenSGatling => GameManager.Instance.GameConfig.FrozenSGatling,
+            EquipType.Cattail => GameManager.Instance.GameConfig.Cattail,
             EquipType.GMHeavyRocket => GameManager.Instance.GameConfig.GMHeavyRocket,
             _ => null
         };
@@ -59,6 +60,7 @@ public enum EquipType
     DelayBomb = 4,
     Shield = 5,
     FrozenSGatling = 6,
+    Cattail,
     GMHeavyRocket
 }
 

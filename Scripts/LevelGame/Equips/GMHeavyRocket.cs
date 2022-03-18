@@ -12,20 +12,13 @@ public class GMHeavyRocket : GatlingBase
     protected override float _attackCD => 1.5f;
 
     private SpriteRenderer _gunfireRenderer;
-
-    protected override void Start()
-    {
-        _gunfireRenderer = transform.Find("GMHeavyRocketGunfire").GetComponent<SpriteRenderer>();
-        _gunfireRenderer.enabled = false;
-    }
-
+    
     protected override void GunFireEffect()
     {
-        _gunfireRenderer.sprite = GameManager.Instance.GameConfig.GMRocketGunfire1;
-        _gunfireRenderer.enabled = true;
+        _gunfire.sprite = GameManager.Instance.GameConfig.GMRocketGunfire1;
         
         Invoke(nameof(SetSpriteRendererEnabledFalse), 0.33f);
     }
 
-    private void SetSpriteRendererEnabledFalse() => _gunfireRenderer.enabled = false;
+    private void SetSpriteRendererEnabledFalse() => _gunfire.enabled = false;
 }

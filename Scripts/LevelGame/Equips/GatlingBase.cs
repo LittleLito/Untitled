@@ -20,8 +20,10 @@ public abstract class GatlingBase : EquipBase
     }
 
     // Start is called before the first frame update
-    protected virtual void Start()
+    protected override void FindComponent()
     {
+        base.FindComponent();
+        
         _gunfire = transform.Find("Gunfire").GetComponent<SpriteRenderer>();
         _gunfire.enabled = false;
     }
@@ -36,11 +38,11 @@ public abstract class GatlingBase : EquipBase
     /// <summary>
     /// 检测敌机
     /// </summary>
-    private void Check()
+    protected virtual void Check()
     {
         if (!_canAttack) return;
         if (LevelManager.Instance.LevelState != LevelState.InGame) return;
-        if (PlayerManager.Instance.EnergyPoints < 1) return;
+        if (PlayerManager.Instance.EnergyPoints < RunCost) return;
 
         // 检测射击范围内是否存在敌机
         var hit = Physics2D.Raycast((Vector2) transform.position + MuzzleOffset, transform.up,
@@ -53,7 +55,7 @@ public abstract class GatlingBase : EquipBase
     /// <summary>
     /// 发射子弹
     /// </summary>
-    private void Shoot()
+    protected virtual void Shoot()
     {
         // 发射
         var bullet = PoolManager.Instance.GetGameObj(Bullet, null).GetComponent<BulletBase>();
@@ -80,16 +82,11 @@ public abstract class GatlingBase : EquipBase
     /// <summary>
     /// 上膛
     /// </summary>
-    private void SetCanAttack()
-    {
-        _canAttack = true;
-    }
+    protected void SetCanAttack() => _canAttack = true;
 
     /// <summary>
     /// 枪口熄火
     /// </summary>
-    private void SetGunFire()
-    {
-        _gunfire.enabled = false;
-    }
+    private void SetGunFire() => _gunfire.enabled = false;
+    
 }
