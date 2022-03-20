@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CherryMissile : MissileBase, IOneTimeUseEquip
+public class CherryMissile : MissileBase
 {
     public override int Cost => 1500;
-    public override float CD => 50f;
+    public override float CD => 50;
     public override EquipFamily Family => EquipFamily.Doom;
     public override EquipType Type => EquipType.CherryMissile;
     public override float Speed => 7f;

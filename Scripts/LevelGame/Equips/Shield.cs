@@ -3,8 +3,8 @@ using UnityEngine;
 public class Shield : MissileBase
 {
     public override int Cost => 750;
-    public override float CD => 25;
-    public override float MaxHealth => 350;
+    public override float CD => 20;
+    public override float MaxHealth => 400;
     public override float Health
     {
         get => _health;
@@ -25,9 +25,9 @@ public class Shield : MissileBase
     public override float Speed => 6f;
     public override float Damage => 0;
     // 破损1图片
-    protected virtual Sprite DamagedImgNo2 => GameManager.Instance.GameConfig.Shield1;
+    protected Sprite DamagedImgNo2 => GameManager.Instance.GameConfig.Shield1;
     // 破损2图片
-    protected virtual Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.Shield2;
+    protected Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.Shield2;
     protected override float _explosionScale => 0;
     protected override float _explosionRadius => 0;
 
@@ -108,7 +108,7 @@ public class Shield : MissileBase
     /// 根据现有血量决定显示图片
     /// </summary>
     /// <returns></returns>
-    protected virtual void CheckDamagedImg(float before, float after)
+    protected void CheckDamagedImg(float before, float after)
     {
         if (before >= MaxHealth * 2 / 3 && after <= MaxHealth * 2 / 3)
         {            

@@ -34,7 +34,7 @@ public class GameConfig : ScriptableObject
     public Sprite Shield1;
     public Sprite Shield2;
     [Tooltip("GM火箭炮枪口火焰1")] public Sprite GMRocketGunfire1;
-    [Tooltip("陨粒枪口火焰")] public Sprite CattailGunfire1;
+    [Tooltip("守卫者枪口火焰")] public Sprite CattailGunfire1;
 
     [Header("装备")]
     [Tooltip("S型轻型机枪")] public GameObject SGatling;
@@ -43,8 +43,9 @@ public class GameConfig : ScriptableObject
     [Tooltip("延时炸弹")] public GameObject DelayBomb;
     [Tooltip("防弹盾牌")] public GameObject Shield;
     [Tooltip("S型冰霜机枪")] public GameObject FrozenSGatling;
+    [Tooltip("SP二联机枪")] public GameObject SPGatling;
     [Tooltip("GM重型火箭炮")] public GameObject GMHeavyRocket;
-    [Tooltip("陨粒")] public GameObject Cattail;
+    [Tooltip("守卫者")] public GameObject Cattail;
 
     [Header("敌机")] 
     [Tooltip("普通敌机")] 
@@ -73,7 +74,7 @@ public class GameConfig : ScriptableObject
     [Tooltip("冰霜子弹")] public GameObject FrozenBullet;
     [Tooltip("冰霜子弹爆炸")] public RuntimeAnimatorController FrozenBulletBoom;
     [Tooltip("GM重型火箭炮子弹")] public GameObject GMHeavyRocketBullet;
-    [Tooltip("陨粒子弹")] public GameObject CattailBullet;
+    [Tooltip("守卫者子弹")] public GameObject CattailBullet;
     [Tooltip("敌机子弹")] public GameObject EnemyBullet;
     [Tooltip("敌机子弹图片")] public Sprite EnemyBulletImg;
     [Tooltip("敌机子弹爆炸")] public RuntimeAnimatorController EnemyBulletBoom;

@@ -41,6 +41,7 @@ MonoBehaviour:
   DelayBomb: {fileID: 3998937118801561016, guid: 5919b6a30fae7fd4b95d4d9b60cd5602, type: 3}
   Shield: {fileID: 4529083435913747051, guid: 22cf0a15943d00e4791a963deb5ceb74, type: 3}
   FrozenSGatling: {fileID: 39522638481557046, guid: 5dbc4c28ec6e98249a50c3961270154e, type: 3}
+  SPGatling: {fileID: 6270003276100324164, guid: 40177696913408048bd01ebaa0f0ed5c, type: 3}
   GMHeavyRocket: {fileID: 387574567676309041, guid: 1292730902d5d1c46894790cb0eb3637, type: 3}
   Cattail: {fileID: 6088083496730490369, guid: 316a12cc40143fa4587355130a74b4a2, type: 3}
   NormalEnemy: {fileID: 5360277968070027299, guid: b1d2cbd3359b8854b8fdac14acc7c95f, type: 3}

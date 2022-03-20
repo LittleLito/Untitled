@@ -1,11 +1,9 @@
-using System;
-using System.Linq;
 using UnityEngine;
 
 public class GMHeavyRocketBullet : BulletBase
 {
     public override float Speed => 11f;
-    public override int Damage => 30;
+    public override int Damage => 23;
     protected override GameObject _prefab => GameManager.Instance.GameConfig.GMHeavyRocketBullet;
     protected override RuntimeAnimatorController _bulletBoom => null;
 
@@ -25,26 +23,27 @@ public class GMHeavyRocketBullet : BulletBase
     protected override void OnTriggerEnter2D(Collider2D col)
     {
         // 敌机
-        if (col.gameObject.CompareTag("Enemy"))
+        if (!col.gameObject.CompareTag("Enemy")) return;
+        
+        // 击中敌机扣血 
+        col.gameObject.GetComponent<EnemyBase>().Hit(Damage, false);
+        // 子弹其他效果
+            
+        // 不再可用
+        _alive = false;
+        _spriteRenderer.enabled = false;
+        Invoke(nameof(Recycle), 0.6f);
+            
+        GetComponent<ParticleSystem>().Play();
+        
+        // 造成伤害
+        var es = new Collider2D[100];
+        Physics2D.OverlapCircleNonAlloc(transform.position, 2, es, LayerMask.GetMask("Enemy"));
+        foreach (var e in es)
         {
-            // 击中敌机扣血 
-            col.gameObject.GetComponent<EnemyBase>().Hit(Damage, false);
-            // 子弹其他效果
-            
-            // 不再可用
-            _alive = false;
-            _spriteRenderer.enabled = false;
-            Invoke(nameof(Recycle), 0.6f);
-            
-            GetComponent<ParticleSystem>().Play();
-            // 造成伤害
-            foreach (var e in EnemyManager.Instance.Enemies.Where(e => Vector2.Distance(e.transform.position, transform.position) < 2))
-            {
-                e.Hit(7, false);
-            }
-
+            if (e is null) break;
+            e.GetComponent<EnemyBase>().Hit(7, false);
         }
-
     }
 
     protected override void Recycle()

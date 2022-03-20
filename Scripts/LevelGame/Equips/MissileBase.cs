@@ -92,10 +92,12 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
         
         Invoke(nameof(Recycle), 0.917f);
 
-        // 造成伤害
-        foreach (var e in EnemyManager.Instance.Enemies.Where(e => Vector2.Distance(e.transform.position, transform.position) < _explosionRadius))
+        var cols = new Collider2D[100];
+        Physics2D.OverlapCircleNonAlloc(transform.position, _explosionRadius, cols, LayerMask.GetMask("Enemy"));
+        foreach (var col in cols)
         {
-            e.Hit(Damage, false);
+            if (col is null) break;
+            col.GetComponent<EnemyBase>().Hit(Damage, false);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CattailBullet : MonoBehaviour
 {
     public float Speed => 4;
-    public int Damage => 2;
+    public int Damage => 3;
     // 是否还在运行
     private bool _alive;
     // 组件

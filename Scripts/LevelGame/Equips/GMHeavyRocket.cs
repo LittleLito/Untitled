@@ -11,8 +11,6 @@ public class GMHeavyRocket : GatlingBase
     protected override Vector2 MuzzleOffset => new Vector2(0, 0.066f);
     protected override float _attackCD => 1.5f;
 
-    private SpriteRenderer _gunfireRenderer;
-    
     protected override void GunFireEffect()
     {
         _gunfire.sprite = GameManager.Instance.GameConfig.GMRocketGunfire1;

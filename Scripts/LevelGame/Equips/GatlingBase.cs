@@ -19,7 +19,6 @@ public abstract class GatlingBase : EquipBase
         _canAttack = true;
     }
 
-    // Start is called before the first frame update
     protected override void FindComponent()
     {
         base.FindComponent();
@@ -87,6 +86,6 @@ public abstract class GatlingBase : EquipBase
     /// <summary>
     /// 枪口熄火
     /// </summary>
-    private void SetGunFire() => _gunfire.enabled = false;
+    protected virtual void SetGunFire() => _gunfire.enabled = false;
     
 }

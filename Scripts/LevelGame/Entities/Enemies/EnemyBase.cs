@@ -28,7 +28,7 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
     public float Health
     {
         get => _health;
-        set
+        private set
         {
             if (value.Equals(_health)) return;
 
@@ -54,13 +54,7 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
     // 速度
     public float Speed;
     // 修改后的速度
-    public float FixedSpeed
-    {
-        get
-        {
-            return Speed * AttributeModifierManager.GetModifier(AttributeType.Speed).Value;
-        }
-    }
+    public float FixedSpeed => Speed * AttributeModifierManager.GetModifier(AttributeType.Speed).Value;
 
     // 权重
     public abstract int WEIGHT { get; }
