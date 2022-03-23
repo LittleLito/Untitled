@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class GMHeavyRocketBullet : BulletBase
+public class IMFrozenRocketBullet : BulletBase
 {
     public override float Speed => 11f;
     public override int Damage => 25;
-    protected override GameObject _prefab => GameManager.Instance.GameConfig.GMHeavyRocketBullet;
+    protected override GameObject _prefab => GameManager.Instance.GameConfig.IMFrozenRocketBullet;
     protected override RuntimeAnimatorController _bulletBoom => null;
 
     private TrailRenderer _trail;
@@ -37,11 +37,12 @@ public class GMHeavyRocketBullet : BulletBase
         GetComponent<ParticleSystem>().Play();
         
         // 造成伤害
-        var es = new Collider2D[100];
+        var es = new Collider2D[50];
         Physics2D.OverlapCircleNonAlloc(transform.position, 2, es, LayerMask.GetMask("Enemy"));
         foreach (var e in es)
         {
             if (e is null) break;
+            e.GetComponent<EnemyBase>().StatusEffectController.AddStatusEffect(StatusEffectType.Frozen, 1.25f, 5); 
             e.GetComponent<EnemyBase>().Hit(10, false);
         }
     }
@@ -51,4 +52,5 @@ public class GMHeavyRocketBullet : BulletBase
         _trail.emitting = false;
         base.Recycle();
     }
+
 }

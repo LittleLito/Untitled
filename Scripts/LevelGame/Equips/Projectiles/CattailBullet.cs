@@ -37,9 +37,16 @@ public class CattailBullet : MonoBehaviour
         }
 
         // 追击
-        var angle = Vector3.SignedAngle(transform.up, _target.position - transform.position, Vector3.forward);
-        transform.Rotate(new Vector3(0, 0, Mathf.Clamp(angle * Speed * Time.deltaTime, -2, 2)));
-        transform.position += Speed * Time.deltaTime * transform.up;
+        if (_target is { })
+        {
+            var angle = Vector3.SignedAngle(transform.up, _target.position - transform.position, Vector3.forward);
+            transform.Rotate(new Vector3(0, 0, Mathf.Clamp(angle * Speed * Time.deltaTime, -2, 2)));
+            transform.position += Speed * Time.deltaTime * transform.up;
+        }
+        else
+        {
+            transform.position += Speed * Time.deltaTime * transform.up;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
 using UnityEngine;
+// ReSharper disable InconsistentNaming
 
 /// <summary>
 /// 游戏配置
@@ -44,8 +42,9 @@ public class GameConfig : ScriptableObject
     [Tooltip("防弹盾牌")] public GameObject Shield;
     [Tooltip("S型冰霜机枪")] public GameObject FrozenSGatling;
     [Tooltip("SP二联机枪")] public GameObject SPGatling;
-    [Tooltip("GM重型火箭炮")] public GameObject GMHeavyRocket;
     [Tooltip("守卫者")] public GameObject Cattail;
+    [Tooltip("GM重型火箭炮")] public GameObject GMHeavyRocket;
+    [Tooltip("IM冰霜火箭炮")] public GameObject IMFrozenRocket;
 
     [Header("敌机")] 
     [Tooltip("普通敌机")] 
@@ -73,7 +72,8 @@ public class GameConfig : ScriptableObject
     [Tooltip("子弹爆炸")] public RuntimeAnimatorController BulletBoom;
     [Tooltip("冰霜子弹")] public GameObject FrozenBullet;
     [Tooltip("冰霜子弹爆炸")] public RuntimeAnimatorController FrozenBulletBoom;
-    [Tooltip("GM重型火箭炮子弹")] public GameObject GMHeavyRocketBullet;
+    [Tooltip("GM重型火箭炮子弹")] public GameObject GMHeavyRocketBullet;    
+    [Tooltip("IM冰霜火箭炮子弹")] public GameObject IMFrozenRocketBullet;
     [Tooltip("守卫者子弹")] public GameObject CattailBullet;
     [Tooltip("敌机子弹")] public GameObject EnemyBullet;
     [Tooltip("敌机子弹图片")] public Sprite EnemyBulletImg;
