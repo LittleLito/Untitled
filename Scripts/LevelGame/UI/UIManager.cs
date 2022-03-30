@@ -201,7 +201,9 @@ public class UIManager : MonoBehaviour
         Invoke(nameof(SetLevelStartTextInactive), 0.5f);
         
         // 关卡开始前的初始化
-        PlayerManager.Instance.transform.DOMoveY(-3, 1).OnComplete(PlayerManager.Instance.Init);
+        PlayerManager.Instance.transform.DOMoveY(-3, 1).OnComplete(() => {
+            PlayerManager.Instance.Init();
+        });
         FallingEnergyManager.Instance.StartCreate();
         RecoverFruitManager.Instance.StartCreate();
         LevelManager.Instance.LevelState = LevelState.InGame;

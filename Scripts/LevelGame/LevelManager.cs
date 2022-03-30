@@ -19,6 +19,8 @@ public enum LevelState
     Start,
     // 游戏中
     InGame,
+    // Boss
+    Boss,
     // 结束
     Over,
     // 总结
@@ -98,6 +100,17 @@ public class LevelManager : MonoBehaviour
                 case LevelState.InGame:
                     Stats.StartTiming();
                     break;
+                case LevelState.Boss:
+                    // 生成boss
+                    var boss = Instantiate(GameManager.Instance.GameConfig.FishMaster, new Vector3(0, 9, 0),
+                            Quaternion.identity).GetComponent<FishMaster>();
+                    // 移动入场
+                    boss.transform.DOMoveY(3.14f, 8).OnComplete(() =>
+                    {
+                        // 初始化
+                        boss.Init();
+                    });
+                    break;
                 case LevelState.Over:
                     // 掐表计算游戏时间
                     Time = Stats.GetTime();
@@ -137,7 +150,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (LevelState == LevelState.InGame && UnityEngine.Time.frameCount % 150 == 0)
+        if ((LevelState == LevelState.InGame || LevelState == LevelState.Boss) && UnityEngine.Time.frameCount % 100 == 0)
         {
             Camera.main.transform.position = new Vector3(0, -0.9f, -10);
         }

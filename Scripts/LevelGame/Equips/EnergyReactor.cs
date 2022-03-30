@@ -37,7 +37,7 @@ public class EnergyReactor : EquipBase
     // Update is called once per frame
     private void Update()
     {
-        if (!_canCreate || LevelManager.Instance.LevelState != LevelState.InGame) return;
+        if (!_canCreate || LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
         CreateEnergy();
     }
 

@@ -15,7 +15,7 @@ public class DelayBomb : MissileBase
     private bool charged;
     protected override void Update()
     {
-        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
 
         switch (_flying)
         {

@@ -23,7 +23,7 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
     protected Animator _animator;
     protected virtual void Update()
     {
-        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
 
         switch (_flying)
         {
@@ -60,7 +60,7 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
         _spriteRenderer.sprite = EquipManager.Instance.GetEquipByType(Type).GetComponent<SpriteRenderer>().sprite;
         // 调整位置
         transform.position = PlayerManager.Instance.transform.position;
-        Tools.YLookAt(transform, target);
+        ToolFuncs.YLookAt(transform, target);
 
         _flying = true;
 

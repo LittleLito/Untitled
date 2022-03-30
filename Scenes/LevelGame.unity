@@ -1530,6 +1530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelInfo:
     Num: 0
+    IsBoss: 0
     Enemies: 
     MaxWaveNum: 0
     PassScore: 0
@@ -4580,7 +4581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3186f0f82786443815aff4b31fcf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxChosenNum: 10
+  MaxChosenNum: 8
   ChosenCard: []
 --- !u!1 &1822181695
 GameObject:

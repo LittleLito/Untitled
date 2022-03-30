@@ -37,7 +37,7 @@ public class PlayerManager : MonoBehaviour
     public float Health
     {
         get => _health;
-        set
+        private set
         {
             _health = value;
             UIManager.Instance.UpdatePlayerHealth(value);
@@ -79,7 +79,9 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (gameObject.CompareTag("Player") && EnergyPoints >= 1 && LevelManager.Instance.LevelState == LevelState.InGame)
+        if (gameObject.CompareTag("Player") && EnergyPoints >= 1 &&
+            (LevelManager.Instance.LevelState == LevelState.InGame ||
+             LevelManager.Instance.LevelState == LevelState.Boss))
         {
             Move();
         }
@@ -154,13 +156,25 @@ public class PlayerManager : MonoBehaviour
                 break;
             // 撞到敌机子弹
             case "EnemyBullet":
-                other.GetComponent<EnemyBullet>().Explode();
+                var eb = other.GetComponent<EnemyBullet>();
+                eb.Explode();
                 Camera.main.DOShakePosition(0.08f, 0.15f);
 
-                Health -= other.GetComponent<EnemyBullet>().Damage;
+                Health -= eb.Damage;
 
                 // 增加数据
-                LevelManager.Instance.Stats.IncreaseStat(StatType.Absorbed, 5);
+                LevelManager.Instance.Stats.IncreaseStat(StatType.Absorbed, eb.Damage);
+
+                break;
+            // 意大利炮炮弹（舰炮炮弹）
+            case "ItalianGunBullet":
+                var ib = other.GetComponent<Boss305mmBullet>();
+                ib.Explode();
+                Camera.main.DOShakePosition(ib.Damage / 1000f, ib.Damage / 1000f);
+
+                Health -= ib.Damage;
+                // 增加数据
+                LevelManager.Instance.Stats.IncreaseStat(StatType.Absorbed, ib.Damage);
 
                 break;
             // 撞到回复果

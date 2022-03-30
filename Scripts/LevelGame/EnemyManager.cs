@@ -72,10 +72,17 @@ public class EnemyManager : MonoBehaviour
         // 最大一波已过，敌机被全部击杀
         else if (Enemies.Count == 0)
         {
-            LevelManager.Instance.LevelState = LevelState.Over;
+            if (LevelManager.Instance.LevelInfo.IsBoss)
+            {
+                LevelManager.Instance.LevelState = LevelState.Boss;
+            }
+            else
+            {
+                LevelManager.Instance.LevelState = LevelState.Over;
             
-            Invoke(nameof(LevelPassMovePlayer), 3);
-            Invoke(nameof(LevelPassMoveCamera), 3.5f);
+                Invoke(nameof(LevelPassMovePlayer), 3);
+                Invoke(nameof(LevelPassMoveCamera), 3.5f);
+            }
         }
     }
 
@@ -113,7 +120,7 @@ public class EnemyManager : MonoBehaviour
         {
             if (sumLv <= maxLv)
             {
-                var enemyBase = Tools.RandomEnemyWithWeight(enemiesAvailableNow);
+                var enemyBase = ToolFuncs.RandomEnemyWithWeight(enemiesAvailableNow);
                 if (enemyBase is null)
                 {
                     print("Null Enemy!");

@@ -42,7 +42,7 @@ public class Energy : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
         if (collected) return;
 
         if (transform.position.y <= FallingStopY)

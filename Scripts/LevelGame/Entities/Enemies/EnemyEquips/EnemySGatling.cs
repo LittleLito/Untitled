@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySGatling : MonoBehaviour, IStatusEffectHandler
@@ -50,7 +48,7 @@ public class EnemySGatling : MonoBehaviour, IStatusEffectHandler
     private void Shoot()
     {
         if (!_canAttack) return;
-        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
         // 发射
         var bullet = PoolManager.Instance.GetGameObj(GameManager.Instance.GameConfig.EnemyBullet, null)
             .GetComponent<EnemyBullet>();
@@ -58,17 +56,17 @@ public class EnemySGatling : MonoBehaviour, IStatusEffectHandler
 
         // 枪口火焰效果
         _gunfire.enabled = true;
-        Invoke(nameof(SetGunFire), 0.1f);
+        Invoke(nameof(SetGunFireEnableFalse), 0.1f);
 
         // 进入发射CD
         _canAttack = false;
-        Invoke(nameof(SetCanAttack), _fixedAttackCD);
+        Invoke(nameof(SetCanAttackTrue), _fixedAttackCD);
     }
 
     /// <summary>
     /// 上膛
     /// </summary>
-    private void SetCanAttack()
+    private void SetCanAttackTrue()
     {
         _canAttack = true;
     }
@@ -76,7 +74,7 @@ public class EnemySGatling : MonoBehaviour, IStatusEffectHandler
     /// <summary>
     /// 枪口熄火
     /// </summary>
-    private void SetGunFire()
+    private void SetGunFireEnableFalse()
     {
         _gunfire.enabled = false;
     }

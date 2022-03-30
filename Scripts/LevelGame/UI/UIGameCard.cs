@@ -268,7 +268,7 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
     {
         if (GameCardState != GameCardState.CanPlace) return;
         if (HasEquip) return;
-        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
         if (PlayerManager.Instance.Health <= 0) return;
         
         _maskImg.color = new Color(1f, 1f, 1f, 0.3f);
@@ -282,7 +282,7 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
     {
         if (GameCardState != GameCardState.CanPlace) return;
         if (HasEquip) return;
-        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
         if (PlayerManager.Instance.Health <= 0) return;
 
         _maskImg.color = new Color(1, 1, 1, 0);
@@ -295,7 +295,7 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
     {
         if (GameCardState != GameCardState.CanPlace) return;
         if (eventData.button != PointerEventData.InputButton.Left) return;
-        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
         if (PlayerManager.Instance.Health <= 0) return;
 
         if (!HasEquip)

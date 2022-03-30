@@ -4,7 +4,7 @@ public class Cattail : GatlingBase
 {
     public override int Cost => 2250;
     public override int RunCost => 2;
-    public override float CD => 50;
+    public override float CD => 30;
     public override EquipFamily Family => EquipFamily.Common;
     public override EquipType Type => EquipType.Cattail;
     protected override GameObject Bullet => GameManager.Instance.GameConfig.CattailBullet;
@@ -14,7 +14,7 @@ public class Cattail : GatlingBase
     protected override void Check()
     {
         if (!_canAttack) return;
-        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
         if (PlayerManager.Instance.EnergyPoints < RunCost) return;
         
         if (EnemyManager.Instance.Enemies.Count == 0) return;

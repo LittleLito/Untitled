@@ -26,10 +26,10 @@ public class CattailBullet : MonoBehaviour
     private void Update()
     {
         if (!_alive) return;
-        if (transform.position.x < -11.77 || transform.position.y < -9.5 || transform.position.x > 11.77 ||
+        if (transform.position.x < -11.77 || transform.position.y < PlayerManager.Instance.DeadlineY || transform.position.x > 11.77 ||
             transform.position.y > 9.5) Recycle();
         // 目标仍存活
-        if (!_target.gameObject.activeInHierarchy)
+        if (!_target.gameObject.activeInHierarchy && LevelManager.Instance.LevelState == LevelState.InGame)
         {
             var list = new List<EnemyBase>(EnemyManager.Instance.Enemies);
             list.Sort((base1, base2) => (int) (base1.transform.position.y - base2.transform.position.y) * 100);
@@ -37,7 +37,7 @@ public class CattailBullet : MonoBehaviour
         }
 
         // 追击
-        if (_target is { })
+        if (EnemyManager.Instance.Enemies.Count > 0)
         {
             var angle = Vector3.SignedAngle(transform.up, _target.position - transform.position, Vector3.forward);
             transform.Rotate(new Vector3(0, 0, Mathf.Clamp(angle * Speed * Time.deltaTime, -2, 2)));
@@ -46,6 +46,7 @@ public class CattailBullet : MonoBehaviour
         else
         {
             transform.position += Speed * Time.deltaTime * transform.up;
+
         }
     }
 

@@ -66,9 +66,11 @@ public class GameConfig : ScriptableObject
     [Tooltip("武装中型敌机")] public GameObject ArmedConeEnemy;
     [Tooltip("武装铁皮敌机")] public GameObject ArmedTinEnemy;
 
+    [Header("Boss")] 
+    [Tooltip("FishMaster")] public GameObject FishMaster;
+
     [Header("子弹")] 
     [Tooltip("子弹")] public GameObject Bullet;
-    [Tooltip("枪口火焰")] public Sprite Gunfire;
     [Tooltip("子弹爆炸")] public RuntimeAnimatorController BulletBoom;
     [Tooltip("冰霜子弹")] public GameObject FrozenBullet;
     [Tooltip("冰霜子弹爆炸")] public RuntimeAnimatorController FrozenBulletBoom;
@@ -78,4 +80,5 @@ public class GameConfig : ScriptableObject
     [Tooltip("敌机子弹")] public GameObject EnemyBullet;
     [Tooltip("敌机子弹图片")] public Sprite EnemyBulletImg;
     [Tooltip("敌机子弹爆炸")] public RuntimeAnimatorController EnemyBulletBoom;
+    [Tooltip("Boss305mm炮弹")] public GameObject Boss305mmBullet;
 }

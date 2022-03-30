@@ -54,7 +54,7 @@ public class Shield : MissileBase
         _spriteRenderer.sprite = EquipManager.Instance.GetEquipByType(Type).GetComponent<SpriteRenderer>().sprite;
         // 调整位置
         transform.position = PlayerManager.Instance.transform.position;
-        Tools.YLookAt(transform, target);
+        ToolFuncs.YLookAt(transform, target);
 
         _flying = true;
 

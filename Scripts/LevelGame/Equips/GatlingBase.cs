@@ -40,7 +40,7 @@ public abstract class GatlingBase : EquipBase
     protected virtual void Check()
     {
         if (!_canAttack) return;
-        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
         if (PlayerManager.Instance.EnergyPoints < RunCost) return;
 
         // 检测射击范围内是否存在敌机

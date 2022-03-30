@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Tools
+public class ToolFuncs
 {
     public static List<T> Apply<T>(List<T> list, Action<T> func)
     {

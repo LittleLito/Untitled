@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public struct LevelInfo
 {
     public int Num;
+    public bool IsBoss;
     public List<int> Enemies;
     public int MaxWaveNum;
     public int PassScore;
