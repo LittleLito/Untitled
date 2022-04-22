@@ -17,7 +17,7 @@ public class RecoverFruit : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         // 组件初始化
-        transform.position = new Vector3(Random.Range(-7.5f, 8.5f), Random.Range(-6.5f, 5f), 0);
+        transform.position = new Vector3(Random.Range(-7.5f, 8.5f), Random.Range(-6.5f, 3f), 0);
         _spriteRenderer.sprite = GameManager.Instance.GameConfig.RecoverFruit.GetComponent<SpriteRenderer>().sprite;
         _animator.runtimeAnimatorController = GameManager.Instance.GameConfig.RecoverFruit.GetComponent<Animator>()
             .runtimeAnimatorController;

@@ -116,29 +116,13 @@ public class StatusEffectController
         {
             foreach (var effect in StatusEffects)
             {
-                ((IStatusEffectHandler) _statusEffectTarget).HandleStatusEffect(effect);
-                for (var i = 0; i < _statusEffectTarget.transform.childCount; i++)
-                {
-                    var c = _statusEffectTarget.transform.GetChild(i).GetComponent<MonoBehaviour>();
-                    if (c is IStatusEffectHandler handler)
-                    {
-                        handler.HandleStatusEffect(effect);
-                    }
-                }
+                Loom.QueueOnMainThread(() => ((IStatusEffectHandler) _statusEffectTarget).HandleStatusEffect(effect));
             }
         }
         // 无效果，则清除
         else
         {
-            ((IStatusEffectHandler) _statusEffectTarget).HandleStatusEffect(null);
-            for (var i = 0; i < _statusEffectTarget.transform.childCount; i++)
-            {
-                var c = _statusEffectTarget.transform.GetChild(i).GetComponent<MonoBehaviour>();
-                if (c is IStatusEffectHandler handler)
-                {
-                    handler.HandleStatusEffect(null);
-                }
-            }
+            Loom.QueueOnMainThread(() => ((IStatusEffectHandler) _statusEffectTarget).HandleStatusEffect(null));
 
         }
     }

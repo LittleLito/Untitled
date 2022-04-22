@@ -11,6 +11,15 @@ public class Cattail : GatlingBase
     protected override float _attackCD => 0.3f;
     protected override Vector2 MuzzleOffset => new Vector2(-0.004f, 0.15f);
 
+    private Animator _gunfireAnim;
+
+    public override void Place()
+    {
+        base.Place();
+
+        _gunfireAnim = GetComponent<Animator>();
+    }
+
     protected override void Check()
     {
         if (!_canAttack) return;
@@ -42,9 +51,9 @@ public class Cattail : GatlingBase
     protected override void GunFireEffect()
     {
         _gunfire.enabled = true;
-        _gunfire.sprite = GameManager.Instance.GameConfig.CattailGunfire1;
+        _gunfireAnim.Play("CattailGunfire", 0, 0f);
         
-        Invoke(nameof(SetSpriteRendererEnabledFalse), 0.16f);
+        Invoke(nameof(SetSpriteRendererEnabledFalse), 0.17f);
     }
 
     private void SetSpriteRendererEnabledFalse() => _gunfire.enabled = false;

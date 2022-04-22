@@ -1,21 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
 using DG.Tweening;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
-using Random = UnityEngine.Random;
 
 public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
 {
     // 动画器
-    private Animator _animator;
+    protected Animator _animator;
 
     // 渲染器
-    private SpriteRenderer _spriteRenderer;
+    protected SpriteRenderer _spriteRenderer;
     
     // 状态效果控制器
     public StatusEffectController StatusEffectController;
@@ -24,11 +18,11 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
 
     // 生命值
     public abstract float MaxHealth { get; }
-    private float _health;
-    public float Health
+    protected float _health;
+    public virtual float Health
     {
         get => _health;
-        private set
+        protected set
         {
             if (value.Equals(_health)) return;
 
@@ -52,6 +46,7 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
     // 速度范围
     protected abstract float _speedRange { get; }
     // 速度
+    [NonSerialized]
     public float Speed;
     // 修改后的速度
     public float FixedSpeed => Speed * AttributeModifierManager.GetModifier(AttributeType.Speed).Value;
@@ -110,7 +105,7 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
         if (Health <= 0) return;
 
         // 在到家前移动
-        if (transform.position.y > PlayerManager.Instance.DeadlineY)
+        if (transform.position.y > PlayerManager.DeadlineY)
         {
             Move();
         }
@@ -146,7 +141,6 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
     {
         if (LevelManager.Instance.LevelState == LevelState.InGame)
         {
-            //print(AttributeModifierManager.GetModifier(AttributeType.Speed).Value);
             transform.Translate(0, - FixedSpeed * Time.deltaTime * 0.1f, 0);
         }
     }
@@ -164,7 +158,7 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
     /// 根据现有血量决定显示图片
     /// </summary>
     /// <returns></returns>
-    protected void CheckDamagedImg(float before, float after)
+    private void CheckDamagedImg(float before, float after)
     {
         if (before > MaxHealth * 2 / 3 && after <= MaxHealth * 2 / 3)
         {            
@@ -199,8 +193,8 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
         // 清除所有颜色渐变动画
         _spriteRenderer.DOKill();
 
-        Invoke(nameof(Recycle), 0.88f);
-        _animator.runtimeAnimatorController = GameManager.Instance.GameConfig.Explosion;
+        Invoke(nameof(Recycle), 0.917f);
+        _animator.runtimeAnimatorController = GameManager.Instance.GameConfig.ExplosionAnim;
         transform.localScale = new Vector3(_explosionScale, _explosionScale, 0);
         gameObject.tag = "Nothing";
         gameObject.layer = 11;
@@ -229,11 +223,21 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
     /// </summary>
     /// <param name="effect"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public void HandleStatusEffect(StatusEffect effect)
+    public virtual void HandleStatusEffect(StatusEffect effect)
     {
+        // 子对象处理
+        for (var i = 0; i < transform.childCount; i++)
+        {
+            var c = transform.GetChild(i).GetComponent<MonoBehaviour>();
+            if (c is IStatusEffectHandler handler)
+            {
+                handler.HandleStatusEffect(effect);
+            }
+        }
+
         AttributeModifierManager.Clear();
 
-        Loom.QueueOnMainThread(() => _spriteRenderer.color = Color.white);
+        _spriteRenderer.color = Color.white;
         
         if (effect is null) return;
         
@@ -248,5 +252,6 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
     }
 }

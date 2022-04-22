@@ -24,7 +24,8 @@ MonoBehaviour:
   Energy: {fileID: 4148194973917839511, guid: 4f57c7f3451eff54597eaa2a32c28f5c, type: 3}
   RecoverFruit: {fileID: 6794380054669698739, guid: 6d99330ae0706324da4c9144af74ade5, type: 3}
   RecoverFruitShake: {fileID: 9100000, guid: a7c8916d179337449a410b3b3f180a4e, type: 2}
-  Explosion: {fileID: 9100000, guid: 415194f64b2e312409f1381bdabf4702, type: 2}
+  Explosion: {fileID: 3737963296798080331, guid: 49be934a726257c478e305f2b1a13c4b, type: 3}
+  ExplosionAnim: {fileID: 9100000, guid: 415194f64b2e312409f1381bdabf4702, type: 2}
   Gas: {fileID: 9100000, guid: ec152065339525b48969672eb3ed57d1, type: 2}
   Aim: {fileID: 2383435717655090328, guid: 20ccf9c09cacf1d4aa4df514d128241d, type: 3}
   Smoke: {fileID: 3554456821852363479, guid: 77f2384cb0271d942a3a7ca1bbe0ffd7, type: 3}
@@ -60,6 +61,9 @@ MonoBehaviour:
   ArmedConeEnemy: {fileID: 5689437636867375244, guid: 7145ec6a13126834a9265d323f4416d0, type: 3}
   ArmedTinEnemy: {fileID: 1505037994622960470, guid: 5b8e583bb3f3006479bb93156024c91b, type: 3}
   FishMaster: {fileID: 7798943451211625298, guid: a434c16e05a37994db77035862f82286, type: 3}
+  FishMaster2: {fileID: 21300000, guid: 9b1a6ed7fe5889642b78f580209add27, type: 3}
+  FishMaster3: {fileID: 21300000, guid: 9bb32a27016e2df4fa383dbef01caa19, type: 3}
+  FishMaster4: {fileID: 21300000, guid: a9f1e5fb0d6ab6a4c87e444dfa0e3e07, type: 3}
   Bullet: {fileID: 3939253472373881371, guid: d4069c364319e6646997075c254dc567, type: 3}
   BulletBoom: {fileID: 9100000, guid: 288e890b26cb52b46a749f5716dca68b, type: 2}
   FrozenBullet: {fileID: 206043961529009094, guid: 89292cc4d82c4e54f955d62cd3de3f27, type: 3}
@@ -70,4 +74,5 @@ MonoBehaviour:
   EnemyBullet: {fileID: 7603218227385014580, guid: 4b08a64ce14e96e4899eb1243d63d9cd, type: 3}
   EnemyBulletImg: {fileID: 21300000, guid: a5cf53b4348a100498b383537890f641, type: 3}
   EnemyBulletBoom: {fileID: 9100000, guid: 261585921cb052d40aa9ffa7901f4328, type: 2}
-  Boss305mmBullet: {fileID: 1231390313122178550, guid: 5318c00f8bee13441978ecf97dff6ac0, type: 3}
+  KillerModelL: {fileID: 1397284625616868209, guid: 99181399fb50cf941be5baecf8ef0294, type: 3}
+  EnemyGun305mmBullet: {fileID: 1231390313122178550, guid: 5318c00f8bee13441978ecf97dff6ac0, type: 3}

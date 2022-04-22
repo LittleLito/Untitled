@@ -32,13 +32,7 @@ public class Energy : MonoBehaviour
         gameObject.GetComponent<PolygonCollider2D>().enabled = false;
 
     }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
+    
     // Update is called once per frame
     private void Update()
     {
@@ -67,34 +61,16 @@ public class Energy : MonoBehaviour
         // 转换目的地坐标
         var energyPointsPos = Camera.main.ScreenToWorldPoint(new Vector3(75.7f, 153.5f, 0f));
         energyPointsPos.z = 0;
-
-        // 开启协程
-        transform.DOMove(energyPointsPos, Vector3.Distance(energyPointsPos, transform.position) * 0.1f).OnComplete(
+        
+        transform.DOMove(energyPointsPos, 10).SetSpeedBased().OnComplete(
             () =>
             {
                 PlayerManager.Instance.EnergyPoints += Point;
                 Recycle();
             });
-        //StartCoroutine(DoFly());
         collected = true;
     }
-
-    /// <summary>
-    /// 能量收集动画协程
-    /// </summary>
-    /// <param name="dest"></param>
-    /// <returns></returns>
-    private IEnumerator DoFly(Vector3 dest)
-    {
-        Vector3 direction;
-        while (Vector3.Distance(dest, transform.position) > 0.5f) // 没到时
-        {
-            yield return new WaitForSeconds(0.01f);
-            direction = (dest - transform.position).normalized;
-            transform.Translate(Vector3.Scale(direction, new Vector3(0.3f, 0.3f, 0f))); // 飞
-        }
-
-    }
+    
 
     /// <summary>
     /// 反应堆产生能量时，跳一下
@@ -102,8 +78,8 @@ public class Energy : MonoBehaviour
     /// <returns></returns>
     public IEnumerator DoJump()
     {
-        Vector3 startPos = transform.position;
-        bool isLeft = Random.Range(0, 2) == 0;
+        var startPos = transform.position;
+        var isLeft = Random.Range(0, 2) == 0;
         float x;
         // 如果向左边跳跃
         if (isLeft)

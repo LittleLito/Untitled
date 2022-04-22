@@ -29,7 +29,7 @@ public abstract class EquipBase : MonoBehaviour
     public abstract EquipType Type { get; }
 
     // 装备图片
-    public virtual Sprite EquipImg => GetComponent<SpriteRenderer>().sprite;
+    public Sprite EquipImg => GetComponent<SpriteRenderer>().sprite;
 
     // 渲染器
     protected SpriteRenderer _spriteRenderer;

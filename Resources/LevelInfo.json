@@ -116,19 +116,13 @@
     },
     {
       "Num": 15,
-      "IsBoss": true,
       "Enemies": [
         1,2,3,4,5,6
       ],
-      "MaxWaveNum": 5,
+      "IsBoss": true,
+      "Boss": 1,
+      "MaxWaveNum": 10,
       "PassScore": 10000
     }
-
-
-
-
-
-
-
   ]
 }

@@ -70,14 +70,36 @@ public class Shield : MissileBase
         {
             // 撞到敌机子弹
             case "EnemyBullet":
-                other.GetComponent<EnemyBullet>().Explode();
-                Health -= other.GetComponent<EnemyBullet>().Damage;
+                var eb = other.GetComponent<EnemyBullet>();
+                eb.Explode();
 
-                LevelManager.Instance.Stats.IncreaseStat(StatType.Absorbed, 6);
-                
+                Hit(eb.Damage);
+                break;
+            // 意大利炮弹
+            case "ItalianGunBullet":
+                var ib = other.GetComponent<EnemyGunBulletBase>();
+                ib.Explode();
+
+                Hit(ib.Damage);
+                break;
+            // Killer
+            case "Killer":
+                var k = other.GetComponent<KillerBase>();
+                k.Explode();
                 break;
 
         }
+    }
+
+    /// <summary>
+    /// 受击
+    /// </summary>
+    /// <param name="damage"></param>
+    public void Hit(float damage)
+    {
+        Health -= damage;
+
+        LevelManager.Instance.Stats.IncreaseStat(StatType.Absorbed, damage);
     }
 
     /// <summary>

@@ -87,7 +87,7 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
         _flying = false;
         
         // 击中爆炸图片
-        _animator.runtimeAnimatorController = GameManager.Instance.GameConfig.Explosion;
+        _animator.Play("Explosion", 0, 0f);
         transform.localScale = new Vector3(_explosionScale, _explosionScale, 0);
         
         Invoke(nameof(Recycle), 0.917f);

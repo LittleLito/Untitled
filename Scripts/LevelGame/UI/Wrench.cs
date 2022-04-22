@@ -50,6 +50,8 @@ public class Wrench : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
+        if (PlayerManager.Instance == null) return;
         if (!HasWrench) return;
         
         _wrenchImg.position = Input.mousePosition - new Vector3(-10, 45, 0);

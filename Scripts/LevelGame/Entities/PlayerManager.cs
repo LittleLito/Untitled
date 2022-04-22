@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -37,10 +33,10 @@ public class PlayerManager : MonoBehaviour
     public float Health
     {
         get => _health;
-        private set
+        set
         {
-            _health = value;
-            UIManager.Instance.UpdatePlayerHealth(value);
+            _health = value <= 0 ? 0 : value;
+            UIManager.Instance.UpdatePlayerHealth(_health);
 
             if (_health <= 0)
             {
@@ -50,7 +46,7 @@ public class PlayerManager : MonoBehaviour
     }
     
     // Game Over线
-    public float DeadlineY => -7f;
+    public static float DeadlineY => -7f;
     // 动画器
     private Animator _animator;
     // 渲染器
@@ -168,7 +164,7 @@ public class PlayerManager : MonoBehaviour
                 break;
             // 意大利炮炮弹（舰炮炮弹）
             case "ItalianGunBullet":
-                var ib = other.GetComponent<Boss305mmBullet>();
+                var ib = other.GetComponent<EnemyGunBulletBase>();
                 ib.Explode();
                 Camera.main.DOShakePosition(ib.Damage / 1000f, ib.Damage / 1000f);
 
@@ -176,6 +172,10 @@ public class PlayerManager : MonoBehaviour
                 // 增加数据
                 LevelManager.Instance.Stats.IncreaseStat(StatType.Absorbed, ib.Damage);
 
+                break;
+            // 敌机巡航导弹
+            case "Killer":
+                other.GetComponent<KillerBase>().Explode();
                 break;
             // 撞到回复果
             case "RecoverFruit":
@@ -200,8 +200,8 @@ public class PlayerManager : MonoBehaviour
     protected virtual void Explode(float scale)
     {
         Destroy(LocationManager);
-        Destroy(gameObject, 0.88f);
-        _animator.runtimeAnimatorController = GameManager.Instance.GameConfig.Explosion;
+        Destroy(gameObject, 0.917f);
+        _animator.runtimeAnimatorController = GameManager.Instance.GameConfig.ExplosionAnim;
         transform.localScale = new Vector3(scale, scale, 0);
         gameObject.tag = "Nothing";
     }

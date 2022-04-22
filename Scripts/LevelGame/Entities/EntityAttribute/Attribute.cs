@@ -12,7 +12,7 @@ public enum AttributeType
 
 public class AttributeModifier
 {
-    public AttributeType AttributeType;
+    public readonly AttributeType AttributeType;
     public float Value;
 
     public AttributeModifier(AttributeType attributeType, float value)
@@ -33,17 +33,7 @@ public class AttributeModifierManager
             _attributeModifiers.Add(new AttributeModifier(type, 1f));
         }
     }
-
-    // /// <summary>
-    // /// 
-    // /// </summary>
-    // /// <param name="type"></param>
-    // /// <param name="value"></param>
-    // public void AddModifier(AttributeType type, float value)
-    // {
-    //     _attributeModifiers.Find(modifier => modifier.AttributeType == type).Value *= value;
-    // }
-
+    
     /// <summary>
     /// 获取某一属性的修改器
     /// </summary>

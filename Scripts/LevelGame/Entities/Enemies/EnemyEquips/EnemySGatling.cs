@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class EnemySGatling : MonoBehaviour, IStatusEffectHandler
 {
-    // 效果控制器
-    public StatusEffectController StatusEffectController;
     // 属性修改器
     public AttributeModifierManager AttributeModifierManager;
     // 原始攻速
     private readonly float _attackCD = 0.7f;
     // 调整攻速
     private float _fixedAttackCD => _attackCD * AttributeModifierManager.GetModifier(AttributeType.AttackSpeed).Value;
+
     // 可以攻击与否
     private bool _canAttack;
     // 枪口位置偏移
@@ -20,14 +19,6 @@ public class EnemySGatling : MonoBehaviour, IStatusEffectHandler
 
     public void Init()
     {
-        if (StatusEffectController is null)
-        {
-            StatusEffectController = new StatusEffectController(this);
-        }
-        else
-        {
-            StatusEffectController.ClearStatusEffects();
-        }
         AttributeModifierManager = new AttributeModifierManager();
 
         _gunfire = transform.Find("Gunfire").GetComponent<SpriteRenderer>();
@@ -81,6 +72,8 @@ public class EnemySGatling : MonoBehaviour, IStatusEffectHandler
 
     public void HandleStatusEffect(StatusEffect effect)
     {
+        if (AttributeModifierManager is null) return;
+        
         AttributeModifierManager.Clear();
 
         if (effect is null) return;

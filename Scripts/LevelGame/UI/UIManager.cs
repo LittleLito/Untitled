@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +18,8 @@ public class UIManager : MonoBehaviour
     private SettingsPanel _settingsPanel;
     // 结束面板
     private GameOverPanel _gameOverPanel;
+    // Boss面板
+    public BossBarPanel BossBarPanel;
     // 卡槽
     public int MaxChosenNum;
     private RectTransform _seedBank;
@@ -63,6 +64,7 @@ public class UIManager : MonoBehaviour
         _waveNumText = transform.Find("LevelInfoPanel/WaveNum").GetComponent<Text>();
         _settingsPanel = transform.Find("SettingsPanel").GetComponent<SettingsPanel>();
         _gameOverPanel = transform.Find("GameOverPanel").GetComponent<GameOverPanel>();
+        BossBarPanel = transform.Find("BossPanel").GetComponent<BossBarPanel>();
         _seedBank = transform.Find("SeedBank").GetComponent<RectTransform>();
         _group = transform.Find("SeedBank/Group").gameObject;
         _energyPoints = transform.Find("SeedBank/EnergyPoints").GetComponent<Text>();
@@ -73,6 +75,10 @@ public class UIManager : MonoBehaviour
         _levelStartText = transform.Find("LevelStartText").GetComponent<Text>();
         
         _gameOverPanel.Init();
+        if (LevelManager.Instance.LevelInfo.IsBoss)
+        {
+            BossBarPanel.Init();
+        }
         
         // 更新仓库卡片
         var index = 0;
@@ -161,7 +167,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnStartCardInit()
     {
-        for (int i = 0; i < _group.transform.childCount; i++)
+        for (var i = 0; i < _group.transform.childCount; i++)
         {
             var card = _group.transform.GetChild(i).gameObject;
             var type = card.GetComponent<UIShowCard>().EquipType;
@@ -212,59 +218,38 @@ public class UIManager : MonoBehaviour
     }
 
     // 将开始倒计时文本不可见
-    private void SetLevelStartTextInactive()
-    {
-        _levelStartText.gameObject.SetActive(false);
-    }
+    private void SetLevelStartTextInactive() => _levelStartText.gameObject.SetActive(false);
 
     /// <summary>
     /// 更新关卡信息
     /// </summary>
-    public void UpdateLevelNum(int chap, int lv)
-    {
-        _levelNumText.text = "关卡" + chap + "-" + lv;
-    }
+    public void UpdateLevelNum(int chap, int lv) => _levelNumText.text = "关卡" + chap + "-" + lv;
 
     /// <summary>
     /// 更新波数信息
     /// </summary>
     /// <param name="num"></param>
-    public void UpdateWaveNum(int num)
-    {
-        _waveNumText.text = "第" + num + "波";
-    }
+    public void UpdateWaveNum(int num) => _waveNumText.text = "第" + num + "波";
 
     /// <summary>
     /// 更新能量点数
     /// </summary>
     /// <param name="num"></param>
-    public void UpdateEnergyPoints(int num)
-    {
-        _energyPoints.text = num.ToString();
-    }
+    public void UpdateEnergyPoints(int num) => _energyPoints.text = num.ToString();
 
     /// <summary>
     /// 更新玩家生命值
     /// </summary>
     /// <param name="num"></param>
-    public void UpdatePlayerHealth(float num)
-    {
-        _playerHealth.text = num.ToString(CultureInfo.InvariantCulture);
-    }
+    public void UpdatePlayerHealth(float num) => _playerHealth.text = num.ToString(CultureInfo.InvariantCulture);
 
     /// <summary>
     /// 加载数据
     /// </summary>
-    public void LoadGameOverPanel()
-    {
-        _gameOverPanel.Load();
-    }
+    public void LoadGameOverPanel() => _gameOverPanel.Load();
 
-    /// <summary>
+        /// <summary>
     /// 显示结束数据
     /// </summary>
-    public void ShowGameOverPanel()
-    {
-        _gameOverPanel.gameObject.SetActive(true);
-    }
+    public void ShowGameOverPanel() => _gameOverPanel.gameObject.SetActive(true);
 }

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Serialization;
+
 // ReSharper disable InconsistentNaming
 
 /// <summary>
@@ -22,7 +24,8 @@ public class GameConfig : ScriptableObject
     [Tooltip("能量")] public GameObject Energy;
     [Tooltip("回复果")] public GameObject RecoverFruit;
     [Tooltip("回复果摇摆动画")] public RuntimeAnimatorController RecoverFruitShake;
-    [Tooltip("爆炸效果")] public RuntimeAnimatorController Explosion;
+    [Tooltip("爆炸")] public GameObject Explosion; 
+    [Tooltip("爆炸效果")] public RuntimeAnimatorController ExplosionAnim;
     [Tooltip("喷射尾气")] public RuntimeAnimatorController Gas;
     [Tooltip("准星")] public GameObject Aim;
     [Tooltip("烟雾")] public GameObject Smoke;
@@ -67,7 +70,12 @@ public class GameConfig : ScriptableObject
     [Tooltip("武装铁皮敌机")] public GameObject ArmedTinEnemy;
 
     [Header("Boss")] 
-    [Tooltip("FishMaster")] public GameObject FishMaster;
+    [Tooltip("FishMaster")] 
+    public GameObject FishMaster;
+    public Sprite FishMaster2;
+    public Sprite FishMaster3;
+    public Sprite FishMaster4;
+
 
     [Header("子弹")] 
     [Tooltip("子弹")] public GameObject Bullet;
@@ -80,5 +88,6 @@ public class GameConfig : ScriptableObject
     [Tooltip("敌机子弹")] public GameObject EnemyBullet;
     [Tooltip("敌机子弹图片")] public Sprite EnemyBulletImg;
     [Tooltip("敌机子弹爆炸")] public RuntimeAnimatorController EnemyBulletBoom;
-    [Tooltip("Boss305mm炮弹")] public GameObject Boss305mmBullet;
+    [Tooltip("敌机Killer巡航导弹")] public GameObject KillerModelL;
+    [Tooltip("305mm炮弹")] public GameObject EnemyGun305mmBullet;
 }

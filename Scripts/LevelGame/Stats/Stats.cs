@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Stats
 {
-    private List<Stat> _stats = new List<Stat>();
+    private readonly List<Stat> _stats = new List<Stat>();
     private double _startTime;
+    private double _pausedTime;
+    private double _pausedTimeSum;
 
     /// <summary>
     /// 初始化所有数据
@@ -25,36 +27,32 @@ public class Stats
     public void StartTiming()
     {
         _startTime = Time.timeAsDouble;
+        _pausedTime = 0;
+        _pausedTimeSum = 0;
     }
 
+    public void PauseTiming() => _pausedTime = Time.timeAsDouble;
+    public void RestartTiming() => _pausedTimeSum += Time.timeAsDouble - _pausedTime;
+
     /// <summary>
-    /// 获取现在游戏时间
+    /// 获取游戏时间
     /// </summary>
     /// <returns></returns>
-    public double GetTime()
-    {
-        return Time.timeAsDouble - _startTime;
-    }
+    public double GetTime() => Time.timeAsDouble - _startTime - _pausedTimeSum;
 
     /// <summary>
     /// 增加一项数据
     /// </summary>
     /// <param name="type"></param>
     /// <param name="increment"></param>
-    public void IncreaseStat(StatType type, float increment)
-    {
-        GetStatWithType(type).Value += increment;
-    }
+    public void IncreaseStat(StatType type, float increment) => GetStatWithType(type).Value += increment;
 
     /// <summary>
     /// 通过类别获取数据
     /// </summary>
     /// <param name="type"></param>
     /// <returns></returns>
-    public Stat GetStatWithType(StatType type)
-    {
-        return _stats.Find(stat => stat.Type == type);
-    }
+    public Stat GetStatWithType(StatType type) => _stats.Find(stat => stat.Type == type);
 }
 
 /// <summary>

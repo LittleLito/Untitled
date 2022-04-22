@@ -1,3 +1,4 @@
+using System.Data.Common;
 using UnityEngine;
 
 
@@ -50,21 +51,23 @@ public abstract class BulletBase : MonoBehaviour
     /// <param name="col"></param>
     protected virtual void OnTriggerEnter2D(Collider2D col)
     {
-        // 敌机
-        if (col.gameObject.CompareTag("Enemy"))
+        switch (col.tag)
         {
-            // 击中爆炸图片
-            _animator.runtimeAnimatorController = _bulletBoom;
+            // 敌机
+            case "Enemy":
+                // 击中爆炸图片
+                _animator.runtimeAnimatorController = _bulletBoom;
             
-            var e = col.gameObject.GetComponent<EnemyBase>();
-            // 子弹其他效果
-            BoomEffect(e);
-            // 击中敌机扣血 
-            e.Hit(Damage, false);
+                var e = col.gameObject.GetComponent<EnemyBase>();
+                // 子弹其他效果
+                BoomEffect(e);
+                // 击中敌机扣血 
+                e.Hit(Damage, false);
             
-            // 不再可用
-            _alive = false;
-            Invoke(nameof(Recycle), 0.5f);
+                // 不再可用
+                _alive = false;
+                Invoke(nameof(Recycle), 0.5f);
+                break;
         }
     }
 

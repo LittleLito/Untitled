@@ -26,10 +26,10 @@ public class CattailBullet : MonoBehaviour
     private void Update()
     {
         if (!_alive) return;
-        if (transform.position.x < -11.77 || transform.position.y < PlayerManager.Instance.DeadlineY || transform.position.x > 11.77 ||
-            transform.position.y > 9.5) Recycle();
+        if (!Rect.MinMaxRect(-11.77f, PlayerManager.DeadlineY, 11.77f, 9.5f)
+                .Contains(transform.position)) Recycle();
         // 目标仍存活
-        if (!_target.gameObject.activeInHierarchy && LevelManager.Instance.LevelState == LevelState.InGame)
+        if (!_target.gameObject.activeInHierarchy && EnemyManager.Instance.Enemies.Count > 0)
         {
             var list = new List<EnemyBase>(EnemyManager.Instance.Enemies);
             list.Sort((base1, base2) => (int) (base1.transform.position.y - base2.transform.position.y) * 100);
@@ -41,13 +41,9 @@ public class CattailBullet : MonoBehaviour
         {
             var angle = Vector3.SignedAngle(transform.up, _target.position - transform.position, Vector3.forward);
             transform.Rotate(new Vector3(0, 0, Mathf.Clamp(angle * Speed * Time.deltaTime, -2, 2)));
-            transform.position += Speed * Time.deltaTime * transform.up;
         }
-        else
-        {
-            transform.position += Speed * Time.deltaTime * transform.up;
-
-        }
+        
+        transform.position += Speed * Time.deltaTime * transform.up;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

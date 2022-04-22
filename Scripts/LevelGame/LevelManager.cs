@@ -10,21 +10,23 @@ using UnityEngine;
 public enum LevelState
 {
     // 摄像机前移
-    MoveForward,
+    MoveForward = 1,
     // 选卡
-    Selecting,
+    Selecting = 2,
     // 摄像机回归
-    MoveBack,
+    MoveBack = 3,
     // 开始
-    Start,
+    Start = 4,
     // 游戏中
-    InGame,
+    InGame = 5,
+    // 游戏到boss场景转换
+    GameToBoss = 6,
     // Boss
-    Boss,
+    Boss = 7,
     // 结束
-    Over,
+    Over = 8,
     // 总结
-    Conclusion
+    Conclusion = 9
 }
 public class LevelManager : MonoBehaviour
 {
@@ -38,18 +40,11 @@ public class LevelManager : MonoBehaviour
     public readonly Stats Stats = new Stats();
     public double Time;
     // 关卡编号
-    private int[] _levelNum;
-    public int[] LevelNum
+    private int[] _levelNum
     {
-        get => _levelNum;
-        set
-        {
-            _levelNum = value;
-            UIManager.Instance.UpdateLevelNum(value[0], value[1]);
-        }
+        set => UIManager.Instance.UpdateLevelNum(value[0], value[1]);
     }
     // 波数
-    //public int MaxWaveNum { get; private set; }
     private int _waveNum;
     public int WaveNum
     {
@@ -100,16 +95,31 @@ public class LevelManager : MonoBehaviour
                 case LevelState.InGame:
                     Stats.StartTiming();
                     break;
-                case LevelState.Boss:
+                case LevelState.GameToBoss:
+                    Stats.PauseTiming();
+                    
                     // 生成boss
-                    var boss = Instantiate(GameManager.Instance.GameConfig.FishMaster, new Vector3(0, 9, 0),
-                            Quaternion.identity).GetComponent<FishMaster>();
+                    var boss = Instantiate(BossManager.Instance.Boss.gameObject, new Vector3(0, 9, 0),
+                            Quaternion.identity).GetComponent<BossBase>();
+                    // boss状态栏
+                    UIManager.Instance.BossBarPanel.SetVisible(true);
                     // 移动入场
-                    boss.transform.DOMoveY(3.14f, 8).OnComplete(() =>
+                    boss.transform.DOMoveY(3.14f, 8).SetEase(Ease.OutSine).OnComplete(() =>
                     {
-                        // 初始化
-                        boss.Init();
+                        // 入场结束后出示warning
+                        UIManager.Instance.BossBarPanel.ShowWarning(() =>
+                        {
+                            // 初始化
+                            boss.Init(Vector3.zero);
+                            GetComponent<AudioSource>().volume = 0.1f;
+                            GetComponent<AudioSource>().Play();
+                            LevelState = LevelState.Boss;
+                            Stats.RestartTiming();
+
+                        });
                     });
+                    break;
+                case LevelState.Boss:
                     break;
                 case LevelState.Over:
                     // 掐表计算游戏时间
@@ -120,6 +130,8 @@ public class LevelManager : MonoBehaviour
                     RecoverFruitManager.Instance.StopCreate();
                     // 计算数据
                     UIManager.Instance.LoadGameOverPanel();
+                    // boss状态栏（如果有）
+                    UIManager.Instance.BossBarPanel.SetVisible(true);
                     break;
                 case LevelState.Conclusion:
                     PoolManager.Instance.ClearGameObj();
@@ -139,9 +151,10 @@ public class LevelManager : MonoBehaviour
     public void StartLevel(LevelInfo levelInfo)
     {
         LevelInfo = levelInfo;
-        UIManager.Instance.Init();
         EnemyManager.Instance.InitLevelInfo();
-        LevelNum = new[] { GameData.TargetChapterNum, GameData.TargetLevelNum };
+        BossManager.Instance.InitLevelInfo();
+        UIManager.Instance.Init();
+        _levelNum = new[] { GameData.TargetChapterNum, GameData.TargetLevelNum };
         WaveNum = 0;
         Stats.InitStats();
         LevelState = LevelState.MoveForward;

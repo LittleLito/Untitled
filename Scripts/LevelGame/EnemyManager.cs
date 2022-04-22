@@ -32,6 +32,9 @@ public class EnemyManager : MonoBehaviour
     // 出发点坐标
     private float _setUpX;
     private float _setUpY;
+    
+    // 是否迎接boss完毕
+    private bool _bossHasArrived;
 
     private void Awake()
     {
@@ -57,7 +60,8 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if (LevelManager.Instance.LevelState != LevelState.InGame) return;
+        // 如果LevelState不是游戏中、游戏转boss或boss，则不执行Update
+        if (!new []{5,6,7}.Contains((int)LevelManager.Instance.LevelState)) return;
 
         // 没到达最大波数时
         if (LevelManager.Instance.WaveNum < LevelManager.Instance.LevelInfo.MaxWaveNum - 1)
@@ -67,21 +71,39 @@ public class EnemyManager : MonoBehaviour
         // 即将最大一波
         else if (LevelManager.Instance.WaveNum == LevelManager.Instance.LevelInfo.MaxWaveNum - 1)
         {
-            AutoSpawnWave(10);
+            AutoSpawnWave(8);
         }
         // 最大一波已过，敌机被全部击杀
         else if (Enemies.Count == 0)
         {
             if (LevelManager.Instance.LevelInfo.IsBoss)
             {
-                LevelManager.Instance.LevelState = LevelState.Boss;
+                switch (LevelManager.Instance.LevelState)
+                {
+                    // 稍等后进入boss部分
+                    case LevelState.InGame when !_bossHasArrived:
+                        Invoke(nameof(WelcomeBoss), 3);
+
+                        _bossHasArrived = true;
+                        break;
+                    // boss已被击杀，通关
+                    case LevelState.Boss:
+                        LevelManager.Instance.LevelState = LevelState.Over;
+            
+                        Invoke(nameof(LevelPassMovePlayer), 3);
+                        Invoke(nameof(LevelPassMoveCamera), 3.5f);
+                        break;
+                }
             }
+            // 通关
             else
             {
                 LevelManager.Instance.LevelState = LevelState.Over;
             
                 Invoke(nameof(LevelPassMovePlayer), 3);
                 Invoke(nameof(LevelPassMoveCamera), 3.5f);
+
+
             }
         }
     }
@@ -205,6 +227,9 @@ public class EnemyManager : MonoBehaviour
         }
     }
     
+    // 进入boss部分
+    private void WelcomeBoss() => LevelManager.Instance.LevelState = LevelState.GameToBoss;
+
     // 以下两个方法用于通关后的效果
     private void LevelPassMovePlayer()
     {
@@ -217,7 +242,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 通过类型获取装备的预制体
+    /// 通过类型获取敌机的预制体
     /// </summary>
     /// <param name="type"></param>
     /// <returns></returns>
@@ -234,6 +259,7 @@ public class EnemyManager : MonoBehaviour
             _ => null
         };
     }
+
 }
 
 public enum EnemyType
