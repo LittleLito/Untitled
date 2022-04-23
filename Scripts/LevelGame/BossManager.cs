@@ -13,8 +13,10 @@ public class BossManager : MonoBehaviour
 
     public void InitLevelInfo()
     {
-        // 通过关卡配置信息决定Boss
-        Boss = GetBossByType((BossType) LevelManager.Instance.LevelInfo.Boss).GetComponent<BossBase>();
+        if (LevelManager.Instance.LevelInfo.IsBoss) {
+            // 通过关卡配置信息决定Boss
+            Boss = GetBossByType((BossType)LevelManager.Instance.LevelInfo.Boss).GetComponent<BossBase>();
+        }    
     }
     
     /// <summary>

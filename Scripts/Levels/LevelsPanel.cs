@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class LevelsPanel : MonoBehaviour
 {
-    private Text _coinNum;
     private GameObject _levelPanel;
     private Text _levelNum;
     private Text _maxWaveNum;
@@ -17,7 +16,6 @@ public class LevelsPanel : MonoBehaviour
 
     private void Start()
     {
-        _coinNum = transform.Find("Coin/Num").GetComponent<Text>();
         _levelPanel = transform.Find("LevelPanel").gameObject;
         _levelPanel.SetActive(false);
         _levelNum = transform.Find("LevelPanel/LevelNum").GetComponent<Text>();
@@ -26,10 +24,6 @@ public class LevelsPanel : MonoBehaviour
         _passScore = transform.Find("LevelPanel/Canvas/PassScore").GetComponent<Text>();
     }
 
-    private void Update()
-    {
-        _coinNum.text = UserDataOperator.UserData.CoinNum.ToString();
-    }
 
     public void Levels2Chapters()
     {

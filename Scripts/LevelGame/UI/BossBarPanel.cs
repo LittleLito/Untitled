@@ -57,17 +57,17 @@ public class BossBarPanel : MonoBehaviour
     /// <param name="action">Warning结束后的操作，为boss战开始</param>
     public void ShowWarning(TweenCallback action)
     {
-        _warning.DOLocalMoveX(-300, 3).SetEase(Ease.OutSine).OnComplete(() =>
+        _warning.DOLocalMoveX(-300, 2).SetEase(Ease.OutSine).OnComplete(() =>
         {
-            _warning.DOLocalMoveX(2100, 3).SetEase(Ease.InSine);
+            _warning.DOLocalMoveX(2100, 2).SetEase(Ease.InSine);
         });
-        _bossImage.DOLocalMoveY(0, 3).SetEase(Ease.OutSine).OnComplete(() =>
+        _bossImage.DOLocalMoveY(0, 2).SetEase(Ease.OutSine).OnComplete(() =>
         {
-            _bossImage.DOLocalMoveY(-1500, 3).SetEase(Ease.InSine);
+            _bossImage.DOLocalMoveY(-1500, 2).SetEase(Ease.InSine);
         });
-        _bossName.DOLocalMoveY(-347, 3).SetEase(Ease.OutSine).OnComplete(() =>
+        _bossName.DOLocalMoveY(-347, 2).SetEase(Ease.OutSine).OnComplete(() =>
         {
-            _bossName.DOLocalMoveY(1000, 3).SetEase(Ease.InSine).OnComplete(action);
+            _bossName.DOLocalMoveY(1000, 2).SetEase(Ease.InSine).OnComplete(action);
         });
 
     }

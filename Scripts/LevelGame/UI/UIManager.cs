@@ -38,7 +38,6 @@ public class UIManager : MonoBehaviour
     private UIGameCard _currentGameCard;
     public UIGameCard CurrentGameCard
     {
-        get => _currentGameCard;
         set
         {
             if (_currentGameCard != null && _currentGameCard != value)
