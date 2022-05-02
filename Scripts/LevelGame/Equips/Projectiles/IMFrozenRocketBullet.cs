@@ -42,7 +42,7 @@ public class IMFrozenRocketBullet : BulletBase
         foreach (var e in es)
         {
             if (e is null) break;
-            e.GetComponent<EnemyBase>().StatusEffectController.AddStatusEffect(StatusEffectType.Frozen, 1.25f, 5); 
+            e.GetComponent<EnemyBase>().StatusEffectController.AddStatusEffect(StatusEffectType.Frozen, 1.5f, 5); 
             e.GetComponent<EnemyBase>().Hit(10, false);
         }
     }

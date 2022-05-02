@@ -21,7 +21,7 @@ public abstract class BossBase : EnemyBase
 
             _health = value <= 0 ? 0 : value;
             
-            UIManager.Instance.BossBarPanel.UpdateBossBarInfo(_health);
+            UIManager.Instance.bossBarPanel.UpdateBossBarInfo(_health);
 
             if (_health <= 0)
             {
@@ -195,7 +195,7 @@ public abstract class BossBase : EnemyBase
         gameObject.layer = 11;
         
         // boss血槽隐藏
-        UIManager.Instance.BossBarPanel.SetVisible(false);
+        UIManager.Instance.bossBarPanel.SetVisible(false);
         // boss停止攻击和移动行为
         StopAllActivities();
 

@@ -9,7 +9,7 @@ public class IMFrozenRocket : GatlingBase
     public override EquipType Type => EquipType.IMFrozenRocket;
     protected override GameObject Bullet => GameManager.Instance.GameConfig.IMFrozenRocketBullet;
     protected override Vector2 MuzzleOffset => new Vector2(0, 0.066f);
-    protected override float _attackCD => 1.5f;
+    protected override float _attackCD => 1.4f;
 
     protected override void GunFireEffect()
     {

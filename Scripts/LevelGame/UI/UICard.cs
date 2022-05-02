@@ -1,22 +1,16 @@
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Security.Cryptography;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class UICard : MonoBehaviour
+public class UICard : MonoBehaviour
 {
     // 装备种类
-    public virtual EquipType EquipType { get; }
+    public virtual EquipType EquipType { get; set; }
 
     // 花费文本
-    private Text _costText;
+    protected Text _costText;
 
     // 运行时花费显示文本
-    private Text _runCostText;
+    protected Text _runCostText;
 
     // 卡片图片
     protected Image _cardImg;
@@ -25,7 +19,7 @@ public abstract class UICard : MonoBehaviour
     protected Image _maskImg;
 
     // 装备图片
-    private Image _equipImg;
+    protected Image _equipImg;
     
     // 预制体
     protected GameObject _prefab;

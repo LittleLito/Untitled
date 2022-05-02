@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -43,12 +40,7 @@ public class LevelsPanel : MonoBehaviour
 
         _levelPanel.SetActive(true);
     }
-
-    public void Level2Game()
-    {
-        SceneManager.LoadScene("Scenes/LevelGame");
-    }
-
+    
     public void SetLevelPanelInactive()
     {
         GameData.TargetLevelNum = 0;

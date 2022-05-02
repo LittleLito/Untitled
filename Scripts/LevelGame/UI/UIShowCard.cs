@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,18 +6,7 @@ public class UIShowCard : UICard, IPointerClickHandler
     public EquipType Type;
     public override EquipType EquipType => Type;
     public bool IsChosen;
-    public int Index;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
+    
     /// <summary>
     /// 点击时
     /// </summary>
@@ -48,6 +35,6 @@ public class UIShowCard : UICard, IPointerClickHandler
         GetComponent<RectTransform>().anchorMax = new Vector2(0, 1);
         GetComponent<RectTransform>().anchorMin = new Vector2(0, 1);
         GetComponent<RectTransform>().pivot = new Vector2(0, 1);
-        transform.position = new Vector3((Index % 8) * 119 + 16, - ((Index / 8) * 53 + 16), 0) + transform.parent.position;
+        transform.position = new Vector3(((int)EquipType - 1) % 8 * 119 + 16, - (((int)EquipType - 1) / 8 * 53 + 16), 0) + transform.parent.position;
     }
 }

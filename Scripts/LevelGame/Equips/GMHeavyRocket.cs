@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 
 public class GMHeavyRocket : GatlingBase
 {
@@ -9,7 +9,7 @@ public class GMHeavyRocket : GatlingBase
     public override EquipType Type => EquipType.GMHeavyRocket;
     protected override GameObject Bullet => GameManager.Instance.GameConfig.GMHeavyRocketBullet;
     protected override Vector2 MuzzleOffset => new Vector2(0, 0.066f);
-    protected override float _attackCD => 1.5f;
+    protected override float _attackCD => 1.4f;
 
     protected override void GunFireEffect()
     {

@@ -17,7 +17,7 @@ public class Cattail : GatlingBase
     {
         base.Place();
 
-        _gunfireAnim = GetComponent<Animator>();
+        _gunfireAnim = transform.Find("Gunfire").GetComponent<Animator>();
     }
 
     protected override void Check()

@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 // ReSharper disable HeuristicUnreachableCode
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
 #pragma warning disable 184

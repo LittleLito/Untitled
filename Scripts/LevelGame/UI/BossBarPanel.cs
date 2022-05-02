@@ -59,15 +59,15 @@ public class BossBarPanel : MonoBehaviour
     {
         _warning.DOLocalMoveX(-300, 2).SetEase(Ease.OutSine).OnComplete(() =>
         {
-            _warning.DOLocalMoveX(2100, 2).SetEase(Ease.InSine);
+            _warning.DOLocalMoveX(2100, 1).SetEase(Ease.InSine);
         });
         _bossImage.DOLocalMoveY(0, 2).SetEase(Ease.OutSine).OnComplete(() =>
         {
-            _bossImage.DOLocalMoveY(-1500, 2).SetEase(Ease.InSine);
+            _bossImage.DOLocalMoveY(-1500, 1).SetEase(Ease.InSine);
         });
         _bossName.DOLocalMoveY(-347, 2).SetEase(Ease.OutSine).OnComplete(() =>
         {
-            _bossName.DOLocalMoveY(1000, 2).SetEase(Ease.InSine).OnComplete(action);
+            _bossName.DOLocalMoveY(1000, 1).SetEase(Ease.InSine).OnComplete(action);
         });
 
     }

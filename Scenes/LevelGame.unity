@@ -1523,7 +1523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocationManager: {fileID: 0}
   Speed: 5
-  InitEnergyPoints: 750
+  InitEnergyPoints: 5000
   InitMaxHealth: 1000
 --- !u!60 &380536606
 PolygonCollider2D:
@@ -5359,9 +5359,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3186f0f82786443815aff4b31fcf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossBarPanel: {fileID: 0}
-  MaxChosenNum: 8
-  ChosenCard: []
+  maxChosenNum: 8
+  levelNumText: {fileID: 1281489326}
+  waveNumText: {fileID: 2004774712}
+  settingsPanel: {fileID: 1822181699}
+  gameOverPanel: {fileID: 944572426}
+  bossBarPanel: {fileID: 545391584}
+  seedBank: {fileID: 312903469}
+  group: {fileID: 879717556}
+  energyPoints: {fileID: 15882954}
+  playerHealth: {fileID: 996658947}
+  wrench: {fileID: 273676401}
+  seedStorage: {fileID: 458428288}
+  canvas: {fileID: 1554846561}
+  levelStartText: {fileID: 1227636926}
 --- !u!1 &1757475602
 GameObject:
   m_ObjectHideFlags: 0

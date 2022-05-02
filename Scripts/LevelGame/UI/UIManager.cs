@@ -10,30 +10,32 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     
+    // 最大选卡数
+    public int maxChosenNum;
+
     // 天数
-    private Text _levelNumText;
+    public Text levelNumText;
     // 波数
-    private Text _waveNumText;
+    public Text waveNumText;
     // 设置面板
-    private SettingsPanel _settingsPanel;
+    public SettingsPanel settingsPanel;
     // 结束面板
-    private GameOverPanel _gameOverPanel;
+    public GameOverPanel gameOverPanel;
     // Boss面板
-    public BossBarPanel BossBarPanel;
+    public BossBarPanel bossBarPanel;
     // 卡槽
-    public int MaxChosenNum;
-    private RectTransform _seedBank;
-    private GameObject _group;
-    private Text _energyPoints;
-    private Text _playerHealth;
-    private Wrench _wrench;
+    public RectTransform seedBank;
+    public Transform group;
+    public Text energyPoints;
+    public Text playerHealth;
+    public Wrench wrench;
     // 卡片仓库
-    private Transform _seedStorage;
-    private GameObject _canvas;
+    public Transform seedStorage;
+    public Transform canvas;
     // 开始倒计时文本
-    private Text _levelStartText;
+    public Text levelStartText;
     // 已选卡片
-    public List<GameObject> ChosenCard = new List<GameObject>();
+    private readonly List<GameObject> _chosenCard = new List<GameObject>();
     // 游戏时已选卡片
     private UIGameCard _currentGameCard;
     public UIGameCard CurrentGameCard
@@ -58,55 +60,33 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     public void Init()
     {
-        // 获取组件
-        _levelNumText = transform.Find("LevelInfoPanel/LevelNum").GetComponent<Text>();
-        _waveNumText = transform.Find("LevelInfoPanel/WaveNum").GetComponent<Text>();
-        _settingsPanel = transform.Find("SettingsPanel").GetComponent<SettingsPanel>();
-        _gameOverPanel = transform.Find("GameOverPanel").GetComponent<GameOverPanel>();
-        BossBarPanel = transform.Find("BossPanel").GetComponent<BossBarPanel>();
-        _seedBank = transform.Find("SeedBank").GetComponent<RectTransform>();
-        _group = transform.Find("SeedBank/Group").gameObject;
-        _energyPoints = transform.Find("SeedBank/EnergyPoints").GetComponent<Text>();
-        _playerHealth = transform.Find("SeedBank/PlayerHealth").GetComponent<Text>();
-        _wrench = transform.Find("SeedBank/WrenchButton").GetComponent<Wrench>();
-        _seedStorage = transform.Find("SeedStorage");
-        _canvas = transform.Find("SeedStorage/Canvas").gameObject;
-        _levelStartText = transform.Find("LevelStartText").GetComponent<Text>();
-        
-        _gameOverPanel.Init();
+        gameOverPanel.Init();
         if (LevelManager.Instance.LevelInfo.IsBoss)
         {
-            BossBarPanel.Init();
+            bossBarPanel.Init();
         }
         
         // 更新仓库卡片
-        var index = 0;
         foreach (EquipType type in Enum.GetValues(typeof(EquipType)))
         {
             // 初始化每张卡片
-            var card = PoolManager.Instance.GetGameObj(GameManager.Instance.GameConfig.Card, _canvas.transform);
+            var card = Instantiate(GameManager.Instance.GameConfig.Card, canvas);
             var script = card.AddComponent<UIShowCard>();
             script.Type =  type;
             script.IsChosen = false;
-            script.Index = index;
             script.Init();
             script.UpdatePositionInStorage();
-
-
-            index++;
         }
-
-        GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-
+        
         // 设置开始倒计时文本
-        _levelStartText.gameObject.SetActive(false);
+        levelStartText.gameObject.SetActive(false);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            _settingsPanel.SetVisible(Time.timeScale.Equals(1));
+            settingsPanel.SetVisible(Time.timeScale.Equals(1));
         }
     }
 
@@ -115,7 +95,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void MoveSeedStorage(float destY, float duration)
     {
-        _seedStorage.DOMoveY(destY, duration);
+        seedStorage.DOMoveY(destY, duration);
     }
     
     /// <summary>
@@ -124,9 +104,9 @@ public class UIManager : MonoBehaviour
     /// <param name="card"></param>
     public void AddChosenCard(GameObject card)
     {
-        if (ChosenCard.Count >= MaxChosenNum) return;
-        ChosenCard.Add(card);
-        card.transform.SetParent(_group.transform);
+        if (_chosenCard.Count >= maxChosenNum) return;
+        _chosenCard.Add(card);
+        card.transform.SetParent(group);
         
         UpdateSeedBankHeight();
     }
@@ -137,8 +117,8 @@ public class UIManager : MonoBehaviour
     /// <param name="card"></param>
     public void RemoveChosenCard(GameObject card)
     {
-        ChosenCard.Remove(card);
-        card.transform.SetParent(_canvas.transform);
+        _chosenCard.Remove(card);
+        card.transform.SetParent(canvas);
         card.GetComponent<UIShowCard>().UpdatePositionInStorage();
         
         UpdateSeedBankHeight();
@@ -149,7 +129,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void UpdateSeedBankHeight()
     {
-        _seedBank.sizeDelta = new Vector2(_seedBank.sizeDelta.x, 259 + 50 * (ChosenCard.Count - 1));
+        seedBank.sizeDelta = new Vector2(seedBank.sizeDelta.x, 259 + 50 * (_chosenCard.Count - 1));
         GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
       }
 
@@ -166,9 +146,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnStartCardInit()
     {
-        for (var i = 0; i < _group.transform.childCount; i++)
+        for (var i = 0; i < group.childCount; i++)
         {
-            var card = _group.transform.GetChild(i).gameObject;
+            var card = group.GetChild(i).gameObject;
             var type = card.GetComponent<UIShowCard>().EquipType;
             Destroy(card.GetComponent<UIShowCard>());
             var script = card.AddComponent<UIGameCard>();
@@ -176,7 +156,7 @@ public class UIManager : MonoBehaviour
             script.Init();
         }
         
-        _wrench.Init();
+        wrench.Init();
     }
 
     /// <summary>
@@ -190,19 +170,19 @@ public class UIManager : MonoBehaviour
     private IEnumerator DoLevelStartTextShow()
     {
         var count = 3;
-        _levelStartText.gameObject.SetActive(true);
-        _levelStartText.font = GameManager.Instance.GameConfig.AGENCYB;
+        levelStartText.gameObject.SetActive(true);
+        levelStartText.font = GameManager.Instance.GameConfig.AGENCYB;
 
         while (count >= 1)
         {
-            _levelStartText.text = count.ToString();
+            levelStartText.text = count.ToString();
             yield return new WaitForSeconds(1);
 
             count--;
         }
         
-        _levelStartText.font = GameManager.Instance.GameConfig.LXGWWENKAI_BOLD;
-        _levelStartText.text = "起飞";
+        levelStartText.font = GameManager.Instance.GameConfig.LXGWWENKAI_BOLD;
+        levelStartText.text = "起飞";
         Invoke(nameof(SetLevelStartTextInactive), 0.5f);
         
         // 关卡开始前的初始化
@@ -217,38 +197,38 @@ public class UIManager : MonoBehaviour
     }
 
     // 将开始倒计时文本不可见
-    private void SetLevelStartTextInactive() => _levelStartText.gameObject.SetActive(false);
+    private void SetLevelStartTextInactive() => levelStartText.gameObject.SetActive(false);
 
     /// <summary>
     /// 更新关卡信息
     /// </summary>
-    public void UpdateLevelNum(int chap, int lv) => _levelNumText.text = "关卡" + chap + "-" + lv;
+    public void UpdateLevelNum(int chap, int lv) => levelNumText.text = "关卡" + chap + "-" + lv;
 
     /// <summary>
     /// 更新波数信息
     /// </summary>
     /// <param name="num"></param>
-    public void UpdateWaveNum(int num) => _waveNumText.text = "第" + num + "波";
+    public void UpdateWaveNum(int num) => waveNumText.text = "第" + num + "波";
 
     /// <summary>
     /// 更新能量点数
     /// </summary>
     /// <param name="num"></param>
-    public void UpdateEnergyPoints(int num) => _energyPoints.text = num.ToString();
+    public void UpdateEnergyPoints(int num) => energyPoints.text = num.ToString();
 
     /// <summary>
     /// 更新玩家生命值
     /// </summary>
     /// <param name="num"></param>
-    public void UpdatePlayerHealth(float num) => _playerHealth.text = num.ToString(CultureInfo.InvariantCulture);
+    public void UpdatePlayerHealth(float num) => playerHealth.text = num.ToString(CultureInfo.InvariantCulture);
 
     /// <summary>
     /// 加载数据
     /// </summary>
-    public void LoadGameOverPanel() => _gameOverPanel.Load();
+    public void LoadGameOverPanel() => gameOverPanel.Load();
 
         /// <summary>
     /// 显示结束数据
     /// </summary>
-    public void ShowGameOverPanel() => _gameOverPanel.gameObject.SetActive(true);
+    public void ShowGameOverPanel() => gameOverPanel.gameObject.SetActive(true);
 }

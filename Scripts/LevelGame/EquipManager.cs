@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EquipManager : MonoBehaviour
@@ -49,6 +50,25 @@ public class EquipManager : MonoBehaviour
             _ => null
         };
     }
+
+    /// <summary>
+    /// 通过类型获取弹射物的预制体
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    public GameObject GetProjectileByType(ProjectileType type)
+    {
+        return type switch
+        {
+            ProjectileType.Bullet => GameManager.Instance.GameConfig.Bullet,
+            ProjectileType.FrozenBullet => GameManager.Instance.GameConfig.FrozenBullet,
+            ProjectileType.CattailBullet => GameManager.Instance.GameConfig.CattailBullet,
+            ProjectileType.GMHeavyRocket => GameManager.Instance.GameConfig.GMHeavyRocketBullet,
+            ProjectileType.IMFrozenRocket => GameManager.Instance.GameConfig.IMFrozenRocketBullet,
+            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+        }; 
+    }
 }
 
 public enum EquipType
@@ -60,9 +80,9 @@ public enum EquipType
     Shield = 5,
     FrozenSGatling = 6,
     SPGatling = 7,
-    Cattail,
-    GMHeavyRocket,
-    IMFrozenRocket
+    Cattail = 8,
+    GMHeavyRocket = 9,
+    IMFrozenRocket = 10
 }
 
 public enum EquipFamily
@@ -72,6 +92,15 @@ public enum EquipFamily
     Doom,
     Defence,
     Frozen
+}
+
+public enum ProjectileType
+{
+    Bullet = 1,
+    FrozenBullet = 2,
+    CattailBullet = 3,
+    GMHeavyRocket = 4,
+    IMFrozenRocket = 5
 }
 
 public interface IOneTimeUseEquip

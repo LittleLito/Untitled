@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -102,12 +100,12 @@ public class LevelManager : MonoBehaviour
                     var boss = Instantiate(BossManager.Instance.Boss.gameObject, new Vector3(0, 9, 0),
                             Quaternion.identity).GetComponent<BossBase>();
                     // boss状态栏
-                    UIManager.Instance.BossBarPanel.SetVisible(true);
+                    UIManager.Instance.bossBarPanel.SetVisible(true);
                     // 移动入场
                     boss.transform.DOMoveY(3.14f, 8).SetEase(Ease.OutSine).OnComplete(() =>
                     {
                         // 入场结束后出示warning
-                        UIManager.Instance.BossBarPanel.ShowWarning(() =>
+                        UIManager.Instance.bossBarPanel.ShowWarning(() =>
                         {
                             // 初始化
                             boss.Init(Vector3.zero);
@@ -131,7 +129,7 @@ public class LevelManager : MonoBehaviour
                     // 计算数据
                     UIManager.Instance.LoadGameOverPanel();
                     // boss状态栏（如果有）
-                    UIManager.Instance.BossBarPanel.SetVisible(true);
+                    UIManager.Instance.bossBarPanel.SetVisible(false);
                     break;
                 case LevelState.Conclusion:
                     PoolManager.Instance.ClearGameObj();
@@ -148,7 +146,12 @@ public class LevelManager : MonoBehaviour
         Instance = this;
     }
 
-    public void StartLevel(LevelInfo levelInfo)
+    private void Start()
+    {
+        Instance.StartLevel(GameData.GetLevelInfo());
+    }
+
+    private void StartLevel(LevelInfo levelInfo)
     {
         LevelInfo = levelInfo;
         EnemyManager.Instance.InitLevelInfo();

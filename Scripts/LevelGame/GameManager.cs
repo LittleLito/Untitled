@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -16,16 +12,6 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         GameConfig = Resources.Load<GameConfig>("GameConfig");
-
-    }
-
-    private void Start()
-    {
-        LevelManager.Instance.StartLevel(GameData.GetLevelInfo());
     }
     
-    // Update is called once per frame
-    void Update()
-    {
-    }
 }

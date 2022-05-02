@@ -1,0 +1,170 @@
+{
+    "EquipmentsDatas": [
+        {
+            "Id": 0,
+            "Name": "",
+            "ChineseName": "",
+            "Conclusion": "",
+            "CD": 0,
+            "PropertyItems": [],
+            "PropertyValues": [],
+            "Description": ""
+        },
+        {
+            "Id": 1,
+            "Name": "SGatling",
+            "ChineseName": "S型轻型机枪",
+            "Conclusion": "梦开始的地方",
+            "CD": "7.5",
+            "PropertyItems": ["射击间隔", "子弹类型"], 
+            "PropertyValues": ["0.7s", "普通子弹"],
+            "Description": ""
+        },
+        {
+            "Id": 2,
+            "Name": "EnergyReactor",
+            "ChineseName": "能源反应堆",
+            "Conclusion": "万恶之源",
+            "CD": "7.5",
+            "PropertyItems": ["初始生产间隔", "生产间隔", "阳光价值"],
+            "PropertyValues": ["随机[6s, 10s]", "随机[18s, 24s]", 500],
+            "Description": ""
+        },
+        {
+            "Id": 3,
+            "Name": "CherryMissile",
+            "ChineseName": "model1 支援弹道导弹",
+            "Conclusion": "艺术就是...",
+            "CD": 50,
+            "PropertyItems": ["速度", "伤害", "爆炸半径"],
+            "PropertyValues": ["7 (100px/s)", 500, "2.5 (100px)"],
+            "Description": ""
+        },
+        {
+            "Id": 4,
+            "Name": "DelayBomb",
+            "ChineseName": "充能空雷",
+            "Conclusion": "未雨绸缪",
+            "CD": 20,
+            "PropertyItems": ["速度", "充能所需时间", "伤害", "爆炸半径"],
+            "PropertyValues": ["6.5 (100px/s)", "8s", "100/500","0.6/1.3 (100px)"],
+            "Description": ""
+        },
+        {
+            "Id": 5,
+            "Name": "Shield",
+            "ChineseName": "防弹盾牌",
+            "Conclusion": "",
+            "CD": 20,
+            "PropertyItems": ["速度", "最大生命"],
+            "PropertyValues": ["6 (100px/s)", 400],
+            "Description": ""
+        },
+        {
+            "Id": 6,
+            "Name": "FrozenSGatling",
+            "ChineseName": "S型冰霜机枪",
+            "Conclusion": "",
+            "CD": 7.5,
+            "PropertyItems": ["射击间隔", "子弹类型"],
+            "PropertyValues": ["0.7s", "普通子弹"],
+            "Description": ""
+        },
+        {
+            "Id": 7,
+            "Name": "SPGatling",
+            "ChineseName": "SP双联机枪",
+            "Conclusion": "",
+            "CD": 7.5,
+            "PropertyItems": ["射击间隔", "子弹类型"],
+            "PropertyValues": ["0.7s(每次两发)", "普通子弹"],
+            "Description": ""
+        },
+        {
+            "Id": 8,
+            "Name": "Cattail",
+            "ChineseName": "守卫者",
+            "Conclusion": "",
+            "CD": 30,
+            "PropertyItems": ["射击间隔", "子弹类型"],
+            "PropertyValues": ["0.3s", "守卫者追踪弹"],
+            "Description": ""
+        },
+        {
+            "Id": 9,
+            "Name": "GMHeavyRocket",
+            "ChineseName": "GM重型火箭炮",
+            "Conclusion": "",
+            "CD": 7.5,
+            "PropertyItems": ["射击间隔", "子弹类型"],
+            "PropertyValues": ["1.4s", "GM重型火箭弹"],
+            "Description": ""
+        },
+        {
+            "Id": 10,
+            "Name": "IMFrozenRocket",
+            "ChineseName": "IM冰霜火箭炮",
+            "Conclusion": "",
+            "CD": 50,
+            "PropertyItems": ["射击间隔", "子弹类型"],
+            "PropertyValues": ["1.4s", "IM冰霜火箭弹"],
+            "Description": ""
+        }
+    ],
+    "ProjectilesDatas": [
+        {
+            "Id": 0,
+            "Name": "",
+            "ChineseName": "",
+            "Conclusion": "",
+            "PropertyItems": [],
+            "PropertyValues": [],
+            "Description": ""
+        },
+        {
+            "Id": 1,
+            "Name": "Bullet",
+            "ChineseName": "20mm机枪弹",
+            "Conclusion": "普通的子弹",
+            "PropertyItems": ["速度", "伤害"],
+            "PropertyValues": ["12 (100px/s)", 6],
+            "Description": ""
+        },
+        {
+            "Id": 2,
+            "Name": "FrozenBullet",
+            "ChineseName": "20mm冰霜机枪弹",
+            "Conclusion": "冷冰冰的子弹",
+            "PropertyItems": ["速度", "伤害", "减速效果", "持续时间"],
+            "PropertyValues": ["12 (100px/s)", 6, "20%", "3s"],
+            "Description": ""
+        },
+        {
+            "Id": 3,
+            "Name": "CattailBullet",
+            "ChineseName": "守卫者追踪弹",
+            "Conclusion": "",
+            "PropertyItems": ["速度", "伤害", "单次最大转向角"],
+            "PropertyValues": ["4 (100px/s)", 3, "2 °/frm"],
+            "Description": ""
+        },
+        {
+            "Id": 4,
+            "Name": "GMHeavyRocketBullet",
+            "ChineseName": "GM重型火箭弹",
+            "Conclusion": "",
+            "PropertyItems": ["速度", "命中伤害", "爆炸半径", "爆炸伤害"],
+            "PropertyValues": ["11 (100px/s)", 25, "2 (100px)", 10],
+            "Description": ""
+        },
+        {
+            "Id": 5,
+            "Name": "IMFrozenRocketBullet",
+            "ChineseName": "IM冰霜火箭弹",
+            "Conclusion": "",
+            "PropertyItems": ["速度", "命中伤害", "爆炸半径", "爆炸伤害", "减速效果", "持续时间"],
+            "PropertyValues": ["11 (100px/s)", 25, "2 (100px)", 10, "30%", "5s"],
+            "Description": ""
+        }
+    ]
+}
