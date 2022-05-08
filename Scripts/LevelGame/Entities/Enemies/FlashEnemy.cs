@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -26,8 +23,8 @@ public class FlashEnemy : EnemyBase
     protected override Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.FlashEnemy3;
     protected override float _explosionScale => 1.3f;
     
-    private GameObject _rectMask;
-    private TrailRenderer _trail;
+    public GameObject rectMask;
+    public TrailRenderer trail;
     private float _jumpY;
     private int _state;
 
@@ -35,15 +32,14 @@ public class FlashEnemy : EnemyBase
     {
         base.Init(pos);
         
-        _rectMask = transform.Find("Rect").gameObject;
+        rectMask = transform.Find("Rect").gameObject;
 
-        _trail = GetComponent<TrailRenderer>();
-        _trail.enabled = true;
+        trail = GetComponent<TrailRenderer>();
+        trail.enabled = true;
 
         _jumpY = Random.Range(4f, -2.68f);
 
         _state = 1;
-
     }
 
     protected override void Move()
@@ -62,8 +58,8 @@ public class FlashEnemy : EnemyBase
                 break;
             case 2:
                 transform.Translate(0, - Random.Range(1.5f, 2f), 0);
-                _rectMask.SetActive(true);
-                _trail.enabled = false;
+                rectMask.SetActive(true);
+                trail.enabled = false;
                 _state = 3;
                 Speed = _speedRange;
                 break;
@@ -76,8 +72,8 @@ public class FlashEnemy : EnemyBase
     protected override void Explode()
     {
         _state = 1;
-        _rectMask.SetActive(false);
-        _trail.enabled = false;
+        rectMask.SetActive(false);
+        trail.enabled = false;
         
         base.Explode();
     }

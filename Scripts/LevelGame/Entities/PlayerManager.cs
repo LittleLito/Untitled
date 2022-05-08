@@ -45,8 +45,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
     
-    // Game Over线
-    public static float DeadlineY => -7f;
     // 动画器
     private Animator _animator;
     // 渲染器

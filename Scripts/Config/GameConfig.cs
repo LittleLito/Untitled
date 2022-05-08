@@ -44,8 +44,9 @@ public class GameConfig : ScriptableObject
     [Tooltip("延时炸弹")] public GameObject DelayBomb;
     [Tooltip("防弹盾牌")] public GameObject Shield;
     [Tooltip("S型冰霜机枪")] public GameObject FrozenSGatling;
-    [Tooltip("SP二联机枪")] public GameObject SPGatling;
+    [Tooltip("SP双联机枪")] public GameObject SPGatling;
     [Tooltip("守卫者")] public GameObject Cattail;
+    [Tooltip("s型小型机枪")] public GameObject SLiteGatling;
     [Tooltip("GM重型火箭炮")] public GameObject GMHeavyRocket;
     [Tooltip("IM冰霜火箭炮")] public GameObject IMFrozenRocket;
 
@@ -90,4 +91,8 @@ public class GameConfig : ScriptableObject
     [Tooltip("敌机子弹爆炸")] public RuntimeAnimatorController EnemyBulletBoom;
     [Tooltip("敌机Killer巡航导弹")] public GameObject KillerModelL;
     [Tooltip("305mm炮弹")] public GameObject EnemyGun305mmBullet;
+
+    public static Rect PlayerMoveRect = Rect.MinMaxRect(-7.72f, -6.7f, 9, 5.34967f);
+    public const float DeadlineY = -7f;
+    public static Rect BulletAvailableRect = Rect.MinMaxRect(-11.77f, -7f, 11.77f, 9.5f);
 }

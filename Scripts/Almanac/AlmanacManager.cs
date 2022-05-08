@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +6,9 @@ public enum AlmanacMode
 {
     Null,
     Equipment,
-    Projectile
+    Projectile,
+    Enemy,
+    EnemyEquipment
 }
 
 public class AlmanacManager : MonoBehaviour
@@ -25,16 +26,20 @@ public class AlmanacManager : MonoBehaviour
            
            switch (value)
            {
-               case AlmanacMode.Equipment:
-                   UpdateEquipCardStorage();
-                   UpdateInfoAction = UpdateEquipCardInfo;
-                   break;
-               case AlmanacMode.Projectile:
-                   UpdateProjectileCardStorage();
-                   UpdateInfoAction = UpdateProjectileCardInfo;
-                   break;
-               default:
-                   throw new ArgumentOutOfRangeException(nameof(value), value, null);
+                case AlmanacMode.Equipment:
+                    UpdateEquipCardStorage();
+                    UpdateInfoAction = UpdateEquipCardInfo;
+                    break;
+                case AlmanacMode.Projectile:
+                    UpdateProjectileCardStorage();
+                    UpdateInfoAction = UpdateProjectileCardInfo;
+                    break;
+                case AlmanacMode.Enemy:
+                    UpdateEnemyCardStorage();
+                    UpdateInfoAction = UpdateEnemyCardInfo;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
            }
         }
     }
@@ -64,12 +69,10 @@ public class AlmanacManager : MonoBehaviour
     public Text seedDescription;
     public GameObject propertyInfoText;
 
-
     private void Awake()
     {
         Instance = this;
     }
-
     private void Start()
     {
         AlmanacMode = AlmanacMode.Equipment;
@@ -170,9 +173,8 @@ public class AlmanacManager : MonoBehaviour
         }
 
     }
-
     /// <summary>
-    /// 更新装备卡片信息
+    /// 更新弹射物卡片信息
     /// </summary>
     private void UpdateProjectileCardInfo()
     {
@@ -206,6 +208,68 @@ public class AlmanacManager : MonoBehaviour
         // 描述
         seedDescription.text = _currentEquipmentData.Description;
 
+    }
+    
+    /// <summary>
+    /// 更新敌机卡片到仓库中
+    /// </summary>
+    private void UpdateEnemyCardStorage()
+    {
+        ClearStorage();
+        
+        // 更新仓库卡片
+        foreach (EnemyType type in Enum.GetValues(typeof(EnemyType)))
+        {
+            // 初始化每张卡片
+            var card = Instantiate(GameManager.Instance.GameConfig.Card, seedStorage);
+            var script = card.AddComponent<UIAlmanacCard>();
+            script.Type = type;
+            script.InitForEnemy();
+            script.UpdatePositionInStorage();
+        }
+
+    }
+    /// <summary>
+    /// 更新敌机卡片信息
+    /// </summary>
+    private void UpdateEnemyCardInfo()
+    {
+        var _currentEnemyData = GameData.AlmanacDataOperator.EnemiesDatas.Find(data => data.Id == (int)_currentCard.Type);
+
+        // 清除所有上个卡片的属性信息
+        while (propertiesItems.childCount > 0)
+        {
+            PoolManager.Instance.PushGameObj(propertyInfoText, propertiesItems.GetChild(0).gameObject);
+            PoolManager.Instance.PushGameObj(propertyInfoText, propertiesValues.GetChild(0).gameObject);
+        }
+        
+        // 图片
+        seedCard.Type = (EnemyType)_currentEnemyData.Id;
+        seedCard.InitForEnemy();
+        // 名称
+        seedName.text = _currentEnemyData.ChineseName;
+        // 概括
+        seedConclusion.text = _currentEnemyData.Conclusion;
+
+        // 属性
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = "出怪等级";
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = _currentEnemyData.Level.ToString();
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = "出怪权重";
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = _currentEnemyData.Weight.ToString();
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = "最大生命";
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = _currentEnemyData.MaxHealth.ToString();
+
+        foreach (var item in _currentEnemyData.PropertyItems)
+        {
+            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = item;
+        }
+        foreach (var value in _currentEnemyData.PropertyValues)
+        {
+            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = value;
+        }
+        
+        // 描述
+        seedDescription.text = _currentEnemyData.Description;
     }
 
 }

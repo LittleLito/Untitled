@@ -1523,7 +1523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocationManager: {fileID: 0}
   Speed: 5
-  InitEnergyPoints: 5000
+  InitEnergyPoints: 750
   InitMaxHealth: 1000
 --- !u!60 &380536606
 PolygonCollider2D:

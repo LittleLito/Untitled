@@ -27,6 +27,7 @@ public class EquipManager : MonoBehaviour
             EquipType.FrozenSGatling => GameManager.Instance.GameConfig.FrozenSGatling,
             EquipType.SPGatling => GameManager.Instance.GameConfig.SPGatling,
             EquipType.Cattail => GameManager.Instance.GameConfig.Cattail,
+            //EquipType.SLiteGatling => GameManager.Instance.GameConfig.SLiteGatling,
             EquipType.GMHeavyRocket => GameManager.Instance.GameConfig.GMHeavyRocket,
             EquipType.IMFrozenRocket => GameManager.Instance.GameConfig.IMFrozenRocket,
             _ => null
@@ -81,8 +82,9 @@ public enum EquipType
     FrozenSGatling = 6,
     SPGatling = 7,
     Cattail = 8,
-    GMHeavyRocket = 9,
-    IMFrozenRocket = 10
+    //SLiteGatling = 9,
+    GMHeavyRocket = 15,
+    IMFrozenRocket = 16
 }
 
 public enum EquipFamily

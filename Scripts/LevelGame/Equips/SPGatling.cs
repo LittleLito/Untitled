@@ -29,10 +29,6 @@ public class SPGatling : GatlingBase
     
     protected override void Check()
     {
-        if (!_canAttack) return;
-        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
-        if (PlayerManager.Instance.EnergyPoints < RunCost) return;
-
         // 检测射击范围内是否存在敌机
         var hit1 = Physics2D.Raycast((Vector2) SGatling1.position + MuzzleOffset, SGatling1.up,
             5.4f - SGatling1.position.y, LayerMask.GetMask("Enemy"));
@@ -79,7 +75,7 @@ public class SPGatling : GatlingBase
 
     }
 
-    protected override void SetGunFire()
+    protected void SetGunFire()
     {
         _gunfire1.enabled = false;
         _gunfire2.enabled = false;

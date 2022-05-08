@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8791166081367119588}
   - component: {fileID: 8019102274833810171}
   - component: {fileID: 5578936171411582449}
+  - component: {fileID: 823905129080512206}
   m_Layer: 0
   m_Name: Gunfire
   m_TagString: Untagged
@@ -58,7 +59,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4367697124975270262}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -102,6 +103,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &823905129080512206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4367697124975270262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4ccec781ea43bd9fa8d46628f9d22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6088083496730490369
 GameObject:
   m_ObjectHideFlags: 0

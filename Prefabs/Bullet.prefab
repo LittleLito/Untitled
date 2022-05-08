@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5010582938785793522}
   - component: {fileID: 6489086391930084345}
   - component: {fileID: 93114317565773588}
+  - component: {fileID: 1886030408369755738}
   m_Layer: 6
   m_Name: Bullet
   m_TagString: Bullet
@@ -135,8 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d893187750f0f4479050dd6c2fa1960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 12
-  Damage: 6
+  bulletBoom: {fileID: 9100000, guid: 288e890b26cb52b46a749f5716dca68b, type: 2}
 --- !u!95 &93114317565773588
 Animator:
   serializedVersion: 3
@@ -147,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 3939253472373881371}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 288e890b26cb52b46a749f5716dca68b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -156,3 +156,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1886030408369755738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3939253472373881371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4ccec781ea43bd9fa8d46628f9d22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

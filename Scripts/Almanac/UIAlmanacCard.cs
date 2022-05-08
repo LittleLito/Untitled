@@ -7,6 +7,7 @@ public class UIAlmanacCard : UICard, IPointerClickHandler, IPointerEnterHandler,
     public object Type;
     public override EquipType EquipType => (EquipType)Type;
     public ProjectileType ProjectileType => (ProjectileType)Type;
+    public EnemyType EnemyType => (EnemyType)Type;
 
     /// <summary>
     /// 给装备的初始化
@@ -64,6 +65,34 @@ public class UIAlmanacCard : UICard, IPointerClickHandler, IPointerEnterHandler,
         _runCostText = transform.Find("RunCost").GetComponent<Text>();
         _runCostText.text = "";
 
+    }
+
+    /// <summary>
+    /// 给敌机的初始化
+    /// </summary>
+    public void InitForEnemy()
+    {
+        _prefab = EnemyManager.GetEnemyByType(EnemyType);
+        _equipScript = _prefab.GetComponent<EquipBase>();
+
+        // 卡片图片
+        _cardImg = GetComponent<Image>();
+        _cardImg.sprite = GameManager.Instance.GameConfig.CardCommon;
+
+        // 遮罩阴影
+        _maskImg = transform.Find("Mask").GetComponent<Image>();
+
+        // 装备图片
+        _equipImg = transform.Find("EquipImg").GetComponent<Image>();
+        _equipImg.sprite = _prefab.GetComponent<SpriteRenderer>().sprite;
+
+        // 花费点数text
+        _costText = transform.Find("Cost").GetComponent<Text>();
+        _costText.text = "";
+
+        // 运行时花费显示文本, 如果不为0，则显示
+        _runCostText = transform.Find("RunCost").GetComponent<Text>();
+        _runCostText.text = "";
     }
     
     /// <summary>

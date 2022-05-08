@@ -1,7 +1,7 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 // ReSharper disable HeuristicUnreachableCode
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
 #pragma warning disable 184
@@ -313,26 +313,13 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
 
         // 开始计时
         _currentCd = startCD;
-        StartCoroutine(CalculateCD(startCD));
-    }
-
-    /// <summary>
-    /// CD效果及计算协程
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator CalculateCD(float startCD)
-    {
-        // 当前冷却值大于0时
-        while (_currentCd >= 0)
+        _maskImg.DOFillAmount(0, startCD).SetEase(Ease.Linear).OnComplete(() =>
         {
-            yield return new WaitForSeconds(0.1f);
-            _maskImg.fillAmount -= 1 / startCD * 0.1f; // 掀开一点阴影
-            _currentCd -= 0.1f; // 继续冷却
-        }
+            // 冷却结束，可以装备
+            _inCD = false;
+            _maskImg.color = new Color(1, 1, 1, 0);
 
-        // 冷却结束，可以装备
-        _inCD = false;
-        _maskImg.color = new Color(1, 1, 1, 0);
+        });
     }
 
     /// <summary>

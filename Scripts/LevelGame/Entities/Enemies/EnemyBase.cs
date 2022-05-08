@@ -76,7 +76,7 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
         // 初始状态
         Speed = _speedRange;
         _animator.runtimeAnimatorController = null;
-        _spriteRenderer.sprite = EnemyManager.Instance.GetEnemyByType(Type).GetComponent<SpriteRenderer>().sprite;
+        _spriteRenderer.sprite = EnemyManager.GetEnemyByType(Type).GetComponent<SpriteRenderer>().sprite;
         Health = MaxHealth;
         Order();
         transform.localScale = Vector3.one;
@@ -105,7 +105,7 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
         if (Health <= 0) return;
 
         // 在到家前移动
-        if (transform.position.y > PlayerManager.DeadlineY)
+        if (transform.position.y > GameConfig.DeadlineY)
         {
             Move();
         }
@@ -215,7 +215,7 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
         EnemyManager.Instance.RemoveEnemy(this);
 
         // 回库
-        PoolManager.Instance.PushGameObj(EnemyManager.Instance.GetEnemyByType(Type), gameObject);
+        PoolManager.Instance.PushGameObj(EnemyManager.GetEnemyByType(Type), gameObject);
     }
 
     /// <summary>

@@ -1,4 +1,4 @@
- using UnityEngine;
+using UnityEngine;
 
 public class GMHeavyRocket : GatlingBase
 {
@@ -10,13 +10,16 @@ public class GMHeavyRocket : GatlingBase
     protected override GameObject Bullet => GameManager.Instance.GameConfig.GMHeavyRocketBullet;
     protected override Vector2 MuzzleOffset => new Vector2(0, 0.066f);
     protected override float _attackCD => 1.4f;
-
+    private Animator _gunfireAnim;
+    
+    protected override void FindComponent()
+    {
+        base.FindComponent();
+        _gunfireAnim = transform.Find("Gunfire").GetComponent<Animator>();
+    }
+    
     protected override void GunFireEffect()
     {
-        _gunfire.sprite = GameManager.Instance.GameConfig.GMRocketGunfire1;
-        
-        Invoke(nameof(SetSpriteRendererEnabledFalse), 0.33f);
+        _gunfireAnim.Play("GMHeavyRocketGunfire", 0, 0f);
     }
-
-    private void SetSpriteRendererEnabledFalse() => _gunfire.enabled = false;
 }

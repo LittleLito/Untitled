@@ -5,50 +5,38 @@ public class GMHeavyRocketBullet : BulletBase
     public override float Speed => 11f;
     public override int Damage => 25;
     protected override GameObject _prefab => GameManager.Instance.GameConfig.GMHeavyRocketBullet;
-    protected override RuntimeAnimatorController _bulletBoom => null;
 
     private TrailRenderer _trail;
 
     public override void Init(Vector3 pos)
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteRenderer.sprite = _prefab.GetComponent<SpriteRenderer>().sprite;
+        base.Init(pos);
         _trail = GetComponent<TrailRenderer>();
         _trail.emitting = true;
-        transform.position = pos;
-        _alive = true;
         _spriteRenderer.enabled = true;
     }
-
-    protected override void OnTriggerEnter2D(Collider2D col)
+    
+    protected override void Explode(EnemyBase e)
     {
-        // 敌机
-        if (!col.gameObject.CompareTag("Enemy")) return;
+        base.Explode(e);
         
-        // 击中敌机扣血 
-        col.gameObject.GetComponent<EnemyBase>().Hit(Damage, false);
-        // 子弹其他效果
-            
-        // 不再可用
-        _alive = false;
         _spriteRenderer.enabled = false;
-        Invoke(nameof(Recycle), 0.6f);
-            
         GetComponent<ParticleSystem>().Play();
         
         // 造成伤害
-        var es = new Collider2D[100];
-        Physics2D.OverlapCircleNonAlloc(transform.position, 2, es, LayerMask.GetMask("Enemy"));
-        foreach (var e in es)
+        var cols = new Collider2D[100];
+        Physics2D.OverlapCircleNonAlloc(transform.position, 2, cols, LayerMask.GetMask("Enemy"));
+        foreach (var col in cols)
         {
-            if (e is null) break;
-            e.GetComponent<EnemyBase>().Hit(10, false);
+            if (col is null) break;
+            col.GetComponent<EnemyBase>().Hit(10, false);
         }
+
     }
 
-    protected override void Recycle()
+    private void OnParticleSystemStopped()
     {
         _trail.emitting = false;
-        base.Recycle();
+        Recycle();
     }
 }

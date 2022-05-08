@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Energy : MonoBehaviour
@@ -11,7 +8,7 @@ public class Energy : MonoBehaviour
     private const int Point = 500;
     public float Speed;
     public float FallingStopY;
-    private bool collected = false;
+    private bool collected;
 
     public void InitForSky(float fallingStopY, Vector2 pos)
     {
@@ -62,8 +59,7 @@ public class Energy : MonoBehaviour
         var energyPointsPos = Camera.main.ScreenToWorldPoint(new Vector3(75.7f, 153.5f, 0f));
         energyPointsPos.z = 0;
         
-        transform.DOMove(energyPointsPos, 10).SetSpeedBased().OnComplete(
-            () =>
+        transform.DOMove(energyPointsPos, 10).SetSpeedBased().SetEase(Ease.Linear).OnComplete(() =>
             {
                 PlayerManager.Instance.EnergyPoints += Point;
                 Recycle();

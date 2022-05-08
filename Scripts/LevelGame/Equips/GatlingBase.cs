@@ -9,7 +9,6 @@ public abstract class GatlingBase : EquipBase
     // 枪口位置偏移
     protected virtual Vector2 MuzzleOffset => new Vector2(0, 0.1738f);
     // 枪口火焰
-    protected SpriteRenderer _gunfire;
 
     // ReSharper disable Unity.PerformanceAnalysis
     public override void Place()
@@ -19,17 +18,13 @@ public abstract class GatlingBase : EquipBase
         _canAttack = true;
     }
 
-    protected override void FindComponent()
-    {
-        base.FindComponent();
-        
-        _gunfire = transform.Find("Gunfire").GetComponent<SpriteRenderer>();
-        _gunfire.enabled = false;
-    }
-
     // Update is called once per frame
     private void Update()
     {
+        if (!_canAttack) return;
+        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
+        if (PlayerManager.Instance.EnergyPoints < RunCost) return;
+
         // 可能要攻击
         Check();
     }
@@ -39,10 +34,6 @@ public abstract class GatlingBase : EquipBase
     /// </summary>
     protected virtual void Check()
     {
-        if (!_canAttack) return;
-        if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
-        if (PlayerManager.Instance.EnergyPoints < RunCost) return;
-
         // 检测射击范围内是否存在敌机
         var hit = Physics2D.Raycast((Vector2) transform.position + MuzzleOffset, transform.up,
             5.4f - transform.position.y, LayerMask.GetMask("Enemy"));
@@ -66,7 +57,6 @@ public abstract class GatlingBase : EquipBase
         // 进入发射CD
         _canAttack = false;
         Invoke(nameof(SetCanAttack), _attackCD);
-
     }
 
     /// <summary>
@@ -74,18 +64,11 @@ public abstract class GatlingBase : EquipBase
     /// </summary>
     protected virtual void GunFireEffect()
     {
-        _gunfire.enabled = true;
-        Invoke(nameof(SetGunFire), 0.1f);
     }
     
     /// <summary>
     /// 上膛
     /// </summary>
     protected void SetCanAttack() => _canAttack = true;
-
-    /// <summary>
-    /// 枪口熄火
-    /// </summary>
-    protected virtual void SetGunFire() => _gunfire.enabled = false;
     
 }

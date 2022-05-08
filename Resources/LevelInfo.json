@@ -121,7 +121,7 @@
       ],
       "IsBoss": true,
       "Boss": 1,
-      "MaxWaveNum": 1,
+      "MaxWaveNum": 10,
       "PassScore": 10000
     }
   ]

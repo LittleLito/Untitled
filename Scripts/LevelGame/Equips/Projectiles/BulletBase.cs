@@ -1,4 +1,3 @@
-using System.Data.Common;
 using UnityEngine;
 
 
@@ -10,8 +9,6 @@ public abstract class BulletBase : MonoBehaviour
     public abstract int Damage { get; }
     // 子弹prefab
     protected abstract GameObject _prefab { get; }
-    // 子弹爆炸动画
-    protected abstract RuntimeAnimatorController _bulletBoom { get; }
     // 是否还在运行
     protected bool _alive;
     // 组件
@@ -23,7 +20,6 @@ public abstract class BulletBase : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         
-        _animator.runtimeAnimatorController = null;
         _spriteRenderer.sprite = _prefab.GetComponent<SpriteRenderer>().sprite;
         transform.position = pos;
         _alive = true;
@@ -31,13 +27,13 @@ public abstract class BulletBase : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected virtual void Update()
+    private void Update()
     {
         if (!_alive) return;
         
-        if (transform.position.y < 6)
+        if (GameConfig.BulletAvailableRect.Contains(transform.position))
         {
-            transform.Translate(Vector3.up * (Speed * Time.deltaTime * 0.5f));
+            Move();
         }
         else
         {
@@ -45,42 +41,42 @@ public abstract class BulletBase : MonoBehaviour
         }
     }
 
+    protected virtual void Move()
+    {
+        transform.Translate(Vector3.up * (Speed * Time.deltaTime * 0.5f));
+    }
+
     /// <summary>
     /// 子弹接触其他物体
     /// </summary>
     /// <param name="col"></param>
-    protected virtual void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         switch (col.tag)
         {
             // 敌机
             case "Enemy":
-                // 击中爆炸图片
-                _animator.runtimeAnimatorController = _bulletBoom;
-            
-                var e = col.gameObject.GetComponent<EnemyBase>();
-                // 子弹其他效果
-                BoomEffect(e);
-                // 击中敌机扣血 
-                e.Hit(Damage, false);
-            
-                // 不再可用
-                _alive = false;
-                Invoke(nameof(Recycle), 0.5f);
+                Explode(col.GetComponent<EnemyBase>());
                 break;
         }
     }
 
-    protected virtual void BoomEffect(EnemyBase e)
+    protected virtual void Explode(EnemyBase e)
     {
-        
+        // 击中敌机扣血 
+        e.Hit(Damage, false);
+            
+        // 不再可用
+        _alive = false;
     }
 
     /// <summary>
     /// 回收废旧游戏对象
     /// </summary>
-    protected virtual void Recycle()
+    public virtual void Recycle()
     {
+        _spriteRenderer.sprite = _prefab.GetComponent<SpriteRenderer>().sprite;
+
         // 取消全部协程和延迟调用
         StopAllCoroutines();
         CancelInvoke();

@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using DG.Tweening;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
@@ -44,7 +39,7 @@ public class EnemyManager : MonoBehaviour
     public void InitLevelInfo()
     {
         // 通过关卡配置信息决定到访敌机
-        LevelEnemyTypes = LevelManager.Instance.LevelInfo.Enemies.AsQueryable().Cast<EnemyType>().ToList();
+        LevelEnemyTypes = LevelManager.Instance.LevelInfo.Enemies.Cast<EnemyType>().ToList();
     }
 
     public void Init()
@@ -246,7 +241,7 @@ public class EnemyManager : MonoBehaviour
     /// </summary>
     /// <param name="type"></param>
     /// <returns></returns>
-    public GameObject GetEnemyByType(EnemyType type)
+    public static GameObject GetEnemyByType(EnemyType type)
     {
         return type switch
         {

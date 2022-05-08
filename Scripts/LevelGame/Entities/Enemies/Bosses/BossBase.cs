@@ -82,7 +82,7 @@ public abstract class BossBase : EnemyBase
         StopAllActivities();
 
         // 在到家前移动
-        if (transform.position.y > PlayerManager.DeadlineY)
+        if (transform.position.y > GameConfig.DeadlineY)
         {
             transform.Translate(0, -_speedRange * Time.deltaTime * 0.5f, 0);
         }

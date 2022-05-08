@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CattailBullet : MonoBehaviour
 {
     public float Speed => 4;
-    public int Damage => 3;
+    public int Damage => 4;
     // 是否还在运行
     private bool _alive;
     // 组件
@@ -26,8 +25,7 @@ public class CattailBullet : MonoBehaviour
     private void Update()
     {
         if (!_alive) return;
-        if (!Rect.MinMaxRect(-11.77f, PlayerManager.DeadlineY, 11.77f, 9.5f)
-                .Contains(transform.position)) Recycle();
+        if (!GameConfig.BulletAvailableRect.Contains(transform.position)) Recycle();
         // 目标仍存活
         if (!_target.gameObject.activeInHierarchy && EnemyManager.Instance.Enemies.Count > 0)
         {
