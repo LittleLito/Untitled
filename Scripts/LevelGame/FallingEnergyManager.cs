@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class FallingEnergyManager : MonoBehaviour
 {
@@ -14,6 +10,19 @@ public class FallingEnergyManager : MonoBehaviour
     private const float SpawnMaxX = 8.43f;
     private const float StopMinY = -6.25f;
     private const float StopMaxY = -1.89f;
+    // CD
+    private float _createCD
+    {
+        get
+        {
+            return GameData.TargetChapterNum switch
+            {
+                1 => Random.Range(14f, 18f),
+                2 => Random.Range(36f, 50f),
+                _ => 0
+            };
+        }
+    }
     // 能否生成
     private bool _canCreate;
 
@@ -63,7 +72,7 @@ public class FallingEnergyManager : MonoBehaviour
         var spawnX = Random.Range(SpawnMinX, SpawnMaxX);
         energy.InitForSky(fallingDownY, new Vector2(spawnX, SpawnY));  // 初始化位置
 
-        Invoke(nameof(SetCanCreateTrue), Random.Range(14f, 18f));  // 计时开始
+        Invoke(nameof(SetCanCreateTrue), _createCD);  // 计时开始
     }
 
     /// <summary>

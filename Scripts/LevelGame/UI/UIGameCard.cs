@@ -1,7 +1,8 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using DG.Tweening;
+
 // ReSharper disable HeuristicUnreachableCode
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
 #pragma warning disable 184

@@ -1,33 +1,31 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameOverPanel : MonoBehaviour
 {
-    private Text _process;
-    private Text _time;
-    private Text _killed;
-    private Text _damage;
-    private Text _absorbed;
-    private Text _healed;
-    private Text _score;
-    private Text _reward;
+    private TMP_Text _process;
+    private TMP_Text _time;
+    private TMP_Text _killed;
+    private TMP_Text _damage;
+    private TMP_Text _absorbed;
+    private TMP_Text _healed;
+    private TMP_Text _score;
+    private TMP_Text _reward;
 
     public void Init()
     {
-        _process = transform.Find("Bg/Process").GetComponent<Text>();
+        _process = transform.Find("Bg/Process").GetComponent<TMP_Text>();
         
-        _time = transform.Find("Bg/Values/Time").GetComponent<Text>();
-        _killed = transform.Find("Bg/Values/Killed").GetComponent<Text>();
-        _damage = transform.Find("Bg/Values/Damage").GetComponent<Text>();
-        _absorbed = transform.Find("Bg/Values/Absorbed").GetComponent<Text>();
-        _healed = transform.Find("Bg/Values/Healed").GetComponent<Text>();
-        _score = transform.Find("Bg/Values/Score").GetComponent<Text>();
-        _reward = transform.Find("Bg/Values/Reward").GetComponent<Text>();
+        _time = transform.Find("Bg/Values/Time").GetComponent<TMP_Text>();
+        _killed = transform.Find("Bg/Values/Killed").GetComponent<TMP_Text>();
+        _damage = transform.Find("Bg/Values/Damage").GetComponent<TMP_Text>();
+        _absorbed = transform.Find("Bg/Values/Absorbed").GetComponent<TMP_Text>();
+        _healed = transform.Find("Bg/Values/Healed").GetComponent<TMP_Text>();
+        _score = transform.Find("Bg/Values/Score").GetComponent<TMP_Text>();
+        _reward = transform.Find("Bg/Values/Reward").GetComponent<TMP_Text>();
     }
 
     public void Load()

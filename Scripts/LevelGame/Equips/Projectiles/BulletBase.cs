@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public abstract class BulletBase : MonoBehaviour
 {
     // 速度
@@ -20,14 +19,14 @@ public abstract class BulletBase : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         
-        _spriteRenderer.sprite = _prefab.GetComponent<SpriteRenderer>().sprite;
+        //_spriteRenderer.sprite = _prefab.GetComponent<SpriteRenderer>().sprite;
         transform.position = pos;
         _alive = true;
 
     }
 
     // Update is called once per frame
-    private void Update()
+    protected virtual void Update()
     {
         if (!_alive) return;
         

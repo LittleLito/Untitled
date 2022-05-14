@@ -1,14 +1,22 @@
 using UnityEngine;
 
-/*public class SLiteGatling : GatlingBase
+public class SLiteGatling : GatlingBase
 {
     public override int Cost => 0;
     public override float CD => 15;
     public override EquipFamily Family => EquipFamily.Common;
-    public override EquipType Type => EquipType.SLiteGatling;
-    protected override GameObject Bullet { get; }
+    public override EquipType Type => EquipType.sLiteGatling;
+    protected override GameObject Bullet => GameManager.Instance.GameConfig.sLiteGatlingBullet;
     protected override float _attackCD => 1f;
+    private SpriteRenderer _gunfire;
 
+    protected override void FindComponent()
+    {
+        base.FindComponent();
+        _gunfire = transform.Find("Gunfire").GetComponent<SpriteRenderer>();
+        _gunfire.enabled = false;
+    }
+    
     protected override void Check()
     {
         // 检测射击范围内是否存在敌机
@@ -18,4 +26,17 @@ using UnityEngine;
         
         Shoot();
     }
-}*/
+    
+    
+    protected override void GunFireEffect()
+    {
+        _gunfire.enabled = true;
+        Invoke(nameof(SetGunFire), 0.1f);
+    }
+    
+    /// <summary>
+    /// 枪口熄火
+    /// </summary>
+    private void SetGunFire() => _gunfire.enabled = false;
+
+}

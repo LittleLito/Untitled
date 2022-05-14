@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,9 +15,9 @@ public class UIManager : MonoBehaviour
     public int maxChosenNum;
 
     // 天数
-    public Text levelNumText;
+    public TMP_Text levelNumText;
     // 波数
-    public Text waveNumText;
+    public TMP_Text waveNumText;
     // 设置面板
     public SettingsPanel settingsPanel;
     // 结束面板
@@ -26,14 +27,16 @@ public class UIManager : MonoBehaviour
     // 卡槽
     public RectTransform seedBank;
     public Transform group;
-    public Text energyPoints;
-    public Text playerHealth;
+    public TMP_Text energyPoints;
+    public TMP_Text playerHealth;
     public Wrench wrench;
     // 卡片仓库
     public Transform seedStorage;
     public Transform canvas;
     // 开始倒计时文本
-    public Text levelStartText;
+    public TMP_Text levelStartText;
+    public TMP_FontAsset agencyB;
+    public TMP_FontAsset lxgwB;
     // 已选卡片
     private readonly List<GameObject> _chosenCard = new List<GameObject>();
     // 游戏时已选卡片
@@ -155,8 +158,6 @@ public class UIManager : MonoBehaviour
             script.Type = type;
             script.Init();
         }
-        
-        wrench.Init();
     }
 
     /// <summary>
@@ -171,7 +172,7 @@ public class UIManager : MonoBehaviour
     {
         var count = 3;
         levelStartText.gameObject.SetActive(true);
-        levelStartText.font = GameManager.Instance.GameConfig.AGENCYB;
+        levelStartText.font = agencyB;
 
         while (count >= 1)
         {
@@ -181,13 +182,14 @@ public class UIManager : MonoBehaviour
             count--;
         }
         
-        levelStartText.font = GameManager.Instance.GameConfig.LXGWWENKAI_BOLD;
+        levelStartText.font = lxgwB;
         levelStartText.text = "起飞";
         Invoke(nameof(SetLevelStartTextInactive), 0.5f);
         
         // 关卡开始前的初始化
         PlayerManager.Instance.transform.DOMoveY(-3, 1).OnComplete(() => {
             PlayerManager.Instance.Init();
+            wrench.Init();
         });
         FallingEnergyManager.Instance.StartCreate();
         RecoverFruitManager.Instance.StartCreate();

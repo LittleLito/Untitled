@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,10 +8,10 @@ public class UICard : MonoBehaviour
     public virtual EquipType EquipType { get; set; }
 
     // 花费文本
-    protected Text _costText;
+    protected TMP_Text _costText;
 
     // 运行时花费显示文本
-    protected Text _runCostText;
+    protected TMP_Text _runCostText;
 
     // 卡片图片
     protected Image _cardImg;
@@ -46,12 +47,12 @@ public class UICard : MonoBehaviour
         _equipImg.sprite = _equipScript.EquipImg;
 
         // 花费点数text
-        _costText = transform.Find("Cost").GetComponent<Text>();
+        _costText = transform.Find("Cost").GetComponent<TMP_Text>();
         _costText.text = _equipScript.Cost.ToString();
 
         // 运行时花费显示文本, 如果不为0，则显示
         if (_equipScript.RunCost == 0) return;
-        _runCostText = transform.Find("RunCost").GetComponent<Text>();
+        _runCostText = transform.Find("RunCost").GetComponent<TMP_Text>();
         _runCostText.text = _equipScript.RunCost.ToString();
 
 

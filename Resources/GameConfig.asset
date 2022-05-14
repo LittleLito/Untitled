@@ -44,6 +44,7 @@ MonoBehaviour:
   FrozenSGatling: {fileID: 39522638481557046, guid: 5dbc4c28ec6e98249a50c3961270154e, type: 3}
   SPGatling: {fileID: 6270003276100324164, guid: 40177696913408048bd01ebaa0f0ed5c, type: 3}
   Cattail: {fileID: 6088083496730490369, guid: 316a12cc40143fa4587355130a74b4a2, type: 3}
+  sLiteGatling: {fileID: 2080275398229964083, guid: 887872415588dc0468c040cc0a3f8790, type: 3}
   GMHeavyRocket: {fileID: 387574567676309041, guid: 1292730902d5d1c46894790cb0eb3637, type: 3}
   IMFrozenRocket: {fileID: 1674548189531249485, guid: f40772e0731323b4bb7d095e51fad6c2, type: 3}
   NormalEnemy: {fileID: 5360277968070027299, guid: b1d2cbd3359b8854b8fdac14acc7c95f, type: 3}
@@ -71,6 +72,7 @@ MonoBehaviour:
   GMHeavyRocketBullet: {fileID: 7015073686822163568, guid: 8d83d6f2435bcd54e8e9c86d63f8bc0d, type: 3}
   IMFrozenRocketBullet: {fileID: 9155341537765097387, guid: 0371ec3610c0e3746ae8f002470a9993, type: 3}
   CattailBullet: {fileID: 216077174038519878, guid: ac3b2292444397d41b55bf1396d0f163, type: 3}
+  sLiteGatlingBullet: {fileID: 7444902636226052182, guid: 7644be737d0f7004198bd55ff81ab10e, type: 3}
   EnemyBullet: {fileID: 7603218227385014580, guid: 4b08a64ce14e96e4899eb1243d63d9cd, type: 3}
   EnemyBulletImg: {fileID: 21300000, guid: a5cf53b4348a100498b383537890f641, type: 3}
   EnemyBulletBoom: {fileID: 9100000, guid: 261585921cb052d40aa9ffa7901f4328, type: 2}

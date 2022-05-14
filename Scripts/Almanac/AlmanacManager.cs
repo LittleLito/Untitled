@@ -1,6 +1,6 @@
 using System;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public enum AlmanacMode
 {
@@ -62,11 +62,11 @@ public class AlmanacManager : MonoBehaviour
 
     public Transform seedStorage;
     public UIAlmanacCard seedCard;
-    public Text seedName;
-    public Text seedConclusion;
+    public TMP_Text seedName;
+    public TMP_Text seedConclusion;
     public Transform propertiesItems;
     public Transform propertiesValues;
-    public Text seedDescription;
+    public TMP_Text seedDescription;
     public GameObject propertyInfoText;
 
     private void Awake()
@@ -139,17 +139,16 @@ public class AlmanacManager : MonoBehaviour
         seedConclusion.text = _currentEquipmentData.Conclusion;
         
         // 属性
-        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = "CD";
-        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = _currentEquipmentData.CD + "s";
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<TMP_Text>().text = "CD";
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<TMP_Text>().text = _currentEquipmentData.CD + "s";
         foreach (var item in _currentEquipmentData.PropertyItems)
         {
-            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = item;
+            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<TMP_Text>().text = item;
         }
         foreach (var value in _currentEquipmentData.PropertyValues)
         {
-            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = value;
+            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<TMP_Text>().text = value;
         }
-        
         // 描述
         seedDescription.text = _currentEquipmentData.Description;
     }
@@ -198,11 +197,11 @@ public class AlmanacManager : MonoBehaviour
         // 属性
         foreach (var item in _currentEquipmentData.PropertyItems)
         {
-            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = item;
+            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<TMP_Text>().text = item;
         }
         foreach (var value in _currentEquipmentData.PropertyValues)
         {
-            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = value;
+            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<TMP_Text>().text = value;
         }
         
         // 描述
@@ -252,20 +251,20 @@ public class AlmanacManager : MonoBehaviour
         seedConclusion.text = _currentEnemyData.Conclusion;
 
         // 属性
-        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = "出怪等级";
-        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = _currentEnemyData.Level.ToString();
-        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = "出怪权重";
-        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = _currentEnemyData.Weight.ToString();
-        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = "最大生命";
-        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = _currentEnemyData.MaxHealth.ToString();
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<TMP_Text>().text = "出怪等级";
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<TMP_Text>().text = _currentEnemyData.Level.ToString();
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<TMP_Text>().text = "出怪权重";
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<TMP_Text>().text = _currentEnemyData.Weight.ToString();
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<TMP_Text>().text = "最大生命";
+        PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<TMP_Text>().text = _currentEnemyData.MaxHealth.ToString();
 
         foreach (var item in _currentEnemyData.PropertyItems)
         {
-            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<Text>().text = item;
+            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesItems).GetComponent<TMP_Text>().text = item;
         }
         foreach (var value in _currentEnemyData.PropertyValues)
         {
-            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<Text>().text = value;
+            PoolManager.Instance.GetGameObj(propertyInfoText, propertiesValues).GetComponent<TMP_Text>().text = value;
         }
         
         // 描述

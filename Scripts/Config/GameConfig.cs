@@ -1,5 +1,5 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 // ReSharper disable InconsistentNaming
 
@@ -18,8 +18,8 @@ public class GameConfig : ScriptableObject
     [Tooltip("冰冻卡片")] public Sprite CardFrozen;
 
     [Header("其他资源")] 
-    [Tooltip("AGENCYB")] public Font AGENCYB;
-    [Tooltip("LXGWWENKAI-BOLD")] public Font LXGWWENKAI_BOLD;
+    //[Tooltip("AGENCYB")] public TMP_FontAsset AGENCYB;
+    //[Tooltip("LXGWWENKAI-BOLD")] public TMP_FontAsset LXGWWENKAI_BOLD;
     [Tooltip("装备位置管理")] public GameObject LocationManager;
     [Tooltip("能量")] public GameObject Energy;
     [Tooltip("回复果")] public GameObject RecoverFruit;
@@ -46,7 +46,7 @@ public class GameConfig : ScriptableObject
     [Tooltip("S型冰霜机枪")] public GameObject FrozenSGatling;
     [Tooltip("SP双联机枪")] public GameObject SPGatling;
     [Tooltip("守卫者")] public GameObject Cattail;
-    [Tooltip("s型小型机枪")] public GameObject SLiteGatling;
+    [Tooltip("s型小型机枪")] public GameObject sLiteGatling;
     [Tooltip("GM重型火箭炮")] public GameObject GMHeavyRocket;
     [Tooltip("IM冰霜火箭炮")] public GameObject IMFrozenRocket;
 
@@ -86,6 +86,7 @@ public class GameConfig : ScriptableObject
     [Tooltip("GM重型火箭炮子弹")] public GameObject GMHeavyRocketBullet;    
     [Tooltip("IM冰霜火箭炮子弹")] public GameObject IMFrozenRocketBullet;
     [Tooltip("守卫者子弹")] public GameObject CattailBullet;
+    [Tooltip("s型小型机枪子弹")] public GameObject sLiteGatlingBullet;
     [Tooltip("敌机子弹")] public GameObject EnemyBullet;
     [Tooltip("敌机子弹图片")] public Sprite EnemyBulletImg;
     [Tooltip("敌机子弹爆炸")] public RuntimeAnimatorController EnemyBulletBoom;

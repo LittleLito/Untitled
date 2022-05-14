@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class BossBarPanel : MonoBehaviour
         _slider.maxValue = BossManager.Instance.Boss.MaxHealth;
         _slider.value = _slider.maxValue;
         // 血条下面的名字
-        transform.Find("BossBar/Name").GetComponent<Text>().text = BossManager.Instance.Boss.BossType.ToString();
+        transform.Find("BossBar/Name").GetComponent<TMP_Text>().text = BossManager.Instance.Boss.BossType.ToString();
         // warning背景颜色
         _warning = transform.Find("BossWarning/WarningImage");
         _warning.GetComponent<Image>().color = BossManager.Instance.Boss.BossWarningColor;
@@ -30,7 +31,7 @@ public class BossBarPanel : MonoBehaviour
         _bossImage.GetComponent<Image>().sprite = BossManager.Instance.GetBossByType(BossManager.Instance.Boss.BossType).GetComponent<SpriteRenderer>().sprite;
         _bossName = transform.Find("BossWarning/Name");
         // warning boss名称
-        _bossName.GetComponent<Text>().text = BossManager.Instance.Boss.BossType.ToString();
+        _bossName.GetComponent<TMP_Text>().text = BossManager.Instance.Boss.BossType.ToString();
     }
     
     /// <summary>

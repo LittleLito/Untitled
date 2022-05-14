@@ -17,7 +17,7 @@
             "Conclusion": "梦开始的地方",
             "CD": "7.5",
             "PropertyItems": ["射击间隔", "子弹类型"], 
-            "PropertyValues": ["0.7s", "普通子弹"],
+            "PropertyValues": ["0.7s", "20mm机枪弹"],
             "Description": ""
         },
         {
@@ -34,7 +34,7 @@
             "Id": 3,
             "Name": "CherryMissile",
             "ChineseName": "model1 支援弹道导弹",
-            "Conclusion": "艺术就是...",
+            "Conclusion": "艺术就是爆炸",
             "CD": 50,
             "PropertyItems": ["速度", "伤害", "爆炸半径"],
             "PropertyValues": ["7 (100px/s)", 500, "2.5 (100px)"],
@@ -67,17 +67,17 @@
             "Conclusion": "",
             "CD": 7.5,
             "PropertyItems": ["射击间隔", "子弹类型"],
-            "PropertyValues": ["0.7s", "普通子弹"],
+            "PropertyValues": ["0.7s", "20mm冰霜机枪弹"],
             "Description": ""
         },
         {
-            "Id": 7,
+            "Id": 7, 
             "Name": "SPGatling",
             "ChineseName": "SP双联机枪",
             "Conclusion": "",
             "CD": 7.5,
             "PropertyItems": ["射击间隔", "子弹类型"],
-            "PropertyValues": ["0.7s(每次两发)", "普通子弹"],
+            "PropertyValues": ["0.7s(每次两发)", "20mm机枪弹"],
             "Description": ""
         },
         {
@@ -88,6 +88,16 @@
             "CD": 30,
             "PropertyItems": ["射击间隔", "子弹类型"],
             "PropertyValues": ["0.3s", "守卫者追踪弹"],
+            "Description": ""
+        },
+        {
+            "Id": 9,
+            "Name": "sLiteGatling",
+            "ChineseName": "s型小型机枪",
+            "Conclusion": "虽然力量弱小，但它拥有自由",
+            "CD": "7.5",
+            "PropertyItems": ["射击间隔", "子弹类型", "射程"],
+            "PropertyValues": ["1s", "10mm机枪弹", "5 (100px)"],
             "Description": ""
         },
         {
@@ -164,6 +174,15 @@
             "Conclusion": "",
             "PropertyItems": ["速度", "命中伤害", "爆炸半径", "爆炸伤害", "减速效果", "持续时间"],
             "PropertyValues": ["11 (100px/s)", 25, "2 (100px)", 10, "30%", "5s"],
+            "Description": ""
+        },
+        {
+            "Id": 6,
+            "Name": "sLiteGatlingBullet",
+            "ChineseName": "10mm机枪弹",
+            "Conclusion": "普通的子弹",
+            "PropertyItems": ["速度", "伤害"],
+            "PropertyValues": ["10 (100px/s)", 3],
             "Description": ""
         }
     ],

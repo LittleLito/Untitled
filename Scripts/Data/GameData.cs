@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class GameData
 {
-    public static int TargetChapterNum = 1;
+    public static int TargetChapterNum = 2;
     public static int TargetLevelNum = 1;
 
     private static List<LevelInfo> _levelInfos;
@@ -38,7 +38,7 @@ public static class GameData
     public static LevelInfo GetLevelInfo()
     {
         return LevelInfos.Find(info =>
-            info.Num == (TargetChapterNum - 1) * 10 + TargetLevelNum);
+            info.Num == TargetChapterNum * 100 + TargetLevelNum);
     }
     public static LevelInfo GetLevelInfo(int levelNum)
     {
@@ -47,6 +47,6 @@ public static class GameData
     public static LevelInfo GetLevelInfo(int chapterNum, int levelNum)
     {
         return LevelInfos.Find(info =>
-            info.Num == (chapterNum - 1) * 10 + levelNum);
+            info.Num == chapterNum * 100 + levelNum);
     }
 }

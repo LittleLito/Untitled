@@ -27,7 +27,7 @@ public class EquipManager : MonoBehaviour
             EquipType.FrozenSGatling => GameManager.Instance.GameConfig.FrozenSGatling,
             EquipType.SPGatling => GameManager.Instance.GameConfig.SPGatling,
             EquipType.Cattail => GameManager.Instance.GameConfig.Cattail,
-            //EquipType.SLiteGatling => GameManager.Instance.GameConfig.SLiteGatling,
+            EquipType.sLiteGatling => GameManager.Instance.GameConfig.sLiteGatling,
             EquipType.GMHeavyRocket => GameManager.Instance.GameConfig.GMHeavyRocket,
             EquipType.IMFrozenRocket => GameManager.Instance.GameConfig.IMFrozenRocket,
             _ => null
@@ -67,6 +67,7 @@ public class EquipManager : MonoBehaviour
             ProjectileType.CattailBullet => GameManager.Instance.GameConfig.CattailBullet,
             ProjectileType.GMHeavyRocket => GameManager.Instance.GameConfig.GMHeavyRocketBullet,
             ProjectileType.IMFrozenRocket => GameManager.Instance.GameConfig.IMFrozenRocketBullet,
+            ProjectileType.sLiteGatlingBullet => GameManager.Instance.GameConfig.sLiteGatlingBullet,
             _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
         }; 
     }
@@ -82,7 +83,7 @@ public enum EquipType
     FrozenSGatling = 6,
     SPGatling = 7,
     Cattail = 8,
-    //SLiteGatling = 9,
+    sLiteGatling = 9,
     GMHeavyRocket = 15,
     IMFrozenRocket = 16
 }
@@ -102,7 +103,8 @@ public enum ProjectileType
     FrozenBullet = 2,
     CattailBullet = 3,
     GMHeavyRocket = 4,
-    IMFrozenRocket = 5
+    IMFrozenRocket = 5,
+    sLiteGatlingBullet = 6
 }
 
 public interface IOneTimeUseEquip

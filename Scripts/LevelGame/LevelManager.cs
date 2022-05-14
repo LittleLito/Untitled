@@ -42,6 +42,7 @@ public class LevelManager : MonoBehaviour
     {
         set => UIManager.Instance.UpdateLevelNum(value[0], value[1]);
     }
+
     // 波数
     private int _waveNum;
     public int WaveNum
@@ -140,7 +141,7 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-
+    
     private void Awake()
     {
         Instance = this;
@@ -157,6 +158,8 @@ public class LevelManager : MonoBehaviour
         EnemyManager.Instance.InitLevelInfo();
         BossManager.Instance.InitLevelInfo();
         UIManager.Instance.Init();
+        // 更新背景
+        BackgroundController.Instance.InitBg(GameData.TargetChapterNum);
         _levelNum = new[] { GameData.TargetChapterNum, GameData.TargetLevelNum };
         WaveNum = 0;
         Stats.InitStats();

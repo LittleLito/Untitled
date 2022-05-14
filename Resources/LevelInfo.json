@@ -1,7 +1,15 @@
 {
   "Levels": [
     {
-      "Num": 1,
+      "Num": 0,
+      "Enemies": [
+        
+      ],
+      "MaxWaveNum": 0,
+      "PassScore": 0
+    },
+    {
+      "Num": 101,
       "Enemies": [
         1
       ],
@@ -9,7 +17,7 @@
       "PassScore": 500
     },
     {
-      "Num": 2,
+      "Num": 102,
       "Enemies": [
         1
       ],
@@ -17,7 +25,7 @@
       "PassScore": 500
     },
     {
-      "Num": 3,
+      "Num": 103,
       "Enemies": [
         1,2
       ],
@@ -25,7 +33,7 @@
       "PassScore": 500
     },
     {
-      "Num": 4,
+      "Num": 104,
       "Enemies": [
         2
       ],
@@ -33,7 +41,7 @@
       "PassScore": 1000
     },
     {
-      "Num": 5,
+      "Num": 105,
       "Enemies": [
         1,2,3
       ],
@@ -41,31 +49,31 @@
       "PassScore": 1000
     },
     {
-      "Num": 6,
+      "Num": 106,
       "Enemies": [
         1,2,3,4
       ],
       "MaxWaveNum": 20,
-      "PassScore": 2000
+      "PassScore": 1500
     },
     {
-      "Num": 7,
+      "Num": 107,
       "Enemies": [
         3,4
       ],
       "MaxWaveNum": 25,
-      "PassScore": 2500
+      "PassScore": 2000
     },
     {
-      "Num": 8,
+      "Num": 108,
       "Enemies": [
         1,2,3,4,5
       ],
-      "MaxWaveNum": 40,
-      "PassScore": 4000
+      "MaxWaveNum": 35,
+      "PassScore": 3000
     },
     {
-      "Num": 9,
+      "Num": 109,
       "Enemies": [
         5
       ],
@@ -73,15 +81,15 @@
       "PassScore": 2000
     },
     {
-      "Num": 10,
+      "Num": 110,
       "Enemies": [
         3,4,5
       ],
-      "MaxWaveNum": 35,
+      "MaxWaveNum": 30,
       "PassScore": 3500
     },
     {
-      "Num": 11,
+      "Num": 111,
       "Enemies": [
         6
       ],
@@ -90,16 +98,16 @@
     },
 
     {
-      "Num": 12,
+      "Num": 112,
       "Enemies": [
         3,4,5,6
       ],
       "MaxWaveNum": 25,
-      "PassScore": 3500
+      "PassScore": 4000
     },
 
     {
-      "Num": 13,
+      "Num": 113,
       "Enemies": [
         5,6
       ],
@@ -107,22 +115,31 @@
       "PassScore": 4000
     },
     {
-      "Num": 14,
+      "Num": 114,
       "Enemies": [
         1,2,3,4,5,6
       ],
-      "MaxWaveNum": 50,
-      "PassScore": 6000
+      "MaxWaveNum": 40,
+      "PassScore": 5000
     },
     {
-      "Num": 15,
+      "Num": 115,
       "Enemies": [
         1,2,3,4,5,6
       ],
       "IsBoss": true,
       "Boss": 1,
       "MaxWaveNum": 10,
-      "PassScore": 10000
+      "PassScore": 8000
+    },
+
+    {
+      "Num": 201,
+      "Enemies": [
+        1, 2
+      ],
+      "MaxWaveNum": 20,
+      "PassScore": 1000
     }
   ]
 }
