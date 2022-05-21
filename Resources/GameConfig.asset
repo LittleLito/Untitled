@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b9ef6c1fd90644ebad0a6b9d421b69, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
+  SunEnergySign: {fileID: 21300000, guid: 3479c8f9cc09d0c4f9de9f496a07dc4d, type: 3}
+  MoonEnergySign: {fileID: 21300000, guid: 9421cbc0bff39164c87b1dfc1cdf9982, type: 3}
   Card: {fileID: 5905699403948314057, guid: 779cd5ad2076e4b428315fbc7c95aea1, type: 3}
   CardCommon: {fileID: 21300000, guid: 168006ee78aa15d4a831e0c6a9bba379, type: 3}
   CardEnlighten: {fileID: 21300000, guid: 352a704ad6da59a44acf7898240d6ce0, type: 3}
   CardDoom: {fileID: 21300000, guid: b0e407123c9db274f808832541f098cb, type: 3}
   CardDefence: {fileID: 21300000, guid: eb997d2b8a9e5d646ab848b38e44bb3a, type: 3}
   CardFrozen: {fileID: 21300000, guid: f6db8f46dcb320a45ac3951853249264, type: 3}
-  AGENCYB: {fileID: 12800000, guid: 0bb4e974335994142968c6ebecf9483e, type: 3}
-  LXGWWENKAI_BOLD: {fileID: 12800000, guid: aeb7f6d58b35c2b4dbcab5ed2caabe37, type: 3}
   LocationManager: {fileID: 8273128634736012876, guid: 44b62071943022f448c705080c80b879, type: 3}
   Energy: {fileID: 4148194973917839511, guid: 4f57c7f3451eff54597eaa2a32c28f5c, type: 3}
   RecoverFruit: {fileID: 6794380054669698739, guid: 6d99330ae0706324da4c9144af74ade5, type: 3}

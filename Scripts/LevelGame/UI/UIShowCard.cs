@@ -6,7 +6,7 @@ public class UIShowCard : UICard, IPointerClickHandler
     public EquipType Type;
     public override EquipType EquipType => Type;
     public bool IsChosen;
-    
+
     /// <summary>
     /// 点击时
     /// </summary>
@@ -32,9 +32,14 @@ public class UIShowCard : UICard, IPointerClickHandler
     /// </summary>
     public void UpdatePositionInStorage()
     {
-        GetComponent<RectTransform>().anchorMax = new Vector2(0, 1);
-        GetComponent<RectTransform>().anchorMin = new Vector2(0, 1);
-        GetComponent<RectTransform>().pivot = new Vector2(0, 1);
+        _rectTransform.anchorMax = new Vector2(0, 1);
+        _rectTransform.anchorMin = new Vector2(0, 1);
+        _rectTransform.pivot = new Vector2(0, 1);
         transform.position = new Vector3(((int)EquipType - 1) % 8 * 119 + 16, - (((int)EquipType - 1) / 8 * 53 + 16), 0) + transform.parent.position;
+
+        if (LevelManager.Instance.LevelInfo.IsNight || !(_equipScript is IMoonEnergyEquip)) return;
+        _maskImg.fillAmount = 1;
+        _cardImg.color = new Color(0.75f, 0.75f, 0.75f);
+
     }
 }

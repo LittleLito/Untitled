@@ -15,15 +15,14 @@ public enum GameCardState
 {
     // 有能量，不在冷却
     CanPlace,
-
     // 有能量，在冷却
     NoCD,
-
     // 没有能量，不在冷却
     NoEnergy,
-
     // 都没有
-    Neither
+    Neither,
+    // 无月光能量
+    NoMoonEnergy
 }
 
 public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
@@ -50,11 +49,13 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
 
             switch (value)
             {
-                case GameCardState.CanPlace: // 不在冷却
+                // 不在冷却
+                case GameCardState.CanPlace: 
                     _maskImg.fillAmount = 1;
                     _cardImg.color = Color.white;
                     break;
-                case GameCardState.NoCD: // 在冷却，有遮罩
+                // 在冷却，有遮罩
+                case GameCardState.NoCD: 
                     if (_gameCardState == GameCardState.Neither) return;
 
                     // CD开始，阴影完全遮罩
@@ -64,15 +65,22 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
 
                     _cardImg.color = new Color(0.75f, 0.75f, 0.75f);
                     break;
-                case GameCardState.NoEnergy: // 没有能量
+                // 没有能量
+                case GameCardState.NoEnergy: 
                     _maskImg.fillAmount = 1;
                     _cardImg.color = new Color(0.75f, 0.75f, 0.75f);
                     break;
-                case GameCardState.Neither: // 啥都没有
+                // 啥都没有
+                case GameCardState.Neither: 
                     // CD开始，阴影完全遮罩，
                     _maskImg.color = new Color(0.2f, 0.2f, 0.2f, 0.8f);
                     _maskImg.fillAmount = 1;
                     StartCD(_equipScript.CD);
+                    _cardImg.color = new Color(0.75f, 0.75f, 0.75f);
+                    break;
+                // 没有月光能量
+                case GameCardState.NoMoonEnergy:
+                    _maskImg.fillAmount = 1;
                     _cardImg.color = new Color(0.75f, 0.75f, 0.75f);
                     break;
                 default:
@@ -95,11 +103,8 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
         get => _hasEquip;
         set
         {
-            if (_hasEquip == value)
-            {
-                return;
-            }
-
+            if (_hasEquip == value) return;
+            
             _hasEquip = value;
             switch (_hasEquip)
             {
@@ -153,6 +158,10 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
         PlayerManager.Instance.AddEnergyUpdateActionListener(CheckState);
         CancelPlace();
         GameCardState = GameCardState.CanPlace;
+        if (!LevelManager.Instance.LevelInfo.IsNight && _equipScript is IMoonEnergyEquip)
+        {
+            GameCardState = GameCardState.NoMoonEnergy;
+        }
     }
 
     // Update is called once per frame
@@ -328,6 +337,8 @@ public class UIGameCard : UICard, IPointerEnterHandler, IPointerExitHandler, IPo
     /// </summary>
     private void CheckState()
     {
+        if (GameCardState == GameCardState.NoMoonEnergy) return;
+
         GameCardState = _inCD switch
         {
             // 有能量，不在冷却

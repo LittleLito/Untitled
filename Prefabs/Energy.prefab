@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4148194973917839510}
   - component: {fileID: 9216150509681490099}
   - component: {fileID: 1606382966}
+  - component: {fileID: 2352645359597928935}
   m_Layer: 8
   m_Name: Energy
   m_TagString: Energy
@@ -116,9 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f842b05841012c2438d8db341a640cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Point: 500
-  Speed: 0
-  FallingStopY: 0
+  speed: 0
+  polygonCollider2D: {fileID: 1606382966}
+  animator: {fileID: 4148194973917839510}
+  light2D: {fileID: 2352645359597928935}
 --- !u!60 &1606382966
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -187,3 +189,44 @@ PolygonCollider2D:
       - {x: 0.04, y: -0.089999996}
       - {x: -0.03, y: -0.089999996}
       - {x: -0.04, y: -0.08}
+--- !u!114 &2352645359597928935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4148194973917839511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 2
+  m_FalloffIntensity: 0.805
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}

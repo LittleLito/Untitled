@@ -11,18 +11,7 @@ public class FallingEnergyManager : MonoBehaviour
     private const float StopMinY = -6.25f;
     private const float StopMaxY = -1.89f;
     // CD
-    private float _createCD
-    {
-        get
-        {
-            return GameData.TargetChapterNum switch
-            {
-                1 => Random.Range(14f, 18f),
-                2 => Random.Range(36f, 50f),
-                _ => 0
-            };
-        }
-    }
+    private float _createCD => LevelManager.Instance.LevelInfo.IsNight ? Random.Range(36f, 50f) : Random.Range(14f, 18f);
     // 能否生成
     private bool _canCreate;
 
@@ -70,7 +59,8 @@ public class FallingEnergyManager : MonoBehaviour
         var energy = PoolManager.Instance.GetGameObj(GameManager.Instance.GameConfig.Energy, transform).GetComponent<Energy>();
         var fallingDownY = Random.Range(StopMinY, StopMaxY);
         var spawnX = Random.Range(SpawnMinX, SpawnMaxX);
-        energy.InitForSky(fallingDownY, new Vector2(spawnX, SpawnY));  // 初始化位置
+        var type = LevelManager.Instance.LevelInfo.IsNight ? EnergyType.Moon : EnergyType.Sun;
+        energy.InitForSky(type, fallingDownY, new Vector2(spawnX, SpawnY));  // 初始化位置
 
         Invoke(nameof(SetCanCreateTrue), _createCD);  // 计时开始
     }

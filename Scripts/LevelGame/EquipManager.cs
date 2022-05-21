@@ -113,3 +113,8 @@ public interface IOneTimeUseEquip
 
     void Launch(Vector3 target);
 }
+
+public interface IMoonEnergyEquip
+{
+    
+}

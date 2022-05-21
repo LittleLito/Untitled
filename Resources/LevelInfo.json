@@ -135,6 +135,7 @@
 
     {
       "Num": 201,
+	  "IsNight": true,
       "Enemies": [
         1, 2
       ],

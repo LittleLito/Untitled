@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public struct LevelInfo
 {
     public int Num;
+	public bool IsNight;
     public List<int> Enemies;
     public bool IsBoss;
     public int Boss;

@@ -1,31 +1,87 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
+using Random = UnityEngine.Random;
+
+public enum EnergyType
+{
+    Null,
+	Sun,
+    SunOnReactor,
+	Moon,
+    MoonOnReactor
+}
 
 public class Energy : MonoBehaviour
 {
-    private const int Point = 500;
-    public float Speed;
-    public float FallingStopY;
-    private bool collected;
-
-    public void InitForSky(float fallingStopY, Vector2 pos)
+    private EnergyType _energyType;
+    public EnergyType EnergyType 
     {
-        FallingStopY = fallingStopY; // 下落终点
-        transform.position = pos; // 下落起始位置
-        Speed = Random.Range(0.8f, 1.2f);
-        collected = false;
+        set
+        {
+            if (_energyType.Equals(value)) return;
 
-        gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+            _energyType = value;
+
+            switch (value)
+            {
+                case EnergyType.Sun:
+                    speed = Random.Range(0.8f, 1.5f);
+                    animator.Play("SunEnergy", 0, 0f);
+                    light2D.color = Color.yellow;
+                    light2D.pointLightOuterRadius = 2.42f;
+                    light2D.intensity = 0.51f;
+                    _point = 500;
+                    break;
+                case EnergyType.SunOnReactor:
+                    animator.Play("SunEnergy", 0, 0f);
+                    light2D.color = Color.yellow;
+                    light2D.pointLightOuterRadius = 2.42f;
+                    light2D.intensity = 0.17f;
+                    break;
+                case EnergyType.Moon:
+                    speed = Random.Range(0.6f, 1f);
+                    animator.Play("MoonEnergy", 0, 0f);
+                    _point = 250;
+                    light2D.color = Color.white;
+                    light2D.pointLightOuterRadius = 1.5f;
+                    light2D.intensity = 0.17f;
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
+            }
+        }
+    }
+    private int _point = 500;
+    public float speed;
+    private float _fallingStopY;
+    private bool _collected;
+    public PolygonCollider2D polygonCollider2D;
+    public Animator animator;
+    public Light2D light2D;
+
+
+    public void InitForSky(EnergyType type, float fallingStopY, Vector2 pos)
+    {
+        _fallingStopY = fallingStopY; // 下落终点
+        transform.position = pos; // 下落起始位置
+        _collected = false;
+
+        EnergyType = type;
+        polygonCollider2D.enabled = true;
     }
 
-    public void InitForReactor(Vector2 pos)
+    public void InitForReactor(EnergyType type, Vector2 pos)
     {
         transform.position = pos;
-        FallingStopY = 10000f;
-        collected = true;
+        _fallingStopY = 10000f;
+        _collected = true;
 
-        gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+        EnergyType = type;
+        polygonCollider2D.enabled = false;
 
     }
     
@@ -33,15 +89,15 @@ public class Energy : MonoBehaviour
     private void Update()
     {
         if (LevelManager.Instance.LevelState != LevelState.InGame && LevelManager.Instance.LevelState != LevelState.Boss) return;
-        if (collected) return;
+        if (_collected) return;
 
-        if (transform.position.y <= FallingStopY)
+        if (transform.position.y <= _fallingStopY)
         {
             Invoke(nameof(Recycle), 10); // 超过十秒能量消失
             return;
         }
 
-        transform.Translate(Vector3.down * (Time.deltaTime * Speed));
+        transform.Translate(Vector3.down * (Time.deltaTime * speed));
     }
 
     /// <summary>
@@ -60,10 +116,10 @@ public class Energy : MonoBehaviour
         
         transform.DOMove(energyPointsPos, 10).SetSpeedBased().SetEase(Ease.Linear).OnComplete(() =>
             {
-                PlayerManager.Instance.EnergyPoints += Point;
+                PlayerManager.Instance.EnergyPoints += _point;
                 Recycle();
             });
-        collected = true;
+        _collected = true;
     }
     
 

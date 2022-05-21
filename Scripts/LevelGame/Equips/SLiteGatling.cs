@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SLiteGatling : GatlingBase
+public class SLiteGatling : GatlingBase, IMoonEnergyEquip
 {
     public override int Cost => 0;
     public override float CD => 15;

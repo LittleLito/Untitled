@@ -10,6 +10,8 @@ using UnityEngine;
 public class GameConfig : ScriptableObject
 {
     [Header("卡片相关")]
+	[Tooltip("阳光能量")] public Sprite SunEnergySign;
+	[Tooltip("月光能量")] public Sprite MoonEnergySign;
     [Tooltip("卡片")] public GameObject Card;
     [Tooltip("普通卡片")] public Sprite CardCommon;
     [Tooltip("能量生产卡片")] public Sprite CardEnlighten;

@@ -9,7 +9,9 @@ public class UICard : MonoBehaviour
 
     // 花费文本
     protected TMP_Text _costText;
-
+	
+	// 能量图片
+	protected Image _energySignImg;
     // 运行时花费显示文本
     protected TMP_Text _runCostText;
 
@@ -27,10 +29,14 @@ public class UICard : MonoBehaviour
 
     // 装备脚本
     protected EquipBase _equipScript;
+    
+    protected RectTransform _rectTransform;
 
 
     public virtual void Init()
     {
+        _rectTransform = GetComponent<RectTransform>();
+        
         _prefab = EquipManager.Instance.GetEquipByType(EquipType);
         _equipScript = _prefab.GetComponent<EquipBase>();
 
@@ -50,12 +56,14 @@ public class UICard : MonoBehaviour
         _costText = transform.Find("Cost").GetComponent<TMP_Text>();
         _costText.text = _equipScript.Cost.ToString();
 
+		// 能量图片
+		_energySignImg = transform.Find("EnergySign").GetComponent<Image>();
+        _energySignImg.sprite = _equipScript is IMoonEnergyEquip ? GameManager.Instance.GameConfig.MoonEnergySign : GameManager.Instance.GameConfig.SunEnergySign;
+
         // 运行时花费显示文本, 如果不为0，则显示
         if (_equipScript.RunCost == 0) return;
-        _runCostText = transform.Find("RunCost").GetComponent<TMP_Text>();
+        _runCostText = transform.Find("EnergySign/RunCost").GetComponent<TMP_Text>();
         _runCostText.text = _equipScript.RunCost.ToString();
-
-
 
     }
 }

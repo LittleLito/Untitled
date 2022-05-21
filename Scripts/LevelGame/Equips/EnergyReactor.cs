@@ -8,8 +8,8 @@ public class EnergyReactor : EquipBase
     public override EquipFamily Family => EquipFamily.Enlighten;
 
     private bool _canCreate;
-    
-    
+    private float _createCD => LevelManager.Instance.LevelInfo.IsNight ? Random.Range(50f, 70f) : Random.Range(18f, 24f);
+
 
     /// <summary>
     /// 放置时初始化
@@ -23,6 +23,7 @@ public class EnergyReactor : EquipBase
         energy.transform.position = transform.position;
         energy.transform.localScale = new Vector3(0.4f, 0.4f, 1);
         Destroy(energy.GetComponent<PolygonCollider2D>());
+        energy.GetComponent<Energy>().EnergyType = EnergyType.SunOnReactor;
         Destroy(energy.GetComponent<Energy>());
 
         Invoke(nameof(CreateEnergy), Random.Range(6f, 10f));
@@ -44,10 +45,10 @@ public class EnergyReactor : EquipBase
         _canCreate = false;
         // 生成能量
         var energy = PoolManager.Instance.GetGameObj(GameManager.Instance.GameConfig.Energy, null).GetComponent<Energy>();
-        energy.InitForReactor(transform.position);
+        energy.InitForReactor(EnergyType.Sun, transform.position);
         // 跳跃动画
         StartCoroutine(energy.DoJump());
-        Invoke(nameof(SetCanCreate), Random.Range(18f, 24f)); // 计时开始
+        Invoke(nameof(SetCanCreate), _createCD); // 计时开始
     }
 
     /// <summary>
