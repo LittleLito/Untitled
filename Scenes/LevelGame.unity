@@ -3135,8 +3135,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: FishMaster
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b5567b9d921263946a891ad4f9352329, type: 2}
-  m_sharedMaterial: {fileID: 8735965001151360626, guid: b5567b9d921263946a891ad4f9352329, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f7bb90be3fcc8174e991c55abb49fe42, type: 2}
+  m_sharedMaterial: {fileID: -1421781200345582585, guid: f7bb90be3fcc8174e991c55abb49fe42, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4187,7 +4187,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u8FD4\u56DE\u7AE0\u8282"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 599baa3249e7029498a5534c8d963170, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 249d066ff3df2224695cf5193dbf276d, type: 2}
   m_sharedMaterial: {fileID: -1678839361335000989, guid: 599baa3249e7029498a5534c8d963170, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4251,7 +4251,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1049208321
@@ -4396,7 +4396,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u8FD4\u56DE\u9996\u9875"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 599baa3249e7029498a5534c8d963170, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 249d066ff3df2224695cf5193dbf276d, type: 2}
   m_sharedMaterial: {fileID: -1678839361335000989, guid: 599baa3249e7029498a5534c8d963170, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4460,7 +4460,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1093456747
@@ -7165,8 +7165,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: FishMaster
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b5567b9d921263946a891ad4f9352329, type: 2}
-  m_sharedMaterial: {fileID: 8735965001151360626, guid: b5567b9d921263946a891ad4f9352329, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f7bb90be3fcc8174e991c55abb49fe42, type: 2}
+  m_sharedMaterial: {fileID: -1421781200345582585, guid: f7bb90be3fcc8174e991c55abb49fe42, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

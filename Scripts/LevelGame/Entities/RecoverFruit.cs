@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RecoverFruit : MonoBehaviour
 {
@@ -33,15 +35,28 @@ public class RecoverFruit : MonoBehaviour
         Invoke(nameof(Recycle), 20);
     }
 
+    /// <summary>
+    /// 被玩家拾取
+    /// </summary>
+    public void Pick()
+    {
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        tag = "Nothing";
+        
+        GetComponent<ParticleSystem>().Play();
+    }
+
+    private void OnParticleSystemStopped()
+    {
+        Recycle();
+    }
+
 
     /// <summary>
     /// 回收废旧游戏对象
     /// </summary>
-    public void Recycle()
+    private void Recycle()
     {
-        gameObject.GetComponent<CircleCollider2D>().enabled = false;
-        tag = "Nothing";
-
         // 取消全部协程和延迟调用
         StopAllCoroutines();
         CancelInvoke();

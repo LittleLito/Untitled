@@ -179,7 +179,7 @@ public class PlayerManager : MonoBehaviour
             case "RecoverFruit":
                 Health += RecoverFruit.RecoverPoint;
                 LevelManager.Instance.Stats.IncreaseStat(StatType.Healed, RecoverFruit.RecoverPoint);
-                other.GetComponent<RecoverFruit>().Recycle();
+                other.GetComponent<RecoverFruit>().Pick();
                 break;
         }
     }

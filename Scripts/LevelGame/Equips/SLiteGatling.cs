@@ -3,7 +3,7 @@ using UnityEngine;
 public class SLiteGatling : GatlingBase, IMoonEnergyEquip
 {
     public override int Cost => 0;
-    public override float CD => 15;
+    public override float CD => 7.5f;
     public override EquipFamily Family => EquipFamily.Common;
     public override EquipType Type => EquipType.sLiteGatling;
     protected override GameObject Bullet => GameManager.Instance.GameConfig.sLiteGatlingBullet;
