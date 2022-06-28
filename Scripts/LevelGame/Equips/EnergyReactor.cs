@@ -8,7 +8,7 @@ public class EnergyReactor : EquipBase
     public override EquipFamily Family => EquipFamily.Enlighten;
 
     private bool _canCreate;
-    private float _createCD => LevelManager.Instance.LevelInfo.IsNight ? Random.Range(50f, 70f) : Random.Range(18f, 24f);
+    private float _createCD => LevelManager.Instance.LevelInfo.IsNight ? Random.Range(60f, 70f) : Random.Range(18f, 24f);
 
 
     /// <summary>

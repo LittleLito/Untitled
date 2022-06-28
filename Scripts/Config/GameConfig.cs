@@ -20,8 +20,6 @@ public class GameConfig : ScriptableObject
     [Tooltip("冰冻卡片")] public Sprite CardFrozen;
 
     [Header("其他资源")] 
-    //[Tooltip("AGENCYB")] public TMP_FontAsset AGENCYB;
-    //[Tooltip("LXGWWENKAI-BOLD")] public TMP_FontAsset LXGWWENKAI_BOLD;
     [Tooltip("装备位置管理")] public GameObject LocationManager;
     [Tooltip("能量")] public GameObject Energy;
     [Tooltip("回复果")] public GameObject RecoverFruit;
@@ -49,6 +47,7 @@ public class GameConfig : ScriptableObject
     [Tooltip("SP双联机枪")] public GameObject SPGatling;
     [Tooltip("守卫者")] public GameObject Cattail;
     [Tooltip("s型小型机枪")] public GameObject sLiteGatling;
+    [Tooltip("月光能量反应堆")] public GameObject MoonEnergyReactor;
     [Tooltip("GM重型火箭炮")] public GameObject GMHeavyRocket;
     [Tooltip("IM冰霜火箭炮")] public GameObject IMFrozenRocket;
 

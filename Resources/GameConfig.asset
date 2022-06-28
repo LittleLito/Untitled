@@ -45,6 +45,7 @@ MonoBehaviour:
   SPGatling: {fileID: 6270003276100324164, guid: 40177696913408048bd01ebaa0f0ed5c, type: 3}
   Cattail: {fileID: 6088083496730490369, guid: 316a12cc40143fa4587355130a74b4a2, type: 3}
   sLiteGatling: {fileID: 2080275398229964083, guid: 887872415588dc0468c040cc0a3f8790, type: 3}
+  MoonEnergyReactor: {fileID: 8199475737340316779, guid: a27e6b42ce29bb04caf249909728bde4, type: 3}
   GMHeavyRocket: {fileID: 387574567676309041, guid: 1292730902d5d1c46894790cb0eb3637, type: 3}
   IMFrozenRocket: {fileID: 1674548189531249485, guid: f40772e0731323b4bb7d095e51fad6c2, type: 3}
   NormalEnemy: {fileID: 5360277968070027299, guid: b1d2cbd3359b8854b8fdac14acc7c95f, type: 3}

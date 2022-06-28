@@ -48,7 +48,12 @@ public class Energy : MonoBehaviour
                     light2D.color = Color.white;
                     light2D.pointLightOuterRadius = 1.5f;
                     light2D.intensity = 0.17f;
-
+                    break;
+                case EnergyType.MoonOnReactor:
+                    animator.Play("MoonEnergy", 0, 0f);
+                    light2D.color = Color.white;
+                    light2D.pointLightOuterRadius = 1.5f;
+                    light2D.intensity = 0.17f;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(value), value, null);

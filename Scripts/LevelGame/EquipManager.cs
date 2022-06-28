@@ -28,6 +28,7 @@ public class EquipManager : MonoBehaviour
             EquipType.SPGatling => GameManager.Instance.GameConfig.SPGatling,
             EquipType.Cattail => GameManager.Instance.GameConfig.Cattail,
             EquipType.sLiteGatling => GameManager.Instance.GameConfig.sLiteGatling,
+            EquipType.MoonEnergyReactor => GameManager.Instance.GameConfig.MoonEnergyReactor,
             EquipType.GMHeavyRocket => GameManager.Instance.GameConfig.GMHeavyRocket,
             EquipType.IMFrozenRocket => GameManager.Instance.GameConfig.IMFrozenRocket,
             _ => null
@@ -84,6 +85,7 @@ public enum EquipType
     SPGatling = 7,
     Cattail = 8,
     sLiteGatling = 9,
+    MoonEnergyReactor = 10,
     GMHeavyRocket = 15,
     IMFrozenRocket = 16
 }
