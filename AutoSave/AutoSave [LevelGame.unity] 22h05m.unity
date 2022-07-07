@@ -7165,8 +7165,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: FishMaster
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b5567b9d921263946a891ad4f9352329, type: 2}
-  m_sharedMaterial: {fileID: 8735965001151360626, guid: b5567b9d921263946a891ad4f9352329, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f7bb90be3fcc8174e991c55abb49fe42, type: 2}
+  m_sharedMaterial: {fileID: -1421781200345582585, guid: f7bb90be3fcc8174e991c55abb49fe42, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

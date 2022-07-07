@@ -42,9 +42,13 @@ public class FishMaster : BossBase
         }
     }
     protected override float _speedRange => Random.Range(0.5f, 4f) * AttributeModifierManager.GetModifier(AttributeType.Speed).Value;
-    protected override Sprite DamagedImgNo2 => GameManager.Instance.GameConfig.FishMaster2;
-    protected override Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.FishMaster3;
-    protected override Sprite DamagedImgNo4 => GameManager.Instance.GameConfig.FishMaster4;
+    
+    public Sprite damagedImgNo2;
+    public Sprite damagedImgNo3;
+    public Sprite damagedImgNo4;
+    protected override Sprite DamagedImgNo2 => damagedImgNo2;
+    protected override Sprite DamagedImgNo3 => damagedImgNo3;
+    protected override Sprite DamagedImgNo4 => damagedImgNo4;
     protected override float _explosionScale => 7f;
     public override Color BossWarningColor => Color.red;
 

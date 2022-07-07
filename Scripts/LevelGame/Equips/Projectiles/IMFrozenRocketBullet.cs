@@ -16,7 +16,7 @@ public class IMFrozenRocketBullet : BulletBase
         _spriteRenderer.enabled = true;
     }
 
-    protected override void Explode(EnemyBase e)
+    protected override void Explode(IHitable e)
     {
         base.Explode(e);
         
@@ -29,9 +29,11 @@ public class IMFrozenRocketBullet : BulletBase
         foreach (var col in cols)
         {
             if (col is null) break;
-            var enemyBase = col.GetComponent<EnemyBase>();
-            enemyBase.Hit(10, false);
-            enemyBase.StatusEffectController.AddStatusEffect(StatusEffectType.Frozen, 1.428f, 5);
+            var ihit = col.GetComponent<IHitable>();
+            ihit.Hit(10, false);
+            if (ihit is EnemyBase enemyBase){
+                enemyBase.StatusEffectController.AddStatusEffect(StatusEffectType.Frozen, 1.428f, 5);
+            }        
         }
 
     }

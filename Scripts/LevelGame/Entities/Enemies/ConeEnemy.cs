@@ -7,8 +7,10 @@ public class ConeEnemy : EnemyBase
     public override int WEIGHT => 40;
     public override int LEVEL => 2;
     public override EnemyType Type => EnemyType.ConeEnemy;
-    protected override Sprite DamagedImgNo2 => GameManager.Instance.GameConfig.ConeEnemy2;
-    protected override Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.ConeEnemy3;
+    public Sprite coneEnemy2;
+    public Sprite coneEnemy3;
+    protected override Sprite DamagedImgNo2 => coneEnemy2;
+    protected override Sprite DamagedImgNo3 => coneEnemy3;
     protected override float _explosionScale => 1.4f;
 
     private GameObject _gasAnim1;

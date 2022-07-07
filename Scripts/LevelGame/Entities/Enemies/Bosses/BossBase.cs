@@ -10,7 +10,7 @@ public abstract class BossBase : EnemyBase
     public override float Health
     {
         get => _health;
-        protected set
+        set
         {
             if (value.Equals(_health)) return;
             

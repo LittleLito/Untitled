@@ -24,7 +24,7 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
         switch (_flying)
         {
             // 没飞到，飞
-            case true when Vector3.Distance(transform.position, _target) > 0.1f:
+            case true when Vector3.Distance(transform.position, _target) > 0.5f:
                 transform.position += transform.up * (Speed * Time.deltaTime);
                 break;
             // 飞到了，爆
@@ -93,7 +93,7 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
         foreach (var col in cols)
         {
             if (col is null) break;
-            col.GetComponent<EnemyBase>().Hit(Damage, false);
+            col.GetComponent<IHitable>().Hit(Damage, false);
         }
     }
 }

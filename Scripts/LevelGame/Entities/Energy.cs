@@ -21,8 +21,6 @@ public class Energy : MonoBehaviour
     {
         set
         {
-            if (_energyType.Equals(value)) return;
-
             _energyType = value;
 
             switch (value)

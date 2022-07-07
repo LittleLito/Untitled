@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
+public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler, IHitable
 {
     // 动画器
     protected Animator _animator;
@@ -22,7 +22,7 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler
     public virtual float Health
     {
         get => _health;
-        protected set
+        set
         {
             if (value.Equals(_health)) return;
 

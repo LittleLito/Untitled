@@ -7,8 +7,10 @@ public class TinEnemy : EnemyBase
     public override int WEIGHT => 30;
     public override int LEVEL => 4;
     public override EnemyType Type => EnemyType.TinEnemy;
-    protected override Sprite DamagedImgNo2 => GameManager.Instance.GameConfig.TinEnemy2;
-    protected override Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.TinEnemy3;
+    public Sprite tinEnemy2;
+    public Sprite tinEnemy3;
+    protected override Sprite DamagedImgNo2 => tinEnemy2;
+    protected override Sprite DamagedImgNo3 => tinEnemy3;
     protected override float _explosionScale => 2.3f;
 
     private GameObject _gasAnim1;

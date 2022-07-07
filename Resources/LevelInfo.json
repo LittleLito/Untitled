@@ -150,6 +150,26 @@
       ],
       "MaxWaveNum": 25,
       "PassScore": 1500
+    },
+    {
+      "Num": 203,
+      "IsNight": true,
+      "Enemies": [
+        1,2,3,4,5,7
+      ],
+      "MaxWaveNum": 25,
+      "PassScore": 1500
+    },
+    {
+      "Num": 204,
+      "IsNight": true,
+      "Enemies": [
+        7
+      ],
+      "MaxWaveNum": 25,
+      "PassScore": 2000
     }
+
+
   ]
 }

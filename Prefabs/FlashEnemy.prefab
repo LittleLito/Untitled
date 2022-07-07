@@ -163,8 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99482e1a433340a419565a14234f563e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  _jumpY: 0
+  flashEnemy2: {fileID: 21300000, guid: 597d61b8d400ee7438edf6ad29a4287f, type: 3}
+  flashEnemy3: {fileID: 21300000, guid: f981e3c38ac45e545ad5444c0e8d449c, type: 3}
+  rectMask: {fileID: 7404668796526212731}
+  trail: {fileID: -7455103910539650735}
 --- !u!96 &-7455103910539650735
 TrailRenderer:
   serializedVersion: 2

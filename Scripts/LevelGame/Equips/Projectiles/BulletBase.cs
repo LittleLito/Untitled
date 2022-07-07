@@ -19,7 +19,6 @@ public abstract class BulletBase : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         
-        //_spriteRenderer.sprite = _prefab.GetComponent<SpriteRenderer>().sprite;
         transform.position = pos;
         _alive = true;
 
@@ -51,16 +50,18 @@ public abstract class BulletBase : MonoBehaviour
     /// <param name="col"></param>
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (!_alive) return;
+        
         switch (col.tag)
         {
             // 敌机
             case "Enemy":
-                Explode(col.GetComponent<EnemyBase>());
+                Explode(col.GetComponent<IHitable>());
                 break;
         }
     }
 
-    protected virtual void Explode(EnemyBase e)
+    protected virtual void Explode(IHitable e)
     {
         // 击中敌机扣血 
         e.Hit(Damage, false);

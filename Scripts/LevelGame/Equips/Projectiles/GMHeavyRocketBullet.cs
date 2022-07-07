@@ -16,7 +16,7 @@ public class GMHeavyRocketBullet : BulletBase
         _spriteRenderer.enabled = true;
     }
     
-    protected override void Explode(EnemyBase e)
+    protected override void Explode(IHitable e)
     {
         base.Explode(e);
         
@@ -29,7 +29,7 @@ public class GMHeavyRocketBullet : BulletBase
         foreach (var col in cols)
         {
             if (col is null) break;
-            col.GetComponent<EnemyBase>().Hit(10, false);
+            col.GetComponent<IHitable>().Hit(10, false);
         }
 
     }

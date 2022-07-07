@@ -18,8 +18,10 @@ public class FlashEnemy : EnemyBase
     public override int WEIGHT => 20;
     public override int LEVEL => 2;
     public override EnemyType Type => EnemyType.FlashEnemy;
-    protected override Sprite DamagedImgNo2 => GameManager.Instance.GameConfig.FlashEnemy2;
-    protected override Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.FlashEnemy3;
+    public Sprite flashEnemy2;
+    public Sprite flashEnemy3;
+    protected override Sprite DamagedImgNo2 => flashEnemy2;
+    protected override Sprite DamagedImgNo3 => flashEnemy3;
     protected override float _explosionScale => 1.3f;
     
     public GameObject rectMask;

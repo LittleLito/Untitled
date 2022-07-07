@@ -30,7 +30,7 @@ public class BackgroundController : MonoBehaviour
                 break;
             case 2:
                 bg.texture = bg2;
-                light2D.intensity = 2.47f;
+                light2D.intensity = 1.8f;
                 light2D.pointLightOuterRadius = 37.77f;
                 animator.Play("Scroll", 0, 0f);
                 break;

@@ -141,8 +141,8 @@ public class PlayerManager : MonoBehaviour
             // 撞到敌机
             case "Enemy":
                 //  比谁硬♂ 
-                var damage = Mathf.Min(Health, other.gameObject.GetComponent<EnemyBase>().Health);
-                other.gameObject.GetComponent<EnemyBase>().Hit(damage, true);
+                var damage = Mathf.Min(Health, other.gameObject.GetComponent<IHitable>().Health);
+                other.gameObject.GetComponent<IHitable>().Hit(damage, true);
                 Health -= damage;
             
                 LevelManager.Instance.Stats.IncreaseStat(StatType.Absorbed, damage);

@@ -1890,6 +1890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b65cccc1ab4108b3d4b57262464ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagedImgNo2: {fileID: 21300000, guid: 9b1a6ed7fe5889642b78f580209add27, type: 3}
+  damagedImgNo3: {fileID: 21300000, guid: 9bb32a27016e2df4fa383dbef01caa19, type: 3}
+  damagedImgNo4: {fileID: 21300000, guid: a9f1e5fb0d6ab6a4c87e444dfa0e3e07, type: 3}
 --- !u!95 &1988790495342746688
 Animator:
   serializedVersion: 3

@@ -38,7 +38,7 @@ public class CattailBullet : MonoBehaviour
         if (EnemyManager.Instance.Enemies.Count > 0)
         {
             var angle = Vector3.SignedAngle(transform.up, _target.position - transform.position, Vector3.forward);
-            transform.Rotate(new Vector3(0, 0, Mathf.Clamp(angle * Speed * Time.deltaTime, -2, 2)));
+            transform.Rotate(new Vector3(0, 0, Mathf.Clamp(angle * Speed * Time.deltaTime, -3, 3)));
         }
         
         transform.position += Speed * Time.deltaTime * transform.up;
@@ -46,8 +46,10 @@ public class CattailBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!_alive) return;
+        
         if (!other.CompareTag("Enemy")) return;
-        other.GetComponent<EnemyBase>().Hit(Damage, false);
+        other.GetComponent<IHitable>().Hit(Damage, false);
         _alive = false;
         Recycle();
     }

@@ -24,18 +24,16 @@ public class Shield : MissileBase
     public override EquipType Type => EquipType.Shield;
     public override float Speed => 6f;
     public override float Damage => 0;
-    // 破损1图片
-    protected Sprite DamagedImgNo2 => GameManager.Instance.GameConfig.Shield1;
-    // 破损2图片
-    protected Sprite DamagedImgNo3 => GameManager.Instance.GameConfig.Shield2;
+    // 破损图片
+    public Sprite damagedImgNo2;
+    public Sprite damagedImgNo3;
+    protected Sprite DamagedImgNo2 => damagedImgNo2;
+    protected Sprite DamagedImgNo3 => damagedImgNo3;
     protected override float _explosionScale => 0;
     protected override float _explosionRadius => 0;
 
-    public override Color GetColor()
-    {
-        return Color.green;
-    }
-    
+    public override Color GetColor() => Color.green;
+
     public override void Launch(Vector3 target)
     {
         // 花费能量

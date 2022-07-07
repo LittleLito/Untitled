@@ -258,7 +258,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3865974, y: 0.14759289}
+  m_Size: {x: 1.3865974, y: 0.2}
   m_EdgeRadius: 0
 --- !u!114 &910305236732191342
 MonoBehaviour:
@@ -272,3 +272,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f685f511ff430096ea0ab6cc6917be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagedImgNo2: {fileID: 0}
+  damagedImgNo3: {fileID: 0}

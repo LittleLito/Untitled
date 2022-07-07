@@ -51,32 +51,20 @@ public class GameConfig : ScriptableObject
     [Tooltip("GM重型火箭炮")] public GameObject GMHeavyRocket;
     [Tooltip("IM冰霜火箭炮")] public GameObject IMFrozenRocket;
 
+    [Tooltip("敌机护盾")] public GameObject EnemyShield;
+
     [Header("敌机")] 
-    [Tooltip("普通敌机")] 
-    public GameObject NormalEnemy;
-    public Sprite NormalEnemy2;
-    public Sprite NormalEnemy3;
-    [Tooltip("中型敌机")] 
-    public GameObject ConeEnemy;
-    public Sprite ConeEnemy2;
-    public Sprite ConeEnemy3;
-    [Tooltip("铁皮敌机")]
-    public GameObject TinEnemy;
-    public Sprite TinEnemy2;
-    public Sprite TinEnemy3;
-    [Tooltip("闪电敌机")] 
-    public GameObject FlashEnemy;
-    public Sprite FlashEnemy2;
-    public Sprite FlashEnemy3;
+    [Tooltip("普通敌机")] public GameObject NormalEnemy;
+    [Tooltip("中型敌机")] public GameObject ConeEnemy;
+    [Tooltip("铁皮敌机")] public GameObject TinEnemy;
+    [Tooltip("闪电敌机")] public GameObject FlashEnemy;
     [Tooltip("武装中型敌机")] public GameObject ArmedConeEnemy;
     [Tooltip("武装铁皮敌机")] public GameObject ArmedTinEnemy;
+    [Tooltip("三爷")] public GameObject ShieldEnemy;
 
     [Header("Boss")] 
     [Tooltip("FishMaster")] 
     public GameObject FishMaster;
-    public Sprite FishMaster2;
-    public Sprite FishMaster3;
-    public Sprite FishMaster4;
 
 
     [Header("子弹")] 

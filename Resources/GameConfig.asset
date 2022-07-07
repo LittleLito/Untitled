@@ -48,24 +48,15 @@ MonoBehaviour:
   MoonEnergyReactor: {fileID: 8199475737340316779, guid: a27e6b42ce29bb04caf249909728bde4, type: 3}
   GMHeavyRocket: {fileID: 387574567676309041, guid: 1292730902d5d1c46894790cb0eb3637, type: 3}
   IMFrozenRocket: {fileID: 1674548189531249485, guid: f40772e0731323b4bb7d095e51fad6c2, type: 3}
+  EnemyShield: {fileID: 3095777098229383226, guid: cf402e906f8a385429ad5d35363b99a1, type: 3}
   NormalEnemy: {fileID: 5360277968070027299, guid: b1d2cbd3359b8854b8fdac14acc7c95f, type: 3}
-  NormalEnemy2: {fileID: 21300000, guid: 1a4a82c2a8cb28a41a1139a5503c1671, type: 3}
-  NormalEnemy3: {fileID: 21300000, guid: ea0d39dadd301c6419c897d8934b9deb, type: 3}
   ConeEnemy: {fileID: 2467087507290475934, guid: 54f48afaa676c8c4b902178fdfcebba0, type: 3}
-  ConeEnemy2: {fileID: 21300000, guid: 3774f22873301774288dbab5e2c99087, type: 3}
-  ConeEnemy3: {fileID: 21300000, guid: a3af59d865039db4496d440c929d514e, type: 3}
   TinEnemy: {fileID: 2969797656959026635, guid: fa08ee0f38954474d980334cc4731965, type: 3}
-  TinEnemy2: {fileID: 21300000, guid: d6ae42db5ef48f242b858100485fe1f8, type: 3}
-  TinEnemy3: {fileID: 21300000, guid: 6fac328d5c0579b498613024d5b9d4b1, type: 3}
   FlashEnemy: {fileID: 1167066940765907903, guid: 51494f14c6fd6504a86392ca3880cadd, type: 3}
-  FlashEnemy2: {fileID: 21300000, guid: 597d61b8d400ee7438edf6ad29a4287f, type: 3}
-  FlashEnemy3: {fileID: 21300000, guid: f981e3c38ac45e545ad5444c0e8d449c, type: 3}
   ArmedConeEnemy: {fileID: 5689437636867375244, guid: 7145ec6a13126834a9265d323f4416d0, type: 3}
   ArmedTinEnemy: {fileID: 1505037994622960470, guid: 5b8e583bb3f3006479bb93156024c91b, type: 3}
+  ShieldEnemy: {fileID: 6362436977181883625, guid: f73a56bf4fd1dd347943bf47f63d28aa, type: 3}
   FishMaster: {fileID: 7798943451211625298, guid: a434c16e05a37994db77035862f82286, type: 3}
-  FishMaster2: {fileID: 21300000, guid: 9b1a6ed7fe5889642b78f580209add27, type: 3}
-  FishMaster3: {fileID: 21300000, guid: 9bb32a27016e2df4fa383dbef01caa19, type: 3}
-  FishMaster4: {fileID: 21300000, guid: a9f1e5fb0d6ab6a4c87e444dfa0e3e07, type: 3}
   Bullet: {fileID: 3939253472373881371, guid: d4069c364319e6646997075c254dc567, type: 3}
   BulletBoom: {fileID: 9100000, guid: 288e890b26cb52b46a749f5716dca68b, type: 2}
   FrozenBullet: {fileID: 206043961529009094, guid: 89292cc4d82c4e54f955d62cd3de3f27, type: 3}
