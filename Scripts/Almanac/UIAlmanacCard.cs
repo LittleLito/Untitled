@@ -37,8 +37,6 @@ public class UIAlmanacCard : UICard, IPointerClickHandler, IPointerEnterHandler,
 		_energySignImg = transform.Find("EnergySign").GetComponent<Image>();
         _energySignImg.sprite = _equipScript is IMoonEnergyEquip ? GameManager.Instance.GameConfig.MoonEnergySign : GameManager.Instance.GameConfig.SunEnergySign;
 		
-        // 运行时花费显示文本, 如果不为0，则显示
-        if (_equipScript.RunCost == 0) return;
         _runCostText = transform.Find("EnergySign/RunCost").GetComponent<TMP_Text>();
         _runCostText.text = _equipScript.RunCost.ToString();
     }
@@ -67,11 +65,11 @@ public class UIAlmanacCard : UICard, IPointerClickHandler, IPointerEnterHandler,
         _energySignImg.sprite = GameManager.Instance.GameConfig.SunEnergySign;
         
         // 花费点数text隐藏
-        _costText = transform.Find("EnergySign/Cost").GetComponent<TMP_Text>();
+        _costText = transform.Find("Cost").GetComponent<TMP_Text>();
         _costText.text = "";
 
         // 运行时花费text隐藏
-        _runCostText = transform.Find("RunCost").GetComponent<TMP_Text>();
+        _runCostText = transform.Find("EnergySign/RunCost").GetComponent<TMP_Text>();
         _runCostText.text = "";
 
     }

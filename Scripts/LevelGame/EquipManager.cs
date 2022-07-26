@@ -29,6 +29,7 @@ public class EquipManager : MonoBehaviour
             EquipType.Cattail => GameManager.Instance.GameConfig.Cattail,
             EquipType.sLiteGatling => GameManager.Instance.GameConfig.sLiteGatling,
             EquipType.MoonEnergyReactor => GameManager.Instance.GameConfig.MoonEnergyReactor,
+            EquipType.LaserPointer => GameManager.Instance.GameConfig.LaserPointer,
             EquipType.GMHeavyRocket => GameManager.Instance.GameConfig.GMHeavyRocket,
             EquipType.IMFrozenRocket => GameManager.Instance.GameConfig.IMFrozenRocket,
             _ => null
@@ -68,7 +69,7 @@ public class EquipManager : MonoBehaviour
             ProjectileType.CattailBullet => GameManager.Instance.GameConfig.CattailBullet,
             ProjectileType.GMHeavyRocket => GameManager.Instance.GameConfig.GMHeavyRocketBullet,
             ProjectileType.IMFrozenRocket => GameManager.Instance.GameConfig.IMFrozenRocketBullet,
-            ProjectileType.sLiteGatlingBullet => GameManager.Instance.GameConfig.sLiteGatlingBullet,
+            ProjectileType.sLiteGatlingBullet => GameManager.Instance.GameConfig.sLiteGatlingBullet, 
             _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
         }; 
     }
@@ -86,6 +87,7 @@ public enum EquipType
     Cattail = 8,
     sLiteGatling = 9,
     MoonEnergyReactor = 10,
+    LaserPointer = 11,
     GMHeavyRocket = 15,
     IMFrozenRocket = 16
 }

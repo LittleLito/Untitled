@@ -26,8 +26,8 @@
             "ChineseName": "能源反应堆",
             "Conclusion": "万恶之源",
             "CD": "7.5",
-            "PropertyItems": ["初始生产间隔", "生产间隔", "阳光价值"],
-            "PropertyValues": ["随机[6s, 10s]", "随机[18s, 24s]", 500],
+            "PropertyItems": ["初始生产间隔", "生产间隔", "能量价值"],
+            "PropertyValues": ["随机[6s, 10s]", "随机[18s, 24s]/随机[60s, 70s]", 500],
             "Description": ""
         },
         {
@@ -98,6 +98,26 @@
             "CD": "7.5",
             "PropertyItems": ["射击间隔", "子弹类型", "射程"],
             "PropertyValues": ["1s", "20mm机枪弹", "5 (100px)"],
+            "Description": ""
+        },
+        {
+            "Id": 10,
+            "Name": "MoonEnergyReactor",
+            "ChineseName": "月光宝盒",
+            "Conclusion": "",
+            "CD": "7.5",
+            "PropertyItems": ["初始生产间隔", "生产间隔", "能量价值"],
+            "PropertyValues": ["随机[6s, 10s]", "随机[18s, 24s]", 250],
+            "Description": ""
+        },
+        {
+            "Id": 11,
+            "Name": "LaserPointer",
+            "ChineseName": "激光笔",
+            "Conclusion": "",
+            "CD": "7.5",
+            "PropertyItems": ["灼烧间隔", "灼烧伤害"],
+            "PropertyValues": ["0.3s", "2"],
             "Description": ""
         },
         {
@@ -275,7 +295,7 @@
             "Id": 7,
             "Name": "ShieldEnemy",
             "ChineseName": "三爷",
-            "Conclusion": "能产生相当威胁的敌机",
+            "Conclusion": "能产生相当相当威胁的敌机",
             "Level": 3,
             "Weight": 40,
             "MaxHealth": 200,

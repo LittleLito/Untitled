@@ -48,6 +48,7 @@ public class GameConfig : ScriptableObject
     [Tooltip("守卫者")] public GameObject Cattail;
     [Tooltip("s型小型机枪")] public GameObject sLiteGatling;
     [Tooltip("月光能量反应堆")] public GameObject MoonEnergyReactor;
+    [Tooltip("激光笔")] public GameObject LaserPointer;
     [Tooltip("GM重型火箭炮")] public GameObject GMHeavyRocket;
     [Tooltip("IM冰霜火箭炮")] public GameObject IMFrozenRocket;
 
