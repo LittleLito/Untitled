@@ -251,6 +251,7 @@ public class EnemyManager : MonoBehaviour
             EnemyType.ArmedConeEnemy => GameManager.Instance.GameConfig.ArmedConeEnemy,
             EnemyType.ArmedTinEnemy => GameManager.Instance.GameConfig.ArmedTinEnemy,
             EnemyType.ShieldEnemy => GameManager.Instance.GameConfig.ShieldEnemy,
+            EnemyType.IKunEnemy => GameManager.Instance.GameConfig.IKunEnemy,
             _ => null
         };
     }
@@ -265,11 +266,12 @@ public enum EnemyType
     FlashEnemy = 4,
     ArmedConeEnemy = 5,
     ArmedTinEnemy = 6,
-    ShieldEnemy = 7
+    ShieldEnemy = 7,
+    IKunEnemy = 8
 }
 
 public interface IHitable
 {
     public float Health { get; set; }
-    public void Hit(float damage, bool fromPlayer);
+    public void Hit(float damage, MonoBehaviour source, bool fromPlayer);
 }

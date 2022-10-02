@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class IMFrozenRocket : GatlingBase
 {
-    public override int Cost => 5000;
+    public override int Cost => 4500;
     public override int RunCost => 5;
     public override float CD => 50;
     public override EquipFamily Family => EquipFamily.Frozen;

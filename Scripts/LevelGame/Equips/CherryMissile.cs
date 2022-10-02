@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class CherryMissile : MissileBase
 {
     public override int Cost => 1500;
@@ -8,4 +10,5 @@ public class CherryMissile : MissileBase
     public override float Damage => 500;
     protected override float _explosionScale => 7.5f;
     protected override float _explosionRadius => 2.5f;
+    protected override GameObject _prefeb => GameManager.Instance.GameConfig.CherryMissile;
 }

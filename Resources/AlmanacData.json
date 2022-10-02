@@ -157,7 +157,7 @@
             "ChineseName": "40mm机枪弹",
             "Conclusion": "普通的子弹",
             "PropertyItems": ["速度", "伤害"],
-            "PropertyValues": ["12 (100px/s)", 6],
+            "PropertyValues": ["60 (10px/s)", 6],
             "Description": ""
         },
         {
@@ -166,7 +166,7 @@
             "ChineseName": "40mm冰霜机枪弹",
             "Conclusion": "冷冰冰的子弹",
             "PropertyItems": ["速度", "伤害", "减速效果", "持续时间"],
-            "PropertyValues": ["12 (100px/s)", 6, "20%", "3s"],
+            "PropertyValues": ["60 (10px/s)", 6, "20%", "3s"],
             "Description": ""
         },
         {
@@ -175,7 +175,7 @@
             "ChineseName": "守卫者追踪弹",
             "Conclusion": "",
             "PropertyItems": ["速度", "伤害", "单次最大转向角"],
-            "PropertyValues": ["4 (100px/s)", 4, "3 °/frm"],
+            "PropertyValues": ["40 (10px/s)", 5, "3 °/frm"],
             "Description": ""
         },
         {
@@ -184,7 +184,7 @@
             "ChineseName": "GM重型火箭弹",
             "Conclusion": "",
             "PropertyItems": ["速度", "命中伤害", "爆炸半径", "爆炸伤害"],
-            "PropertyValues": ["11 (100px/s)", 25, "2 (100px)", 10],
+            "PropertyValues": ["55 (10px/s)", 25, "2 (100px)", 10],
             "Description": ""
         },
         {
@@ -193,7 +193,7 @@
             "ChineseName": "IM冰霜火箭弹",
             "Conclusion": "",
             "PropertyItems": ["速度", "命中伤害", "爆炸半径", "爆炸伤害", "减速效果", "持续时间"],
-            "PropertyValues": ["11 (100px/s)", 25, "2 (100px)", 10, "30%", "5s"],
+            "PropertyValues": ["55 (10px/s)", 25, "2 (100px)", 10, "30%", "5s"],
             "Description": ""
         },
         {
@@ -202,7 +202,7 @@
             "ChineseName": "20mm机枪弹",
             "Conclusion": "普通的子弹",
             "PropertyItems": ["速度", "伤害"],
-            "PropertyValues": ["10 (100px/s)", 3],
+            "PropertyValues": ["50 (10px/s)", 3],
             "Description": ""
         }
     ],
@@ -228,7 +228,7 @@
             "Weight": 40,
             "MaxHealth": 30,
             "PropertyItems": ["速度"],
-            "PropertyValues": ["随机[2.4, 2.8] (100px/s)"],
+            "PropertyValues": ["随机[2.4, 2.8] (10px/s)"],
             "Description": ""
         },
         {
@@ -240,7 +240,7 @@
             "Weight": 40,
             "MaxHealth": 120,
             "PropertyItems": ["速度"],
-            "PropertyValues": ["随机[2.4, 2.8] (100px/s)"],
+            "PropertyValues": ["随机[2.4, 2.8] (10px/s)"],
             "Description": ""
         },
         {
@@ -252,7 +252,7 @@
             "Weight": 30,
             "MaxHealth": 300,
             "PropertyItems": ["速度"],
-            "PropertyValues": ["随机[2.4, 2.8] (100px/s)"],
+            "PropertyValues": ["随机[2.4, 2.8] (10px/s)"],
             "Description": ""
         },
         {
@@ -264,7 +264,7 @@
             "Weight": 20,
             "MaxHealth": 80,
             "PropertyItems": ["速度"],
-            "PropertyValues": ["随机[2.8, 3.2]/随机[6.0, 6.5] (100px/s)"],
+            "PropertyValues": ["随机[2.8, 3.2]/随机[6.0, 6.5] (10px/s)"],
             "Description": ""
         },
         {
@@ -276,7 +276,7 @@
             "Weight": 40,
             "MaxHealth": 120,
             "PropertyItems": ["速度", "装备"],
-            "PropertyValues": ["随机[2.4, 2.8] (100px/s)", "S型轻型机枪 1x"],
+            "PropertyValues": ["随机[2.4, 2.8] (10px/s)", "S型轻型机枪 1x"],
             "Description": ""
         },
         {
@@ -288,19 +288,31 @@
             "Weight": 30,
             "MaxHealth": 300,
             "PropertyItems": ["速度", "装备"],
-            "PropertyValues": ["随机[2.4, 2.8] (100px/s)", "S型轻型机枪 2x"],
+            "PropertyValues": ["随机[2.4, 2.8] (10px/s)", "S型轻型机枪 2x"],
             "Description": ""
         },
         {
             "Id": 7,
             "Name": "ShieldEnemy",
             "ChineseName": "三爷",
-            "Conclusion": "能产生相当相当威胁的敌机",
+            "Conclusion": "抱歉，今天不行",
             "Level": 3,
             "Weight": 40,
             "MaxHealth": 200,
             "PropertyItems": ["速度", "装备"],
-            "PropertyValues": ["随机[2, 2.2] (100px/s)", "轻型防弹盾牌 1x"],
+            "PropertyValues": ["随机[2, 2.2] (10px/s)", "轻型防弹盾牌 1x"],
+            "Description": ""
+        },
+        {
+            "Id": 8,
+            "Name": "IKunEnemy",
+            "ChineseName": "二爷",
+            "Conclusion": "小黑子，露出鸡脚了吧",
+            "Level": 5,
+            "Weight": 20,
+            "MaxHealth": 200,
+            "PropertyItems": ["速度", "二阶段速度", "装备"],
+            "PropertyValues": ["随机[2.0, 2.4] (10px/s)", "随机[6.0f, 6.5f]*Δt 匀加速", "一个无敌的篮球"],
             "Description": ""
         }
     ]

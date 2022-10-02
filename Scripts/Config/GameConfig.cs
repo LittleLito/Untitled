@@ -53,6 +53,7 @@ public class GameConfig : ScriptableObject
     [Tooltip("IM冰霜火箭炮")] public GameObject IMFrozenRocket;
 
     [Tooltip("敌机护盾")] public GameObject EnemyShield;
+    [Tooltip("篮球")] public GameObject Basketball;
 
     [Header("敌机")] 
     [Tooltip("普通敌机")] public GameObject NormalEnemy;
@@ -62,6 +63,7 @@ public class GameConfig : ScriptableObject
     [Tooltip("武装中型敌机")] public GameObject ArmedConeEnemy;
     [Tooltip("武装铁皮敌机")] public GameObject ArmedTinEnemy;
     [Tooltip("三爷")] public GameObject ShieldEnemy;
+    [Tooltip("二爷")] public GameObject IKunEnemy;
 
     [Header("Boss")] 
     [Tooltip("FishMaster")] 

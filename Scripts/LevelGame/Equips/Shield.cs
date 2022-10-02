@@ -31,6 +31,7 @@ public class Shield : MissileBase
     protected Sprite DamagedImgNo3 => damagedImgNo3;
     protected override float _explosionScale => 0;
     protected override float _explosionRadius => 0;
+    protected override GameObject _prefeb => GameManager.Instance.GameConfig.Shield;
 
     public override Color GetColor() => Color.green;
 

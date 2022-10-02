@@ -34,12 +34,8 @@ public class FlashEnemy : EnemyBase
         base.Init(pos);
         
         rectMask = transform.Find("Rect").gameObject;
-
-        trail = GetComponent<TrailRenderer>();
         trail.enabled = true;
-
         _jumpY = Random.Range(4f, -2.68f);
-
         _state = 1;
     }
 

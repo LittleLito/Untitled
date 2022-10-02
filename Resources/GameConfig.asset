@@ -50,6 +50,7 @@ MonoBehaviour:
   GMHeavyRocket: {fileID: 387574567676309041, guid: 1292730902d5d1c46894790cb0eb3637, type: 3}
   IMFrozenRocket: {fileID: 1674548189531249485, guid: f40772e0731323b4bb7d095e51fad6c2, type: 3}
   EnemyShield: {fileID: 3095777098229383226, guid: cf402e906f8a385429ad5d35363b99a1, type: 3}
+  Basketball: {fileID: 7346291261645094869, guid: 6a2d774aa3aff474abd35758adb927f9, type: 3}
   NormalEnemy: {fileID: 5360277968070027299, guid: b1d2cbd3359b8854b8fdac14acc7c95f, type: 3}
   ConeEnemy: {fileID: 2467087507290475934, guid: 54f48afaa676c8c4b902178fdfcebba0, type: 3}
   TinEnemy: {fileID: 2969797656959026635, guid: fa08ee0f38954474d980334cc4731965, type: 3}
@@ -57,6 +58,7 @@ MonoBehaviour:
   ArmedConeEnemy: {fileID: 5689437636867375244, guid: 7145ec6a13126834a9265d323f4416d0, type: 3}
   ArmedTinEnemy: {fileID: 1505037994622960470, guid: 5b8e583bb3f3006479bb93156024c91b, type: 3}
   ShieldEnemy: {fileID: 6362436977181883625, guid: f73a56bf4fd1dd347943bf47f63d28aa, type: 3}
+  IKunEnemy: {fileID: 65300378551630064, guid: f280d16a24738bb48a84041a3a926c6f, type: 3}
   FishMaster: {fileID: 7798943451211625298, guid: a434c16e05a37994db77035862f82286, type: 3}
   Bullet: {fileID: 3939253472373881371, guid: d4069c364319e6646997075c254dc567, type: 3}
   BulletBoom: {fileID: 9100000, guid: 288e890b26cb52b46a749f5716dca68b, type: 2}

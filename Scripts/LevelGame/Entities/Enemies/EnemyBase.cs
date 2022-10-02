@@ -174,8 +174,9 @@ public abstract class EnemyBase : MonoBehaviour, IStatusEffectHandler, IHitable
     /// 受击
     /// </summary>
     /// <param name="damage"></param>
+    /// <param name="source"></param>
     /// <param name="fromPlayer"></param>
-    public void Hit(float damage, bool fromPlayer)
+    public virtual void Hit(float damage, MonoBehaviour source, bool fromPlayer)
     {
         Health -= damage;
 

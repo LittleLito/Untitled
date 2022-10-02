@@ -34,9 +34,8 @@ public class EnemyShield : MonoBehaviour, IHitable
         Health = MaxHealth;
         transform.localPosition = pos;
         transform.localScale = Vector3.one;
-
     }
-    public void Hit(float damage, bool fromPlayer)
+    public void Hit(float damage, MonoBehaviour source, bool fromPlayer)
     {
         Health -= damage;
 

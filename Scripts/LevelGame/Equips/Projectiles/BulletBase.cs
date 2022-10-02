@@ -64,7 +64,7 @@ public abstract class BulletBase : MonoBehaviour
     protected virtual void Explode(IHitable e)
     {
         // 击中敌机扣血 
-        e.Hit(Damage, false);
+        e.Hit(Damage, _prefab.GetComponent<BulletBase>(), false);
             
         // 不再可用
         _alive = false;

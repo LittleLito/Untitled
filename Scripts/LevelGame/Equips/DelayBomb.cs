@@ -11,6 +11,7 @@ public class DelayBomb : MissileBase
     public override float Damage => charged ? 500 : 100;
     protected override float _explosionScale => charged ? 4.15f : 2.44f;
     protected override float _explosionRadius => charged ? 1.3f : 0.6f;
+    protected override GameObject _prefeb => GameManager.Instance.GameConfig.DelayBomb;
 
     private bool charged;
     protected override void Update()

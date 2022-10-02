@@ -4,7 +4,7 @@ using UnityEngine;
 public static class GameData
 {
     public static int TargetChapterNum = 2;
-    public static int TargetLevelNum = 1;
+    public static int TargetLevelNum = 6;
 
     private static List<LevelInfo> _levelInfos;
     public static List<LevelInfo> LevelInfos

@@ -13,6 +13,8 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
     protected abstract float _explosionRadius { get; }
     // 准星颜色
     public virtual Color GetColor() => Color.red;
+    
+    protected abstract GameObject _prefeb { get; }
 
     protected bool _flying;
     protected Vector3 _target;
@@ -93,7 +95,7 @@ public abstract class MissileBase : EquipBase, IOneTimeUseEquip
         foreach (var col in cols)
         {
             if (col is null) break;
-            col.GetComponent<IHitable>().Hit(Damage, false);
+            col.GetComponent<IHitable>().Hit(Damage, _prefeb.GetComponent<MissileBase>(), false);
         }
     }
 }

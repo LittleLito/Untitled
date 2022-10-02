@@ -29,7 +29,7 @@ public class GMHeavyRocketBullet : BulletBase
         foreach (var col in cols)
         {
             if (col is null) break;
-            col.GetComponent<IHitable>().Hit(10, false);
+            col.GetComponent<IHitable>().Hit(10, this, false);
         }
 
     }

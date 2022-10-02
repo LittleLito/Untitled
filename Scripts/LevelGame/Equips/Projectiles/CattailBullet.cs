@@ -4,7 +4,7 @@ using UnityEngine;
 public class CattailBullet : MonoBehaviour
 {
     public float Speed => 4;
-    public int Damage => 4;
+    public int Damage => 5;
     // 是否还在运行
     private bool _alive;
     // 组件
@@ -49,7 +49,7 @@ public class CattailBullet : MonoBehaviour
         if (!_alive) return;
         
         if (!other.CompareTag("Enemy")) return;
-        other.GetComponent<IHitable>().Hit(Damage, false);
+        other.GetComponent<IHitable>().Hit(Damage, this, false);
         _alive = false;
         Recycle();
     }

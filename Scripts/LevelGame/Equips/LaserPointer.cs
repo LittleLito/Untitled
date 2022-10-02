@@ -82,8 +82,11 @@ public class LaserPointer : EquipBase, IMoonEnergyEquip
         // 伤害
         foreach (var hit in _targets)
         {
-            SpawnLight(hit.point);
-            hit.collider.GetComponent<IHitable>().Hit(Damage, false);
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                SpawnLight(hit.point);
+                hit.collider.GetComponent<IHitable>().Hit(Damage, this, false);
+            }
         }
             
         PlayerManager.Instance.EnergyPoints -= RunCost;
@@ -101,7 +104,7 @@ public class LaserPointer : EquipBase, IMoonEnergyEquip
             foreach (var hit in _targets)
             {
                 SpawnLight(hit.point);
-                hit.collider.GetComponent<IHitable>().Hit(Damage, false);
+                hit.collider.GetComponent<IHitable>().Hit(Damage, this, false);
             }
             
             PlayerManager.Instance.EnergyPoints -= RunCost;

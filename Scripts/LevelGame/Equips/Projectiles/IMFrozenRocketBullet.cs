@@ -30,7 +30,7 @@ public class IMFrozenRocketBullet : BulletBase
         {
             if (col is null) break;
             var ihit = col.GetComponent<IHitable>();
-            ihit.Hit(10, false);
+            ihit.Hit(10, this, false);
             if (ihit is EnemyBase enemyBase){
                 enemyBase.StatusEffectController.AddStatusEffect(StatusEffectType.Frozen, 1.428f, 5);
             }        
