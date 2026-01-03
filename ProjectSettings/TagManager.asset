@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Energy
+  - Enemy
+  - Bullet
+  - Nothing
+  - EnemyBullet
+  - RecoverFruit
+  - ItalianGunBullet
+  - Boss
+  - Killer
+  - Shield
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Equips
+  - Entities
+  - Energy
+  - Player
+  - Enemy
+  - Nothing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Entities
+    uniqueID: 3689987005
+    locked: 0
+  - name: Equips
+    uniqueID: 3700329061
+    locked: 0
+  - name: Energy
+    uniqueID: 1339463483
+    locked: 0

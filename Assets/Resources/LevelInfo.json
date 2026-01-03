@@ -1,0 +1,201 @@
+{
+  "Levels": [
+    {
+      "Num": 0,
+      "Enemies": [
+        
+      ],
+      "MaxWaveNum": 0,
+      "PassScore": 0
+    },
+    {
+      "Num": 101,
+      "Enemies": [
+        1
+      ],
+      "MaxWaveNum": 10,
+      "PassScore": 500
+    },
+    {
+      "Num": 102,
+      "Enemies": [
+        1
+      ],
+      "MaxWaveNum": 30,
+      "PassScore": 500
+    },
+    {
+      "Num": 103,
+      "Enemies": [
+        1,2
+      ],
+      "MaxWaveNum": 30,
+      "PassScore": 500
+    },
+    {
+      "Num": 104,
+      "Enemies": [
+        2
+      ],
+      "MaxWaveNum": 20,
+      "PassScore": 1000
+    },
+    {
+      "Num": 105,
+      "Enemies": [
+        1,2,3
+      ],
+      "MaxWaveNum": 15,
+      "PassScore": 1000
+    },
+    {
+      "Num": 106,
+      "Enemies": [
+        1,2,3,4
+      ],
+      "MaxWaveNum": 20,
+      "PassScore": 1500
+    },
+    {
+      "Num": 107,
+      "Enemies": [
+        3,4
+      ],
+      "MaxWaveNum": 25,
+      "PassScore": 2000
+    },
+    {
+      "Num": 108,
+      "Enemies": [
+        1,2,3,4,5
+      ],
+      "MaxWaveNum": 35,
+      "PassScore": 3000
+    },
+    {
+      "Num": 109,
+      "Enemies": [
+        5
+      ],
+      "MaxWaveNum": 30,
+      "PassScore": 2000
+    },
+    {
+      "Num": 110,
+      "Enemies": [
+        3,4,5
+      ],
+      "MaxWaveNum": 30,
+      "PassScore": 3000
+    },
+    {
+      "Num": 111,
+      "Enemies": [
+        6
+      ],
+      "MaxWaveNum": 20,
+      "PassScore": 3000
+    },
+
+    {
+      "Num": 112,
+      "Enemies": [
+        3,4,5,6
+      ],
+      "MaxWaveNum": 25,
+      "PassScore": 3500
+    },
+
+    {
+      "Num": 113,
+      "Enemies": [
+        5,6
+      ],
+      "MaxWaveNum": 30,
+      "PassScore": 3500
+    },
+    {
+      "Num": 114,
+      "Enemies": [
+        1,2,3,4,5,6
+      ],
+      "MaxWaveNum": 40,
+      "PassScore": 5000
+    },
+    {
+      "Num": 115,
+      "Enemies": [
+        1,2,3,4,5,6
+      ],
+      "IsBoss": true,
+      "Boss": 1,
+      "MaxWaveNum": 10,
+      "PassScore": 6000
+    },
+
+    {
+      "Num": 201,
+	  "IsNight": true,
+      "Enemies": [
+        1,2
+      ],
+      "MaxWaveNum": 20,
+      "PassScore": 1000
+    },
+    {
+      "Num": 202,
+      "IsNight": true,
+      "Enemies": [
+        1,2,3,4
+      ],
+      "MaxWaveNum": 25,
+      "PassScore": 1500
+    },
+    {
+      "Num": 203,
+      "IsNight": true,
+      "Enemies": [
+        1,2,3,7
+      ],
+      "MaxWaveNum": 25,
+      "PassScore": 1500
+    },
+    {
+      "Num": 204,
+      "IsNight": true,
+      "Enemies": [
+        7
+      ],
+      "MaxWaveNum": 25,
+      "PassScore": 2000
+    },
+    {
+      "Num": 205,
+      "IsNight": true,
+      "Enemies": [
+        4,7
+      ],
+      "MaxWaveNum": 20,
+      "PassScore": 2000
+    },
+    {
+      "Num": 206,
+      "IsNight": true,
+      "Enemies": [
+        4,5,6,7,8
+      ],
+      "MaxWaveNum": 20,
+      "PassScore": 2500
+    },
+    {
+      "Num": 207,
+      "IsNight": true,
+      "Enemies": [
+        1,2,3,4,5,6,7,8
+      ],
+      "MaxWaveNum": 25,
+      "PassScore": 2500
+    }
+
+  ]
+}
