@@ -1,11 +1,15 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelsPanel : MonoBehaviour
 {
     public GameObject levelPanel;
     public TMP_Text levelNum;
+    public RawImage levelImage;
+    public List<Texture> levelImages;
     public TMP_Text maxWaveNum;
     public TMP_Text difficulty;
     public TMP_Text passScore;
@@ -28,6 +32,7 @@ public class LevelsPanel : MonoBehaviour
 
         var levelInfo = GameData.GetLevelInfo();
         this.levelNum.text = "关卡" + GameData.TargetChapterNum + "-" + GameData.TargetLevelNum;
+        levelImage.texture = levelImages[GameData.TargetChapterNum - 1];
         maxWaveNum.text = levelInfo.MaxWaveNum.ToString();
         difficulty.text = 1.ToString();
         passScore.text = levelInfo.PassScore.ToString();
@@ -43,6 +48,9 @@ public class LevelsPanel : MonoBehaviour
 
     public void LevelPanel2LevelGame()
     {
-        SceneManager.LoadScene("Scenes/LevelGame");
+        if (GameData.IsLevelValid())
+        {
+            SceneManager.LoadScene("Scenes/LevelGame");
+        }
     }
 }

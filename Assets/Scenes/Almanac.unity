@@ -1156,7 +1156,19 @@ MonoBehaviour:
   m_Group: {fileID: 795001565}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1062423420}
+        m_TargetAssemblyTypeName: AlmanacManager, Assembly-CSharp
+        m_MethodName: ShowEquips
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!114 &649283607
 MonoBehaviour:
@@ -1841,6 +1853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66d9231de884590bf08ec5e0983cf13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toggleEquipment: {fileID: 649283606}
+  toggleProjectile: {fileID: 2035825085}
+  toggleEnemy: {fileID: 2138500723}
   seedStorage: {fileID: 535316602}
   seedCard: {fileID: 1438112175}
   seedName: {fileID: 7565149}
@@ -2513,8 +2528,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 53026260}
-        m_TargetAssemblyTypeName: AlmanacPage, Assembly-CSharp
+      - m_Target: {fileID: 1062423420}
+        m_TargetAssemblyTypeName: AlmanacManager, Assembly-CSharp
         m_MethodName: Almanac2Start
         m_Mode: 1
         m_Arguments:
@@ -2650,7 +2665,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1685554516}
   - component: {fileID: 1685554520}
-  - component: {fileID: 1685554518}
   - component: {fileID: 1685554519}
   - component: {fileID: 1685554517}
   m_Layer: 5
@@ -2692,18 +2706,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 1685554519}
---- !u!114 &1685554518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685554515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1465209106, guid: c8d0ad23af520fe46aabe2b1fecf6462, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1685554519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3633,7 +3635,19 @@ MonoBehaviour:
   m_Group: {fileID: 795001565}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1062423420}
+        m_TargetAssemblyTypeName: AlmanacManager, Assembly-CSharp
+        m_MethodName: ShowProjs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &2035825086
 MonoBehaviour:
@@ -3758,7 +3772,19 @@ MonoBehaviour:
   m_Group: {fileID: 795001565}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1062423420}
+        m_TargetAssemblyTypeName: AlmanacManager, Assembly-CSharp
+        m_MethodName: ShowEnemies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &2138500724
 MonoBehaviour:

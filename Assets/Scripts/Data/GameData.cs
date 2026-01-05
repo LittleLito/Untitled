@@ -7,12 +7,13 @@ public static class GameData
     public static int TargetLevelNum = 1;
 
     private static List<LevelInfo> _levelInfos;
-    public static List<LevelInfo> LevelInfos
+
+    private static List<LevelInfo> LevelInfos
     {
         get
         {
             // 如果不为空，则返回
-            if (_levelInfos is { }) return _levelInfos;
+            if (_levelInfos is not null) return _levelInfos;
             // 如果为空，则重新获取
             var jsonStr = Resources.Load<TextAsset>("LevelInfo");
             _levelInfos = JsonUtility.FromJson<AllLevelsInfo>(jsonStr.text).Levels;
@@ -34,15 +35,20 @@ public static class GameData
         }
     }
 
+    public static bool IsLevelValid()
+    {
+        return LevelInfos.Exists(info =>
+            info.Num == TargetChapterNum * 100 + TargetLevelNum);
+    }
 
     public static LevelInfo GetLevelInfo()
     {
         return LevelInfos.Find(info =>
             info.Num == TargetChapterNum * 100 + TargetLevelNum);
     }
-    public static LevelInfo GetLevelInfo(int levelNum)
+    public static LevelInfo GetLevelInfo(int fullLevelNum)
     {
-        return LevelInfos.Find(info => info.Num == levelNum);
+        return LevelInfos.Find(info => info.Num == fullLevelNum);
     }
     public static LevelInfo GetLevelInfo(int chapterNum, int levelNum)
     {

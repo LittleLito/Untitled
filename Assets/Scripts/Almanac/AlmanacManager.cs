@@ -1,6 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum AlmanacMode
 {
@@ -38,6 +40,7 @@ public class AlmanacManager : MonoBehaviour
                     UpdateEnemyCardStorage();
                     UpdateInfoAction = UpdateEnemyCardInfo;
                     break;
+                case AlmanacMode.EnemyEquipment:
                 default:
                     throw new ArgumentOutOfRangeException(nameof(value), value, null);
            }
@@ -60,6 +63,10 @@ public class AlmanacManager : MonoBehaviour
         }
     }
 
+    public Toggle toggleEquipment;
+    public Toggle toggleProjectile;
+    public Toggle toggleEnemy;
+        
     public Transform seedStorage;
     public UIAlmanacCard seedCard;
     public TMP_Text seedName;
@@ -80,6 +87,34 @@ public class AlmanacManager : MonoBehaviour
         UpdateEquipCardInfo(1);
 
     }
+    
+    public void Almanac2Start() => SceneManager.LoadScene("Scenes/Start");
+    
+
+    public void ShowEquips()
+    {
+        if (toggleEquipment.isOn) 
+        {
+            AlmanacMode = AlmanacMode.Equipment;
+        }
+    }
+
+    public void ShowProjs()
+    {
+        if (toggleProjectile.isOn)
+        {
+            AlmanacMode = AlmanacMode.Projectile;
+        }
+    }
+
+    public void ShowEnemies()
+    {
+        if (toggleEnemy.isOn)
+        {
+            AlmanacMode = AlmanacMode.Enemy;
+        }
+    }
+
 
     /// <summary>
     /// 清空卡片仓库
@@ -271,5 +306,7 @@ public class AlmanacManager : MonoBehaviour
         // 描述
         seedDescription.text = _currentEnemyData.Description;
     }
+    
+    
 
 }

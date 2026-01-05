@@ -4692,6 +4692,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelPanel: {fileID: 762004789}
   levelNum: {fileID: 549621745}
+  levelImage: {fileID: 1588174099}
+  levelImages:
+  - {fileID: 2800000, guid: 3d35b6d9d88d0f5489f2679761c05574, type: 3}
+  - {fileID: 2800000, guid: c0b5d34485bf30741b196590ac71a39d, type: 3}
   maxWaveNum: {fileID: 169090457}
   difficulty: {fileID: 254220683}
   passScore: {fileID: 981967456}
@@ -5897,7 +5901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1588174096}
   - component: {fileID: 1588174098}
-  - component: {fileID: 1588174097}
+  - component: {fileID: 1588174099}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -5924,7 +5928,15 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -76.42999}
   m_SizeDelta: {x: -40, y: -192.85999}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1588174097
+--- !u!222 &1588174098
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588174095}
+  m_CullTransparentMesh: 1
+--- !u!114 &1588174099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5936,7 +5948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -5951,14 +5963,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!222 &1588174098
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588174095}
-  m_CullTransparentMesh: 1
 --- !u!1 &1675697625
 GameObject:
   m_ObjectHideFlags: 0
